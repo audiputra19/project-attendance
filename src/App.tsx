@@ -1,26 +1,24 @@
-import React from 'react';
+import React, { FC } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter } from 'react-router-dom';
+import { Router } from './Routers/Router';
+import { ThemeProvider } from './Context/ThemeContext';
+import { AlertProvider } from './Context/AlertContext';
+import { ModalProvider } from './Context/ModalContext';
 
-function App() {
+const App: FC = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <ThemeProvider>
+      <ModalProvider>
+        <AlertProvider>
+          <BrowserRouter>
+            <Router/>
+          </BrowserRouter>
+        </AlertProvider>
+      </ModalProvider>
+    </ThemeProvider>
+  )
 }
 
 export default App;
