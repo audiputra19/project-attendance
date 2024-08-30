@@ -106,11 +106,7 @@ const Attendance: FC = () => {
                                         <p className="font-bold text-sm md:text-base dark:text-white">Masuk</p>
                                     </div>
                                     <div className="mt-3">
-                                        {isLoading ? (
-                                            <div className="w-full h-5 bg-gray-200 animate-pulse rounded"></div>
-                                        ): (
-                                            <p className="font-bold text-xl text-color-base">{time && time.masuk !== '00:00:00' ? formatTime(time.masuk) : '-'}</p>
-                                        )}
+                                        <p className="font-bold text-xl text-color-base">{time && time.masuk !== '00:00:00' ? formatTime(time.masuk) : '-'}</p>
                                     </div>
                                     <div className="mt-2">
                                         <p className={`font-bold text-sm ${ time?.telat === 0 ? 'text-gray-400' : 'text-red-500'}`}>
@@ -149,7 +145,7 @@ const Attendance: FC = () => {
                                     </div>
                                     <div className="mt-2">
                                         <p className={`font-bold text-sm ${ time?.telatIst === 0 ? 'text-gray-400' : 'text-red-500'}`}>
-                                            {time?.telatIst === 0 ? 'Half Hours' : 'Late'}
+                                            {time?.telatIst === 0 ? 'Half Hours' : time?.istMasuk === '00:00:00' ? 'Half Hours' : 'Late'}
                                         </p>
                                     </div>
                                 </div>
