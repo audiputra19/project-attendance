@@ -106,7 +106,11 @@ const Attendance: FC = () => {
                                         <p className="font-bold text-sm md:text-base dark:text-white">Masuk</p>
                                     </div>
                                     <div className="mt-3">
-                                        <p className="font-bold text-xl text-color-base">{time && time.masuk !== '00:00:00' ? formatTime(time.masuk) : '-'}</p>
+                                        {isLoading ? (
+                                            <div className="w-full h-5 bg-gray-200 animate-pulse rounded"></div>
+                                        ): (
+                                            <p className="font-bold text-xl text-color-base">{time && time.masuk !== '00:00:00' ? formatTime(time.masuk) : '-'}</p>
+                                        )}
                                     </div>
                                     <div className="mt-2">
                                         <p className={`font-bold text-sm ${ time?.telat === 0 ? 'text-gray-400' : 'text-red-500'}`}>
