@@ -19,8 +19,13 @@ const Loading: React.FC = () => {
 
   return (
     <div className="fixed inset-0 flex justify-center items-center bg-white dark:bg-dark-main">
-      <div className="animate-spin text-gray-700 dark:text-white">
-        <FontAwesomeIcon icon={faSpinner} size="2x" />
+      <div className="flex flex-col justify-center items-center gap-2">
+        <div className="animate-spin text-gray-700 dark:text-white">
+          <FontAwesomeIcon icon={faSpinner} size="2x" />
+        </div>
+        <div className="text-sm font-bold text-gray-700 dark:text-white flex items-center">
+          <p className="animate-pulsing">Memuat</p>
+        </div>
       </div>
     </div>
   );

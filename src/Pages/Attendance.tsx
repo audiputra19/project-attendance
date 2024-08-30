@@ -14,6 +14,7 @@ const Attendance: FC = () => {
     const [postAttendance, {isLoading}] = usePostAttendanceMutation();
     const [postTimeAttendance, {data, isSuccess, error}] = useTimeAttendanceMutation();
     const [time, setTime] = useState<TimeAttendanceProps>();
+    const [loading, setLoading] = useState(false);
     const { showAlert } = useAlert();
     const navigate = useNavigate();
     const userData = useAppSelector(state => state.auth.userInfo);
@@ -53,22 +54,26 @@ const Attendance: FC = () => {
                     } catch (error: any) {
                         const message = error?.data?.message || 'Gagal melakukan absensi';
                         showAlert(message);
+                    } finally {
+                        setLoading(false); 
                     }
                 },
                 (error) => {
                     console.error('Error mendapatkan lokasi:', error);
                     showAlert('Tidak mendapatkan lokasi.');
+                    setLoading(false);
                 },{
                     enableHighAccuracy: true,
                 });
         } else {
             showAlert('Geolokasi tidak didukung oleh browser ini.');
+            setLoading(false);
         }
     }
 
     return (
         <div className="min-h-screen dark:bg-dark-main">
-            {isLoading ? (
+            {isLoading || loading ? (
                 <Loading/>
             ) : (
                 <div>
