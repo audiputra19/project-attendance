@@ -23,7 +23,7 @@ const Loading: React.FC = () => {
         <div className="animate-spin text-gray-700 dark:text-white">
           <FontAwesomeIcon icon={faSpinner} size="2x" />
         </div>
-        <div className="text-sm font-bold text-gray-700 flex items-center dark:text-white">
+        <div className="text-sm text-gray-700 flex items-center dark:text-white">
           <p className="animate-pulsing">Memuat</p>
         </div>
       </div>
