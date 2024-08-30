@@ -109,8 +109,8 @@ const Attendance: FC = () => {
                                         <p className="font-bold text-xl text-color-base">{time && time.masuk !== '00:00:00' ? formatTime(time.masuk) : '-'}</p>
                                     </div>
                                     <div className="mt-2">
-                                        <p className={`font-bold text-sm ${ time?.telat === 0 ? 'text-gray-400' : 'text-red-500'}`}>
-                                            {time?.telat === 0 ? 'On Time' : 'Late'}
+                                        <p className={`font-bold text-sm ${ time?.telat === 0 || time?.masuk === '00:00:00' ? 'text-gray-400' : 'text-red-500'}`}>
+                                            {time?.telat === 0 || time?.masuk === '00:00:00' ? 'On Time' : 'Late'}
                                             
                                             {time && time.alpa > 0 
                                             ? <span className="bg-red-100 text-red-500 text-xs py-1 px-2 rounded-xl ml-2">Alpa</span>
@@ -144,8 +144,8 @@ const Attendance: FC = () => {
                                         <p className="font-bold text-xl text-color-base">{time && time.istMasuk !== '00:00:00' ? formatTime(time.istMasuk) : '-'}</p>
                                     </div>
                                     <div className="mt-2">
-                                        <p className={`font-bold text-sm ${ time?.telatIst === 0 ? 'text-gray-400' : 'text-red-500'}`}>
-                                            {time?.telatIst === 0 ? 'Half Hours' : time?.istMasuk === '00:00:00' ? 'Half Hours' : 'Late'}
+                                        <p className={`font-bold text-sm ${ time?.telatIst === 0 || time?.istMasuk === '00:00:00' ? 'text-gray-400' : 'text-red-500'}`}>
+                                            {time?.telatIst === 0 || time?.istMasuk === '00:00:00' ? 'Half Hours' : 'Late'}
                                         </p>
                                     </div>
                                 </div>
