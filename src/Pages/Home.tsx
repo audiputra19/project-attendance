@@ -1,12 +1,13 @@
 import { FC, useState } from "react";
 import Attendance from "./Attendance";
 import { useNavigate } from "react-router-dom";
-import { useAppDispatch } from "../store";
+import { useAppDispatch, useAppSelector } from "../store";
 import { clearToken } from "../store/authSlice";
 import Alert from "../Components/Alert";
 import { useTheme } from "../Context/ThemeContext";
-import { Download, Eye, EyeOff, FileText, Info, LogOut, Menu, Moon, Sun, User, UserCheck, WalletMinimal } from "lucide-react";
+import { Banknote, Download, Eye, EyeOff, FileText, Info, LogOut, Menu, Moon, Sun, User, UserCheck, WalletMinimal } from "lucide-react";
 import { useModal } from "../Context/ModalContext";
+import moment from "moment";
 
 const Home: FC = () => {
     const { isDarkMode, toggleTheme } = useTheme();
@@ -14,6 +15,10 @@ const Home: FC = () => {
     const dispatch = useAppDispatch();
     const { openModal } = useModal();
     const navigate = useNavigate();
+    const month = moment().month();
+    const year = moment().year();
+    const dataUser = useAppSelector(state => state.auth.userInfo);
+    const pdfUrl = `https://sukabumi.karixa.co.id/skn/audi/dataku-v2/gaji_new_pdf.php?nik=${dataUser?.nik}|${dataUser?.pass}|${month}-${year}`;
 
     const tonggleSalaryVisible = () => {
         setSalaryVisible(!salaryVisible);
@@ -23,6 +28,10 @@ const Home: FC = () => {
         openModal('Are you sure you want to logout?', 'Logout', () => {
             dispatch(clearToken());
         })
+    }
+
+    const handlePdfViewer = () => {
+        navigate('pdf-viewer', {state: {pdfUrl}});
     }
 
     // const profile = require(`../Assets/Images/profile.jpg`);
@@ -77,7 +86,10 @@ const Home: FC = () => {
                             >
                                 Check Detail
                             </button>
-                            <div className="bg-black opacity-80 text-white p-3 rounded-xl cursor-pointer hover:opacity-70">
+                            <div 
+                                className="bg-black opacity-80 text-white p-3 rounded-xl cursor-pointer hover:opacity-70"
+                                onClick={handlePdfViewer}
+                            >
                                 <Download/>
                             </div>
                         </div>
@@ -88,7 +100,7 @@ const Home: FC = () => {
                         <div>
                             <p className="font-bold text-lg text-gray-500 dark:text-white">Services</p>
                         </div>
-                        <div className="mt-3 grid place-items-center grid-cols-3 md:grid-cols-5 gap-3">
+                        <div className="mt-3 grid place-items-center grid-cols-4 md:grid-cols-6 gap-3">
                             <div className="flex flex-col items-center gap-1 w-fit">
                                 <div 
                                     className="bg-blue-500 p-3 rounded-xl text-white cursor-pointer hover:bg-blue-600"
@@ -98,9 +110,19 @@ const Home: FC = () => {
                                 </div>
                                 <p className="text-xs text-gray-500 dark:text-white">Absensi</p>
                             </div>
+                            <div className="flex flex-col items-center gap-1 w-fit">
+                                <div 
+                                    className="bg-blue-500 p-3 rounded-xl text-white cursor-pointer hover:bg-blue-600"
+                                    onClick={() => navigate('/attendance')}
+                                >
+                                    <Banknote/>
+                                </div>
+                                <p className="text-xs text-gray-500 dark:text-white">Gaji</p>
+                            </div>
                             <div className="hidden md:block md:flex flex-col items-center gap-1 w-fit">
                                 <div 
                                     className="bg-blue-500 p-3 rounded-xl text-white cursor-pointer hover:bg-blue-600"
+                                    onClick={() => navigate('/report')}
                                 >
                                     <FileText/>
                                 </div>

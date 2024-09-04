@@ -77,7 +77,7 @@ const Attendance: FC = () => {
                 <Loading/>
             ) : (
                 <div>
-                    <div className="sticky top-0 left-0 right-0 bg-white flex justify-between items-center p-5 md:mx-20 lg:mx-48 lg:border-b-2 lg:border-gray-200 dark:border-dark-second dark:bg-dark-main">
+                    <div className="sticky z-20 top-0 left-0 right-0 bg-white flex justify-between items-center p-5 md:mx-20 lg:mx-48 lg:border-b-2 lg:border-gray-200 dark:border-dark-second dark:bg-dark-main">
                         <div
                             className="bg-gray-100 p-3 rounded-xl cursor-pointer dark:text-white dark:bg-dark-second"
                             onClick={() => navigate('/')}
@@ -110,7 +110,7 @@ const Attendance: FC = () => {
                                     </div>
                                     <div className="mt-2">
                                         <p className={`font-bold text-sm ${ time?.telat === 0 || time?.masuk === '00:00:00' ? 'text-gray-400' : 'text-red-500'}`}>
-                                            {time?.telat === 0 || time?.masuk === '00:00:00' ? 'On Time' : 'Late'}
+                                            {time?.masuk === '00:00:00' ? 'Please Check-In' : time?.telat === 0 ? 'On Time' : 'Late'}
                                             
                                             {time && time.alpa > 0 
                                             ? <span className="bg-red-100 text-red-500 text-xs py-1 px-2 rounded-xl ml-2">Alpa</span>

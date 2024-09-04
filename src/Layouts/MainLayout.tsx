@@ -7,7 +7,7 @@ export const MainLayout:FC = () => {
 
     return (
         <div className="min-h-screen">
-            <div className="bg-white min-h-screen dark:bg-dark-main">
+            <div className="pb-20 md:p-0 bg-white min-h-screen dark:bg-dark-main">
                 <Outlet/>
             </div>
             <div className="fixed bottom-0 left-0 right-0 bg-gray-100 md:hidden lg:hidden dark:bg-dark-second">

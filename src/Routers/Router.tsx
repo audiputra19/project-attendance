@@ -9,6 +9,8 @@ import ForgotPassword from "../Pages/ForgotPassword";
 import ResetPassword from "../Pages/ResetPassword";
 import { MainLayout } from "../Layouts/MainLayout";
 import Attendance from "../Pages/Attendance";
+import ReportAttendance from "../Pages/ReportAttendance";
+import PdfViewer from "../Pages/PdfViewer";
 
 export const Router:FC = () => {
     let element = [
@@ -23,7 +25,7 @@ export const Router:FC = () => {
                 },
                 {
                     path: '/report',
-                    element: <h1>Attendance</h1>
+                    element: <ReportAttendance/>
                 },
                 {
                     path: '/profile',
@@ -59,8 +61,12 @@ export const Router:FC = () => {
         },
         {
             path: '/attendance',
-            element: <Attendance/>
+            element: <ProtectedRoute><Attendance/></ProtectedRoute>
         },
+        {
+            path: '/pdf-viewer',
+            element: <ProtectedRoute><PdfViewer/></ProtectedRoute>
+        }
     ];
 
     let routes = useRoutes(element);

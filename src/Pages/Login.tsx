@@ -32,6 +32,12 @@ const Login: FC = () => {
         setShowPassword(!showPassword);
     }
 
+    const handleKeyDown = (e: React.KeyboardEvent) => {
+        if(e.key === 'Enter'){
+            login(form);
+        }
+    }
+
     return (
         isLoading 
         ? ( <Loading/> ) 
@@ -43,7 +49,7 @@ const Login: FC = () => {
                         <span className="text-color-base pl-1 text-4xl">.</span>
                     </p>
                 </div>
-                <div className="relative">
+                <div className="relative" onKeyDown={handleKeyDown}>
                     <div className="mt-5">
                         <div className="absolute text-gray-500 left-0 p-4 dark:text-white">
                             <User/>
