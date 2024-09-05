@@ -113,7 +113,7 @@ const Home: FC = () => {
                             <div className="flex flex-col items-center gap-1 w-fit">
                                 <div 
                                     className="bg-blue-500 p-3 rounded-xl text-white cursor-pointer hover:bg-blue-600"
-                                    onClick={() => navigate('/attendance')}
+                                    onClick={() => navigate('/salary')}
                                 >
                                     <Banknote/>
                                 </div>

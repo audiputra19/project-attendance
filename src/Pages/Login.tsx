@@ -16,7 +16,6 @@ const Login: FC = () => {
     const navigate = useNavigate();
     const dispatch = useAppDispatch();
     
-    
     useEffect(() => {
         if (isSuccess && data) {
             dispatch(setToken(data.data));

@@ -37,7 +37,7 @@ export const MainLayout:FC = () => {
                         className="absolute flex justify-center w-full"
                         onClick={() => navigate('/attendance')}
                     >
-                        <div className="p-5 mb-14 rounded-full bg-color-base text-white">
+                        <div className="p-5 mb-14 border-8 border-gray-100 rounded-full bg-color-base text-white dark:border-dark-second">
                             <UserCheck size={28}/>
                         </div>
                     </div>

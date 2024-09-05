@@ -11,6 +11,7 @@ import { MainLayout } from "../Layouts/MainLayout";
 import Attendance from "../Pages/Attendance";
 import ReportAttendance from "../Pages/ReportAttendance";
 import PdfViewer from "../Pages/PdfViewer";
+import Salary from "../Pages/Salary";
 
 export const Router:FC = () => {
     let element = [
@@ -66,6 +67,10 @@ export const Router:FC = () => {
         {
             path: '/pdf-viewer',
             element: <ProtectedRoute><PdfViewer/></ProtectedRoute>
+        },
+        {
+            path: '/salary',
+            element: <ProtectedRoute><Salary/></ProtectedRoute>
         }
     ];
 

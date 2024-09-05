@@ -5,6 +5,7 @@ import { combineReducers, configureStore } from "@reduxjs/toolkit"
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux"
 import { apiAuth } from "../services/api"
 import { apiAttendance } from "../services/apiAttendance"
+import { apiReport } from "../services/apiReport"
 
 const persistConfig = {
     key: 'root',
@@ -15,7 +16,8 @@ const persistConfig = {
 const rootReducer = combineReducers({
     auth: authSlice,
     [apiAuth.reducerPath]: apiAuth.reducer,
-    [apiAttendance.reducerPath]: apiAttendance.reducer
+    [apiAttendance.reducerPath]: apiAttendance.reducer,
+    [apiReport.reducerPath]: apiReport.reducer
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
@@ -25,10 +27,10 @@ export const store = configureStore({
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware({
         serializableCheck: false,
-    }).concat(apiAuth.middleware, apiAttendance.middleware),
+    }).concat(apiAuth.middleware, apiAttendance.middleware, apiReport.middleware),
 });
 
 export const persistor = persistStore(store);
 export type RootState = ReturnType<typeof rootReducer>;
-export const useAppDispatch = () => useDispatch<any>();
+export const useAppDispatch = () => useDispatch<typeof store.dispatch>();
 export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
