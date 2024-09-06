@@ -1,27 +1,31 @@
-import { ArrowLeft, Eye, EyeOff, WalletMinimal } from "lucide-react";
+import { ArrowLeft, Download, Eye, EyeOff, WalletMinimal } from "lucide-react";
 import { FC, useState } from "react"
 import { useNavigate } from "react-router-dom";
 import bgSalary from '../Assets/Images/bg-salary.jpg';
 import DatePickerInput from "../Components/DatePicker";
 import YearMonthPicker from "../Components/YearMonthPicker";
+import { useDateContext } from "../Context/DateContext";
+import moment from "moment";
+import { useAppSelector } from "../store";
 
 const Salary: FC = () => {
     const navigate = useNavigate();
     const [salaryVisible, setSalaryVisible] = useState(true);
-    const [startDate, setStartDate] = useState<Date | null>(null);
-    const [endDate, setEndDate] = useState<Date | null>(null);
-    const [selectedDate, setSelectedDate] = useState<{ year: number; month: number }>({
-        year: new Date().getFullYear(),
-        month: new Date().getMonth() + 1,
-    });
-
-    const handleDateChange = (year: number, month: number) => {
-        setSelectedDate({ year, month });
-    };
+    const {selectedDate} = useDateContext();
+    const month = moment(selectedDate).month();
+    const year = moment(selectedDate).year();
+    const dataUser = useAppSelector(state => state.auth.userInfo);
+    const pdfUrl = `https://sukabumi.karixa.co.id/skn/audi/dataku-v2/gaji_new_pdf.php?nik=${dataUser?.nik}|${dataUser?.pass}|${month}-${year}`;
 
     const tonggleSalaryVisible = () => {
         setSalaryVisible(!salaryVisible);
     }
+
+    const handlePdfViewer = () => {
+        navigate('/pdf-viewer', {state: {pdfUrl}});
+    }
+
+    // console.log(year)
 
     return (
         <div className="min-h-screen dark:bg-dark-main">
@@ -40,20 +44,24 @@ const Salary: FC = () => {
                 <div></div>
             </div>
             <div className="p-5 sm:mx-12 md:mx-32 lg:mx-80">
-                <YearMonthPicker onDateChange={handleDateChange}/>
-                <div className="mt-5">
-                    <button 
-                        type="submit"
-                        className="w-full px-5 py-4 bg-color-base text-white rounded-xl font-bold hover:bg-color-baseHover"
-                    >
-                        Submit
-                    </button>
+                <div className="flex gap-3">
+                    <div className="relative z-50">
+                        <YearMonthPicker/>
+                    </div>
+                    <div>
+                        <button 
+                            type="submit"
+                            className="w-full px-5 py-4 bg-color-base text-white rounded-xl font-bold hover:bg-color-baseHover"
+                        >
+                            Submit
+                        </button>
+                    </div>
                 </div>
                 <div className="mt-10">
-                    <p className="font-bold text-xl dark:text-white">My Report</p>
+                    <p className="font-bold text-xl dark:text-white">My Salary</p>
                 </div> 
                 <div className="relative mt-5">
-                    <div className="bg-[url('https://wallpapercave.com/wp/wp9587304.jpg')] absolute inset-0 bg-cover bg-center w-full p-5 rounded-2xl"></div>
+                    <div className="bg-color-base absolute inset-0 bg-cover bg-center w-full p-5 rounded-2xl"></div>
                     <div className="bg-black/20 absolute inset-0 rounded-2xl"></div>
                     <div className="relative p-5 z-10">
                         <div className="flex items-center gap-2 text-white">
@@ -70,8 +78,28 @@ const Salary: FC = () => {
                                 : <Eye className="text-white cursor-pointer"/>}
                             </div>
                         </div>
-                        <div className="flex items-center mt-5 gap-3">
-                            
+                        <div className="flex items-center mt-10 gap-10">
+                            <div className="flex flex-col gap-1">
+                                <p className="text-xs font-semibold text-gray-300">No. Rek</p>
+                                <p className="text-sm text-white">091239182733</p>
+                            </div>
+                            <div className="flex flex-col gap-1">
+                                <p className="text-xs font-semibold text-gray-300">Periode</p>
+                                <p className="text-sm text-white">09/2024</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className="mt-5">
+                    <div className="flex gap-3">
+                        <div className="flex flex-col items-center gap-2">
+                            <div 
+                                className="bg-gray-100 p-4 rounded-xl cursor-pointer w-fit dark:text-white dark:bg-dark-second"
+                                onClick={handlePdfViewer}
+                            >
+                                <Download/>
+                            </div>
+                            <p className="text-sm text-gray-700 dark:text-white">Pdf</p>
                         </div>
                     </div>
                 </div>

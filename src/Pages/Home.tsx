@@ -83,6 +83,7 @@ const Home: FC = () => {
                         <div className="flex items-center mt-5 gap-3">
                             <button
                                 className="bg-black opacity-80 text-white py-3 px-4 rounded-xl cursor-pointer hover:opacity-70"
+                                onClick={() => navigate('/salary')}
                             >
                                 Check Detail
                             </button>

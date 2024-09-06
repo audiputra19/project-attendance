@@ -6,17 +6,20 @@ import { Router } from './Routers/Router';
 import { ThemeProvider } from './Context/ThemeContext';
 import { AlertProvider } from './Context/AlertContext';
 import { ModalProvider } from './Context/ModalContext';
+import { DateProvider } from './Context/DateContext';
 
 const App: FC = () => {
   return (
     <ThemeProvider>
-      <ModalProvider>
-        <AlertProvider>
-          <BrowserRouter>
-            <Router/>
-          </BrowserRouter>
-        </AlertProvider>
-      </ModalProvider>
+      <DateProvider>
+        <ModalProvider>
+          <AlertProvider>
+            <BrowserRouter>
+              <Router/>
+            </BrowserRouter>
+          </AlertProvider>
+        </ModalProvider>
+      </DateProvider>
     </ThemeProvider>
   )
 }
