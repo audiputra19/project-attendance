@@ -62,7 +62,6 @@ const Salary: FC = () => {
                 </div> 
                 <div className="relative mt-5">
                     <div className="bg-color-base absolute inset-0 bg-cover bg-center w-full p-5 rounded-2xl"></div>
-                    <div className="bg-black/20 absolute inset-0 rounded-2xl"></div>
                     <div className="relative p-5 z-10">
                         <div className="flex items-center gap-2 text-white">
                             <WalletMinimal />
