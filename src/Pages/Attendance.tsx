@@ -19,6 +19,7 @@ const Attendance: FC = () => {
     const navigate = useNavigate();
     const userData = useAppSelector(state => state.auth.userInfo);
     const nik = userData?.nik;
+    const [previousPosition, setPreviousPosition] = useState<{ latitude: number, longitude: number} | null>(null);
 
     useEffect(() => {
         if(nik){
@@ -36,12 +37,37 @@ const Attendance: FC = () => {
         return timeSring.split(':').join(' : ');
     }
 
+    const calculateDistance = (lat1: number, lon1: number, lat2: number, lon2: number): number => {
+        const R = 6371e3; // radius bumi dalam meter
+        const φ1 = lat1 * Math.PI / 180; // φ dalam radian
+        const φ2 = lat2 * Math.PI / 180;
+        const Δφ = (lat2 - lat1) * Math.PI / 180;
+        const Δλ = (lon2 - lon1) * Math.PI / 180;
+
+        const a = Math.sin(Δφ / 2) * Math.sin(Δφ / 2) +
+                  Math.cos(φ1) * Math.cos(φ2) *
+                  Math.sin(Δλ / 2) * Math.sin(Δλ / 2);
+        const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+
+        return R * c; // dalam meter
+    }
+
     const handleAttendance = () => {
 
         if(navigator.geolocation){
             navigator.geolocation.getCurrentPosition( 
                 async (position) => {
                     const { latitude, longitude } = position.coords;
+
+                    if (previousPosition) {
+                        const distance = calculateDistance(previousPosition.latitude, previousPosition.longitude, latitude, longitude);
+                        if (distance > 100) { // Contoh: jarak maksimum 100 meter
+                            showAlert('Lokasi tidak valid, silakan coba lagi.');
+                            return;
+                        }
+                    }
+
+                    setPreviousPosition({ latitude, longitude });
 
                     try {
                         const data = await postAttendance({ latitude, longitude, nik }).unwrap();
