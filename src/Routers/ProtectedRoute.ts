@@ -23,7 +23,7 @@ export const ProtectedRoute: FC<{children: JSX.Element}> = ({ children }) => {
                 navigate('/auth');
             }
         } else {
-            navigate('auth');
+            navigate('/auth');
         }
         
     },[token, navigate, dispatch]);
