@@ -52,16 +52,33 @@ const Attendance: FC = () => {
         return R * c; // dalam meter
     }
 
-    const handleAttendance = () => {
+    const handleAttendance = async () => {
 
         if(navigator.geolocation){
             navigator.geolocation.getCurrentPosition( 
                 async (position) => {
                     const { latitude, longitude } = position.coords;
 
+                    if (!previousPosition) {
+                        // Periksa apakah lokasi sesuai dengan timezone perangkat
+                        const deviceTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone; // Timezone perangkat
+                        console.log("Timezone perangkat:", deviceTimezone);
+
+                        // Ambil timezone dari API server berdasarkan lokasi server
+                        const serverResponse = await axios.get('https://worldtimeapi.org/api/ip'); // API untuk timezone berdasarkan IP lokasi
+                        const serverTimezone = serverResponse.data.timezone; // Misal: 'Asia/Jakarta'
+                        console.log("Timezone server:", serverTimezone);
+
+                        // Bandingkan timezone perangkat dan timezone dari lokasi server
+                        if (deviceTimezone !== serverTimezone) {
+                            showAlert('Timezone perangkat tidak cocok dengan lokasi yang terdeteksi.');
+                            return;
+                        }
+                    }
+
                     if (previousPosition) {
                         const distance = calculateDistance(previousPosition.latitude, previousPosition.longitude, latitude, longitude);
-                        if (distance > 100) { // Contoh: jarak maksimum 100 meter
+                        if (distance > 1000) { // Contoh: jarak maksimum 100 meter
                             showAlert('Lokasi tidak valid, silakan coba lagi.');
                             return;
                         }

@@ -1,5 +1,5 @@
 import { ArrowLeft, Download, Eye, EyeOff, WalletMinimal } from "lucide-react";
-import { FC, useState } from "react"
+import { FC, useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom";
 import bgSalary from '../Assets/Images/bg-salary.jpg';
 import DatePickerInput from "../Components/DatePicker";
@@ -7,9 +7,11 @@ import YearMonthPicker from "../Components/YearMonthPicker";
 import { useDateContext } from "../Context/DateContext";
 import moment from "moment";
 import { useAppSelector } from "../store";
+import { usePostSalaryMutation } from "../services/apiSalary";
 
 const Salary: FC = () => {
     const navigate = useNavigate();
+    const [salary, {data, isLoading, isSuccess, error}] = usePostSalaryMutation();
     const [salaryVisible, setSalaryVisible] = useState(true);
     const {selectedDate} = useDateContext();
     const month = moment(selectedDate).month();
@@ -17,6 +19,9 @@ const Salary: FC = () => {
     const dataUser = useAppSelector(state => state.auth.userInfo);
     const pdfUrl = `https://sukabumi.karixa.co.id/skn/audi/dataku-v2/gaji_new_pdf.php?nik=${dataUser?.nik}|${dataUser?.pass}|${month}-${year}`;
 
+    useEffect(() => {
+        salary({nik: dataUser?.nik, month: month, year: year});
+    })
     const tonggleSalaryVisible = () => {
         setSalaryVisible(!salaryVisible);
     }
@@ -71,7 +76,7 @@ const Salary: FC = () => {
                         <div className="mt-3 flex items-center justify-between">
                             <p 
                                 className="text-2xl font-bold text-white"
-                            >Rp {salaryVisible ? '1.000.000' : '-'}</p>
+                            >Rp {salaryVisible ? data?.salary : '-'}</p>
                             <div onClick={tonggleSalaryVisible}>
                                 {salaryVisible 
                                 ? <EyeOff className="text-white cursor-pointer"/> 

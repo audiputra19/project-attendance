@@ -3,7 +3,7 @@ import { MainReportReq, MainReportRes } from "../interfaces/report";
 
 export const apiReport = createApi({
     reducerPath: 'apiReport',
-    baseQuery: fetchBaseQuery({ baseUrl: 'https://api-absensi-liart.vercel.app/' }),
+    baseQuery: fetchBaseQuery({ baseUrl: 'https://api-absensi-liart.vercel.app' }),
     // baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:3001' }),
     endpoints: build => ({
         mainReport: build.mutation<MainReportRes, MainReportReq>({
