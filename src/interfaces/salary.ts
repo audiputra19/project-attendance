@@ -1,9 +1,10 @@
 export interface SalaryRes {
     salary: number;
+    no_rek: string;
 }
 
 export interface SalaryReq {
     nik: number | undefined;
-    month: number;
-    year: number;
+    month: string;
+    year: string;
 }

@@ -6,6 +6,7 @@ import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux"
 import { apiAuth } from "../services/api"
 import { apiAttendance } from "../services/apiAttendance"
 import { apiReport } from "../services/apiReport"
+import { apiSalary } from "../services/apiSalary"
 
 const persistConfig = {
     key: 'root',
@@ -17,7 +18,8 @@ const rootReducer = combineReducers({
     auth: authSlice,
     [apiAuth.reducerPath]: apiAuth.reducer,
     [apiAttendance.reducerPath]: apiAttendance.reducer,
-    [apiReport.reducerPath]: apiReport.reducer
+    [apiReport.reducerPath]: apiReport.reducer,
+    [apiSalary.reducerPath]: apiSalary.reducer
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
@@ -27,7 +29,12 @@ export const store = configureStore({
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware({
         serializableCheck: false,
-    }).concat(apiAuth.middleware, apiAttendance.middleware, apiReport.middleware),
+    }).concat(
+        apiAuth.middleware, 
+        apiAttendance.middleware, 
+        apiReport.middleware,
+        apiSalary.middleware
+    ),
 });
 
 export const persistor = persistStore(store);

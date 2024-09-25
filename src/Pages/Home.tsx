@@ -1,25 +1,37 @@
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import Attendance from "./Attendance";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../store";
 import { clearToken } from "../store/authSlice";
 import Alert from "../Components/Alert";
 import { useTheme } from "../Context/ThemeContext";
-import { Banknote, Download, Eye, EyeOff, FileText, Info, LogOut, Menu, Moon, Sun, User, UserCheck, WalletMinimal } from "lucide-react";
+import { Banknote, Bus, Download, Eye, EyeOff, FileText, Info, LogOut, Menu, Moon, Sun, User, UserCheck, WalletMinimal } from "lucide-react";
 import { useModal } from "../Context/ModalContext";
 import moment from "moment";
+import { usePostSalaryMutation } from "../services/apiSalary";
 
 const Home: FC = () => {
     const { isDarkMode, toggleTheme } = useTheme();
     const [salaryVisible, setSalaryVisible] = useState(false);
+    const [salary, {data}] = usePostSalaryMutation();
     const dispatch = useAppDispatch();
     const { openModal } = useModal();
     const navigate = useNavigate();
-    const month = moment().month();
-    const year = moment().year();
+    const month = moment().format("MM");
+    const year = moment().format("YYYY");
     const dataUser = useAppSelector(state => state.auth.userInfo);
     const pdfUrl = `https://sukabumi.karixa.co.id/skn/audi/dataku-v2/gaji_new_pdf.php?nik=${dataUser?.nik}|${dataUser?.pass}|${month}-${year}`;
 
+    //console.log(data);
+
+    useEffect(() => {
+        salary({
+            nik: dataUser?.nik,
+            month,
+            year
+        })
+    }, [salary])
+    
     const tonggleSalaryVisible = () => {
         setSalaryVisible(!salaryVisible);
     }
@@ -73,7 +85,7 @@ const Home: FC = () => {
                         <div className="mt-3 flex items-center justify-between">
                             <p 
                                 className="text-2xl font-bold text-white"
-                            >Rp {salaryVisible ? '1.000.000' : '-'}</p>
+                            >Rp {salaryVisible ? data?.salary.toLocaleString("id-ID") ?? '-' : '-'}</p>
                             <div onClick={tonggleSalaryVisible}>
                                 {salaryVisible 
                                 ? <EyeOff className="text-white cursor-pointer"/> 
@@ -101,7 +113,7 @@ const Home: FC = () => {
                         <div>
                             <p className="font-bold text-lg text-gray-500 dark:text-white">Services</p>
                         </div>
-                        <div className="mt-3 grid place-items-center grid-cols-4 md:grid-cols-6 gap-3">
+                        <div className="mt-3 grid place-items-center grid-cols-4 md:grid-cols-6 gap-5">
                             <div className="flex flex-col items-center gap-1 w-fit">
                                 <div 
                                     className="bg-blue-500 p-3 rounded-xl text-white cursor-pointer hover:bg-blue-600"
@@ -120,10 +132,19 @@ const Home: FC = () => {
                                 </div>
                                 <p className="text-xs text-gray-500 dark:text-white">Gaji</p>
                             </div>
+                            <div className="flex flex-col items-center gap-1 w-fit">
+                                <div 
+                                    className="bg-blue-500 p-3 rounded-xl text-white cursor-pointer hover:bg-blue-600"
+                                    onClick={() => navigate('/salary')}
+                                >
+                                    <Bus/>
+                                </div>
+                                <p className="text-xs text-gray-500 dark:text-white">Cuti</p>
+                            </div>
                             <div className="hidden md:block md:flex flex-col items-center gap-1 w-fit">
                                 <div 
                                     className="bg-blue-500 p-3 rounded-xl text-white cursor-pointer hover:bg-blue-600"
-                                    onClick={() => navigate('/report')}
+                                    onClick={() => navigate('/cuti')}
                                 >
                                     <FileText/>
                                 </div>

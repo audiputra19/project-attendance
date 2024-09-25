@@ -1,9 +1,11 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/dist/query/react";
+import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { SalaryReq, SalaryRes } from "../interfaces/salary";
 
 export const apiSalary = createApi({
     reducerPath: 'apiSalary',
-    baseQuery: fetchBaseQuery({ baseUrl: 'https://sukabumi.karixa.co.id/skn/audi/dataku-react' }),
+    baseQuery: fetchBaseQuery({ 
+        baseUrl: 'https://sukabumi.karixa.co.id/skn/audi/dataku-react', 
+    }),
     endpoints: build => ({
         postSalary: build.mutation<SalaryRes, SalaryReq>({
             query: body => ({
