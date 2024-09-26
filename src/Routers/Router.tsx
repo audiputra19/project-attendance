@@ -12,6 +12,7 @@ import Attendance from "../Pages/Attendance";
 import ReportAttendance from "../Pages/ReportAttendance";
 import PdfViewer from "../Pages/PdfViewer";
 import Salary from "../Pages/Salary";
+import Menu from "../Pages/Menu";
 
 export const Router:FC = () => {
     let element = [
@@ -32,10 +33,6 @@ export const Router:FC = () => {
                     path: '/profile',
                     element: <h1>Profile</h1>
                 },
-                {
-                    path: '/menu',
-                    element: <h1>Menu</h1>
-                }
             ]
         },
         {
@@ -71,6 +68,10 @@ export const Router:FC = () => {
         {
             path: '/salary',
             element: <ProtectedRoute><Salary/></ProtectedRoute>
+        },
+        {
+            path: '/menu',
+            element: <Menu/>
         }
     ];
 
