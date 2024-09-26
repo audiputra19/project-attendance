@@ -14,8 +14,8 @@ import { usePostProfileMutation } from "../services/apiProfile";
 const Home: FC = () => {
     const { isDarkMode, toggleTheme } = useTheme();
     const [salaryVisible, setSalaryVisible] = useState(false);
-    const [salary, {data: salaryData, isLoading}] = usePostSalaryMutation();
-    const [profile, {data: profileData}] = usePostProfileMutation();
+    const [salary, {data: salaryData}] = usePostSalaryMutation();
+    const [profile, {data: profileData, isLoading}] = usePostProfileMutation();
     const dispatch = useAppDispatch();
     const { openModal } = useModal();
     const navigate = useNavigate();
