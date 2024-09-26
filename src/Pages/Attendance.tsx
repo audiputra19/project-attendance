@@ -12,7 +12,7 @@ import { TimeAttendanceProps } from "../interfaces/attendance";
 
 const Attendance: FC = () => {
     const [postAttendance, {isLoading}] = usePostAttendanceMutation();
-    const [postTimeAttendance, {data, isSuccess, error}] = useTimeAttendanceMutation();
+    const [postTimeAttendance, {data, isSuccess, isLoading: timeLoading}] = useTimeAttendanceMutation();
     const [time, setTime] = useState<TimeAttendanceProps>();
     const [loading, setLoading] = useState(false);
     const { showAlert } = useAlert();
@@ -149,17 +149,25 @@ const Attendance: FC = () => {
                                         <p className="font-bold text-sm md:text-base dark:text-white">Masuk</p>
                                     </div>
                                     <div className="mt-3">
-                                        <p className="font-bold text-xl text-color-base">{time && time.masuk !== '00:00:00' ? formatTime(time.masuk) : '-'}</p>
+                                        {timeLoading ? (
+                                            <div className="w-[100px] h-5 rounded-xl animate-pulse bg-gray-300 mb-2 dark:bg-dark-second"></div>
+                                        ) : (
+                                            <p className="font-bold text-xl text-color-base">{time && time.masuk !== '00:00:00' ? formatTime(time.masuk) : '-'}</p>
+                                        )}
                                     </div>
                                     <div className="mt-2">
-                                        <p className={`font-bold text-sm ${ time?.telat === 0 || time?.masuk === '00:00:00' ? 'text-gray-400' : 'text-red-500'}`}>
-                                            {time?.masuk === '00:00:00' ? 'Please Check-In' : time?.telat === 0 ? 'On Time' : 'Late'}
-                                            
-                                            {time && time.alpa > 0 
-                                            ? <span className="bg-red-100 text-red-500 text-xs py-1 px-2 rounded-xl ml-2">Alpa</span>
-                                            : null
-                                            }
-                                        </p>
+                                        {timeLoading ? (
+                                            <div className="w-[80px] h-5 rounded-xl animate-pulse bg-gray-300 mb-2 dark:bg-dark-second"></div>
+                                        ) : (
+                                            <p className={`font-bold text-sm ${ time?.telat === 0 || time?.masuk === '00:00:00' ? 'text-gray-400' : 'text-red-500'}`}>
+                                                {time?.masuk === '00:00:00' ? 'Please Check-In' : time?.telat === 0 ? 'On Time' : 'Late'}
+                                                
+                                                {time && time.alpa > 0 
+                                                ? <span className="bg-red-100 text-red-500 text-xs py-1 px-2 rounded-xl ml-2">Alpa</span>
+                                                : null
+                                                }
+                                            </p>
+                                        )}
                                     </div>
                                 </div>
                                 <div className="bg-gray-100 p-5 rounded-xl dark:bg-dark-second">
@@ -170,10 +178,18 @@ const Attendance: FC = () => {
                                         <p className="font-bold text-sm md:text-base dark:text-white">Istirahat</p>
                                     </div>
                                     <div className="mt-3">
-                                        <p className="font-bold text-xl text-color-base">{time && time.istKeluar !== '00:00:00' ? formatTime(time.istKeluar) : '-'}</p>
+                                        {timeLoading ? (
+                                            <div className="w-[100px] h-5 rounded-xl animate-pulse bg-gray-300 mb-2 dark:bg-dark-second"></div>
+                                        ) : (
+                                            <p className="font-bold text-xl text-color-base">{time && time.istKeluar !== '00:00:00' ? formatTime(time.istKeluar) : '-'}</p>
+                                        )}
                                     </div>
                                     <div className="mt-2">
-                                        <p className="font-bold text-sm text-gray-400">Half Hours</p>
+                                        {timeLoading ? (
+                                            <div className="w-[80px] h-5 rounded-xl animate-pulse bg-gray-300 mb-2 dark:bg-dark-second"></div>
+                                        ) : (
+                                            <p className="font-bold text-sm text-gray-400">Half Hours</p>
+                                        )}
                                     </div>
                                 </div>
                                 <div className="bg-gray-100 p-5 rounded-xl dark:bg-dark-second">
@@ -184,12 +200,20 @@ const Attendance: FC = () => {
                                         <p className="font-bold text-sm md:text-base dark:text-white">Ist. Masuk</p>
                                     </div>
                                     <div className="mt-3">
-                                        <p className="font-bold text-xl text-color-base">{time && time.istMasuk !== '00:00:00' ? formatTime(time.istMasuk) : '-'}</p>
+                                        {timeLoading ? (
+                                            <div className="w-[100px] h-5 rounded-xl animate-pulse bg-gray-300 mb-2 dark:bg-dark-second"></div>
+                                        ) : (
+                                            <p className="font-bold text-xl text-color-base">{time && time.istMasuk !== '00:00:00' ? formatTime(time.istMasuk) : '-'}</p>
+                                        )}
                                     </div>
                                     <div className="mt-2">
-                                        <p className={`font-bold text-sm ${ time?.telatIst === 0 || time?.istMasuk === '00:00:00' ? 'text-gray-400' : 'text-red-500'}`}>
-                                            {time?.telatIst === 0 || time?.istMasuk === '00:00:00' ? 'Half Hours' : 'Late'}
-                                        </p>
+                                        {timeLoading ? (
+                                            <div className="w-[80px] h-5 rounded-xl animate-pulse bg-gray-300 mb-2 dark:bg-dark-second"></div>
+                                        ) : (
+                                            <p className={`font-bold text-sm ${ time?.telatIst === 0 || time?.istMasuk === '00:00:00' ? 'text-gray-400' : 'text-red-500'}`}>
+                                                {time?.telatIst === 0 || time?.istMasuk === '00:00:00' ? 'Half Hours' : 'Late'}
+                                            </p>
+                                        )}
                                     </div>
                                 </div>
                                 <div className="bg-gray-100 p-5 rounded-xl dark:bg-dark-second">
@@ -200,10 +224,18 @@ const Attendance: FC = () => {
                                         <p className="font-bold text-sm md:text-base dark:text-white">Keluar</p>
                                     </div>
                                     <div className="mt-3">
-                                        <p className="font-bold text-xl text-color-base">{time && time.keluar !== '00:00:00' ? formatTime(time.keluar) : '-'}</p>
+                                        {timeLoading ? (
+                                            <div className="w-[100px] h-5 rounded-xl animate-pulse bg-gray-300 mb-2 dark:bg-dark-second"></div>
+                                        ) : (
+                                            <p className="font-bold text-xl text-color-base">{time && time.keluar !== '00:00:00' ? formatTime(time.keluar) : '-'}</p>
+                                        )}
                                     </div>
                                     <div className="mt-2">
-                                        <p className="font-bold text-sm text-gray-400">Go Home</p>
+                                        {timeLoading ? (
+                                            <div className="w-[80px] h-5 rounded-xl animate-pulse bg-gray-300 mb-2 dark:bg-dark-second"></div>
+                                        ) : (
+                                            <p className="font-bold text-sm text-gray-400">Go Home</p>
+                                        )}
                                     </div>
                                 </div>
                             </div>

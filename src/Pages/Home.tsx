@@ -66,7 +66,7 @@ const Home: FC = () => {
                     <div>
                         <div>
                             {isLoading ? (
-                                <div className="w-[200px] h-5 rounded-xl animate-pulse bg-gray-100 mb-2"></div>
+                                <div className="w-[200px] h-5 rounded-xl animate-pulse bg-gray-200 mb-2 dark:bg-dark-second"></div>
                             ) : (
                                 <p className="font-bold text-xl dark:text-white">{username}</p>
                             )}

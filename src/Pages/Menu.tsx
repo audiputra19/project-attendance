@@ -20,8 +20,8 @@ const Menu: FC = () => {
             <div className="p-5 flex justify-between items-center gap-5 bg-gray-100 rounded-2xl dark:bg-dark-second">
                 {isLoading ? (
                     <div className="flex flex-col gap-2">
-                        <div className="w-[180px] h-5 bg-gray-300 animate-pulse rounded-xl"></div>
-                        <div className="w-[200px] h-5 bg-gray-300 animate-pulse rounded-xl"></div>
+                        <div className="w-[180px] h-5 bg-gray-300 animate-pulse rounded-xl dark:bg-gray-600"></div>
+                        <div className="w-[200px] h-5 bg-gray-300 animate-pulse rounded-xl dark:bg-gray-600"></div>
                     </div>
                 ) : (
                     <div>
@@ -29,7 +29,7 @@ const Menu: FC = () => {
                         <p className="text-sm text-gray-400 font-semibold">{profileData?.data.email}</p>
                     </div>
                 )}
-                <div className="text-gray-400 dark:text-white">
+                <div className="text-gray-400">
                     <ChevronRight size={28}/>
                 </div>
             </div>
