@@ -28,16 +28,18 @@ const Home: FC = () => {
     const username = nameParts?.slice(0, 2).join(' ');
 
     useEffect(() => {
+        profile({
+            nik: dataUser?.nik,
+        })
+    }, [profile])
+
+    useEffect(() => {
         salary({
             nik: dataUser?.nik,
             month,
             year
         })
-
-        profile({
-            nik: dataUser?.nik,
-        })
-    }, [salary, profile])
+    }, [salary])
 
     // console.log(profileData)
     
