@@ -122,7 +122,7 @@ const Attendance: FC = () => {
                 <div>
                     <div className="sticky z-20 top-0 left-0 right-0 bg-white flex justify-between items-center p-5 md:mx-20 lg:mx-48 lg:border-b-2 lg:border-gray-200 dark:border-dark-second dark:bg-dark-main">
                         <div
-                            className="bg-gray-100 p-3 rounded-xl cursor-pointer dark:text-white dark:bg-gray-600"
+                            className="bg-gray-100 p-3 rounded-xl cursor-pointer dark:text-white dark:bg-dark-second"
                             onClick={() => navigate('/')}
                         >
                             <ArrowLeft/>
@@ -141,7 +141,7 @@ const Attendance: FC = () => {
                         </div> 
                         <div className="mt-5">
                             <div className="grid grid-cols-2 gap-5">
-                                <div className="bg-gray-100 p-5 rounded-xl dark:bg-gray-600">
+                                <div className="bg-gray-100 p-5 rounded-xl dark:bg-dark-second">
                                     <div className="flex items-center gap-3">
                                         <div className="bg-blue-100 p-3 rounded-xl dark:bg-blue-500">
                                             <Clock7 className="text-blue-500 dark:text-white"/>
@@ -170,7 +170,7 @@ const Attendance: FC = () => {
                                         )}
                                     </div>
                                 </div>
-                                <div className="bg-gray-100 p-5 rounded-xl dark:bg-gray-600">
+                                <div className="bg-gray-100 p-5 rounded-xl dark:bg-dark-second">
                                     <div className="flex items-center gap-3">
                                         <div className="bg-blue-100 p-3 rounded-xl dark:bg-blue-500">
                                             <Clock12 className="text-blue-500 dark:text-white"/>
@@ -192,7 +192,7 @@ const Attendance: FC = () => {
                                         )}
                                     </div>
                                 </div>
-                                <div className="bg-gray-100 p-5 rounded-xl dark:bg-gray-600">
+                                <div className="bg-gray-100 p-5 rounded-xl dark:bg-dark-second">
                                     <div className="flex items-center gap-3">
                                         <div className="bg-blue-100 p-3 rounded-xl dark:bg-blue-500">
                                             <Clock1 className="text-blue-500 dark:text-white"/>
@@ -216,7 +216,7 @@ const Attendance: FC = () => {
                                         )}
                                     </div>
                                 </div>
-                                <div className="bg-gray-100 p-5 rounded-xl dark:bg-gray-600">
+                                <div className="bg-gray-100 p-5 rounded-xl dark:bg-dark-second">
                                     <div className="flex items-center gap-3">
                                         <div className="bg-blue-100 p-3 rounded-xl dark:bg-blue-500">
                                             <Clock5 className="text-blue-500 dark:text-white"/>
