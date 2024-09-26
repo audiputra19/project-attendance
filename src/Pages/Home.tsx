@@ -9,11 +9,13 @@ import { Banknote, Bus, Download, Eye, EyeOff, FileText, Info, LogOut, Menu, Moo
 import { useModal } from "../Context/ModalContext";
 import moment from "moment";
 import { usePostSalaryMutation } from "../services/apiSalary";
+import { usePostProfileMutation } from "../services/apiProfile";
 
 const Home: FC = () => {
     const { isDarkMode, toggleTheme } = useTheme();
     const [salaryVisible, setSalaryVisible] = useState(false);
-    const [salary, {data}] = usePostSalaryMutation();
+    const [salary, {data: salaryData, isLoading}] = usePostSalaryMutation();
+    const [profile, {data: profileData}] = usePostProfileMutation();
     const dispatch = useAppDispatch();
     const { openModal } = useModal();
     const navigate = useNavigate();
@@ -22,7 +24,8 @@ const Home: FC = () => {
     const dataUser = useAppSelector(state => state.auth.userInfo);
     const pdfUrl = `https://sukabumi.karixa.co.id/skn/audi/dataku-v2/gaji_new_pdf.php?nik=${dataUser?.nik}|${dataUser?.pass}|${month}-${year}`;
 
-    //console.log(data);
+    const nameParts = profileData?.data?.nama?.split(" ");
+    const username = nameParts?.slice(0, 2).join(' ');
 
     useEffect(() => {
         salary({
@@ -30,7 +33,13 @@ const Home: FC = () => {
             month,
             year
         })
-    }, [salary])
+
+        profile({
+            nik: dataUser?.nik,
+        })
+    }, [salary, profile])
+
+    // console.log(profileData)
     
     const tonggleSalaryVisible = () => {
         setSalaryVisible(!salaryVisible);
@@ -54,7 +63,11 @@ const Home: FC = () => {
                 <div className="flex gap-3">
                     <div>
                         <div>
-                            <p className="font-bold text-xl dark:text-white">Hi, Muhammad Audi</p>
+                            {isLoading ? (
+                                <div className="w-[200px] h-5 rounded-xl animate-pulse bg-gray-100 mb-2"></div>
+                            ) : (
+                                <p className="font-bold text-xl dark:text-white">{username}</p>
+                            )}
                             <p className="font-bold text-gray-400 text-sm">Welcome Back</p>
                         </div>
                     </div>
@@ -85,7 +98,7 @@ const Home: FC = () => {
                         <div className="mt-3 flex items-center justify-between">
                             <p 
                                 className="text-2xl font-bold text-white"
-                            >Rp {salaryVisible ? data?.salary.toLocaleString("id-ID") ?? '-' : '-'}</p>
+                            >Rp {salaryVisible ? salaryData?.salary.toLocaleString("id-ID") ?? '-' : '-'}</p>
                             <div onClick={tonggleSalaryVisible}>
                                 {salaryVisible 
                                 ? <EyeOff className="text-white cursor-pointer"/> 

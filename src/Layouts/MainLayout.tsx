@@ -18,7 +18,7 @@ export const MainLayout:FC = () => {
                         {({ isActive }) => (
                             <div className="flex flex-col items-center">
                                 <House className={isActive ? 'text-color-base' : 'text-gray-500 dark:text-gray-300'} />
-                                <p className={`text-xs mt-1 ${isActive ? 'text-color-base' : 'text-gray-500 dark:text-gray-300'}`}>Home</p>
+                                <p className={`text-xs mt-1 ${isActive ? 'text-color-base' : 'text-gray-400 dark:text-gray-300'}`}>Home</p>
                             </div>
                         )}
                     </NavLink>
@@ -28,7 +28,7 @@ export const MainLayout:FC = () => {
                         {({ isActive }) => (
                             <div className="flex flex-col items-center">
                                 <FileText className={isActive ? 'text-color-base' : 'text-gray-500 dark:text-gray-300'} />
-                                <p className={`text-xs mt-1 ${isActive ? 'text-color-base' : 'text-gray-500 dark:text-gray-300'}`}>Report</p>
+                                <p className={`text-xs mt-1 ${isActive ? 'text-color-base' : 'text-gray-400 dark:text-gray-300'}`}>Report</p>
                             </div>
                         )}
                     </NavLink>
@@ -47,7 +47,7 @@ export const MainLayout:FC = () => {
                         {({ isActive }) => (
                             <div className="flex flex-col items-center">
                                 <User className={isActive ? 'text-color-base' : 'text-gray-500 dark:text-gray-300'} />
-                                <p className={`text-xs mt-1 ${isActive ? 'text-color-base' : 'text-gray-500 dark:text-gray-300'}`}>Profile</p>
+                                <p className={`text-xs mt-1 ${isActive ? 'text-color-base' : 'text-gray-400 dark:text-gray-300'}`}>Profile</p>
                             </div>
                         )}
                     </NavLink>    
@@ -57,7 +57,7 @@ export const MainLayout:FC = () => {
                         {({ isActive }) => (
                             <div className="flex flex-col items-center">
                                 <LayoutGrid className={isActive ? 'text-color-base' : 'text-gray-500 dark:text-gray-300'} />
-                                <p className={`text-xs mt-1 ${isActive ? 'text-color-base' : 'text-gray-500 dark:text-gray-300'}`}>Menu</p>
+                                <p className={`text-xs mt-1 ${isActive ? 'text-color-base' : 'text-gray-400 dark:text-gray-300'}`}>Menu</p>
                             </div>
                         )}
                     </NavLink>
