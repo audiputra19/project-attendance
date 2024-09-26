@@ -10,7 +10,7 @@ export const MainLayout:FC = () => {
             <div className="pb-20 md:p-0 bg-white min-h-screen dark:bg-dark-main">
                 <Outlet/>
             </div>
-            <div className="fixed bottom-0 left-0 right-0 bg-white border-t-2 border-gray-200 md:hidden lg:hidden dark:bg-dark-second">
+            <div className="fixed bottom-0 left-0 right-0 bg-white border-t-2 border-gray-200 md:hidden lg:hidden dark:bg-dark-second dark:border-none">
                 <div className="relative grid grid-cols-5 px-5 items-center gap-2">
                     <NavLink
                         to="/"
