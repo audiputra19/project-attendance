@@ -10,7 +10,7 @@ export const MainLayout:FC = () => {
             <div className="pb-20 md:p-0 bg-white min-h-screen dark:bg-dark-main">
                 <Outlet/>
             </div>
-            <div className="fixed bottom-0 left-0 right-0 bg-gray-100 md:hidden lg:hidden dark:bg-dark-second">
+            <div className="fixed bottom-0 left-0 right-0 bg-white border-t-2 border-gray-200 md:hidden lg:hidden dark:bg-dark-second">
                 <div className="relative grid grid-cols-5 px-5 items-center gap-2">
                     <NavLink
                         to="/"
@@ -37,8 +37,8 @@ export const MainLayout:FC = () => {
                         className="absolute flex justify-center w-full"
                         onClick={() => navigate('/attendance')}
                     >
-                        <div className="p-5 mb-14 border-8 border-gray-100 rounded-full bg-color-base text-white dark:border-dark-second">
-                            <UserCheck size={28}/>
+                        <div className="p-4 mb-16 border-8 border-white rounded-full bg-color-base text-white dark:border-dark-second">
+                            <UserCheck size={32}/>
                         </div>
                     </div>
                     <NavLink
