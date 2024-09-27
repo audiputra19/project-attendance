@@ -1,7 +1,7 @@
-import { FC, useEffect, useLayoutEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { useAppDispatch, useAppSelector } from "../store";  
 import { jwtDecode } from "jwt-decode";
+import { FC, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { useAppDispatch, useAppSelector } from "../store";
 import { clearToken } from "../store/authSlice";
 
 interface TokenPayload {

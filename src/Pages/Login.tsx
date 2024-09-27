@@ -25,7 +25,7 @@ const Login: FC = () => {
             const message = (error as any)?.data?.message;
             showAlert(message);
         }
-    }, [data, isSuccess, error])
+    }, [data, isSuccess, error, dispatch, navigate, showAlert]);
 
     const togglePasswordVisibility = () => {
         setShowPassword(!showPassword);

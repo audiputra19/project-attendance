@@ -1,14 +1,15 @@
 import axios from "axios";
-import { FC, FormEvent, useEffect, useState } from "react";
-import { usePostAttendanceMutation, useTimeAttendanceMutation } from "../services/apiAttendance";
-import { useAppSelector } from "../store";
-import { useAlert } from "../Context/AlertContext";
-import Alert from "../Components/Alert";
-import { ArrowLeft, Clock1, Clock12, Clock3, Clock5, Clock7 } from "lucide-react";
+import { ArrowLeft, Clock1, Clock12, Clock5, Clock7 } from "lucide-react";
+import { FC, useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
+import Alert from "../Components/Alert";
 import LiveClock from "../Components/LiveClock";
 import Loading from "../Components/Loading";
+import { useAlert } from "../Context/AlertContext";
 import { TimeAttendanceProps } from "../interfaces/attendance";
+import { usePostAttendanceMutation, useTimeAttendanceMutation } from "../services/apiAttendance";
+import { useAppSelector } from "../store";
 
 const Attendance: FC = () => {
     const [postAttendance, {isLoading}] = usePostAttendanceMutation();
@@ -20,12 +21,13 @@ const Attendance: FC = () => {
     const userData = useAppSelector(state => state.auth.userInfo);
     const nik = userData?.nik;
     const [previousPosition, setPreviousPosition] = useState<{ latitude: number, longitude: number} | null>(null);
+    const { t } = useTranslation();
 
     useEffect(() => {
         if(nik){
             postTimeAttendance({nik});
         }
-    }, [nik])
+    }, [nik, postTimeAttendance]);
 
     useEffect(() => {
         if(isSuccess && data){
@@ -128,7 +130,7 @@ const Attendance: FC = () => {
                             <ArrowLeft/>
                         </div>
                         <div className="hidden lg:block">
-                            <p className="text-xl font-bold dark:text-white">Attendance
+                            <p className="text-xl font-bold dark:text-white">{t('attendance')}
                                 <span className="text-color-base pl-1 text-4xl">.</span>
                             </p>
                         </div>
@@ -137,7 +139,7 @@ const Attendance: FC = () => {
                     <div className="p-5 sm:mx-10 md:mx-32 lg:mx-80">
                         <LiveClock/>
                         <div className="mt-10">
-                            <p className="font-bold text-xl dark:text-white">Today Attendance</p>
+                            <p className="font-bold text-xl dark:text-white">{t('todayAttendance')}</p>
                         </div> 
                         <div className="mt-5">
                             <div className="grid grid-cols-2 gap-5">
@@ -146,7 +148,7 @@ const Attendance: FC = () => {
                                         <div className="bg-blue-100 p-3 rounded-xl dark:bg-blue-500">
                                             <Clock7 className="text-blue-500 dark:text-white"/>
                                         </div>
-                                        <p className="font-bold text-sm md:text-base dark:text-white">Masuk</p>
+                                        <p className="font-bold text-sm md:text-base dark:text-white">{t('checkIn')}</p>
                                     </div>
                                     <div className="mt-3">
                                         {timeLoading ? (
@@ -160,7 +162,7 @@ const Attendance: FC = () => {
                                             <div className="w-[80px] h-5 rounded-xl animate-pulse bg-gray-300 mb-2 dark:bg-gray-600"></div>
                                         ) : (
                                             <p className={`font-bold text-sm ${ time?.telat === 0 || time?.masuk === '00:00:00' ? 'text-gray-400' : 'text-red-500'}`}>
-                                                {time?.masuk === '00:00:00' ? 'Please Check-In' : time?.telat === 0 ? 'On Time' : 'Late'}
+                                                {time?.masuk === '00:00:00' ? 'Please Check-In' : time?.telat === 0 ? t('onTime') : t('late')}
                                                 
                                                 {time && time.alpa > 0 
                                                 ? <span className="bg-red-100 text-red-500 text-xs py-1 px-2 rounded-xl ml-2">Alpa</span>
@@ -175,7 +177,7 @@ const Attendance: FC = () => {
                                         <div className="bg-blue-100 p-3 rounded-xl dark:bg-blue-500">
                                             <Clock12 className="text-blue-500 dark:text-white"/>
                                         </div>
-                                        <p className="font-bold text-sm md:text-base dark:text-white">Istirahat</p>
+                                        <p className="font-bold text-sm md:text-base dark:text-white">{t('break')}</p>
                                     </div>
                                     <div className="mt-3">
                                         {timeLoading ? (
@@ -188,7 +190,7 @@ const Attendance: FC = () => {
                                         {timeLoading ? (
                                             <div className="w-[80px] h-5 rounded-xl animate-pulse bg-gray-300 mb-2 dark:bg-gray-600"></div>
                                         ) : (
-                                            <p className="font-bold text-sm text-gray-400">Half Hours</p>
+                                            <p className="font-bold text-sm text-gray-400">{t('halfHours')}</p>
                                         )}
                                     </div>
                                 </div>
@@ -197,7 +199,7 @@ const Attendance: FC = () => {
                                         <div className="bg-blue-100 p-3 rounded-xl dark:bg-blue-500">
                                             <Clock1 className="text-blue-500 dark:text-white"/>
                                         </div>
-                                        <p className="font-bold text-sm md:text-base dark:text-white">Ist. Masuk</p>
+                                        <p className="font-bold text-sm md:text-base dark:text-white">{t('breakIn')}</p>
                                     </div>
                                     <div className="mt-3">
                                         {timeLoading ? (
@@ -211,7 +213,7 @@ const Attendance: FC = () => {
                                             <div className="w-[80px] h-5 rounded-xl animate-pulse bg-gray-300 mb-2 dark:bg-gray-600"></div>
                                         ) : (
                                             <p className={`font-bold text-sm ${ time?.telatIst === 0 || time?.istMasuk === '00:00:00' ? 'text-gray-400' : 'text-red-500'}`}>
-                                                {time?.telatIst === 0 || time?.istMasuk === '00:00:00' ? 'Half Hours' : 'Late'}
+                                                {time?.telatIst === 0 || time?.istMasuk === '00:00:00' ? t('halfHours') : t('late')}
                                             </p>
                                         )}
                                     </div>
@@ -221,7 +223,7 @@ const Attendance: FC = () => {
                                         <div className="bg-blue-100 p-3 rounded-xl dark:bg-blue-500">
                                             <Clock5 className="text-blue-500 dark:text-white"/>
                                         </div>
-                                        <p className="font-bold text-sm md:text-base dark:text-white">Keluar</p>
+                                        <p className="font-bold text-sm md:text-base dark:text-white">{t('checkOut')}</p>
                                     </div>
                                     <div className="mt-3">
                                         {timeLoading ? (
@@ -234,7 +236,7 @@ const Attendance: FC = () => {
                                         {timeLoading ? (
                                             <div className="w-[80px] h-5 rounded-xl animate-pulse bg-gray-300 mb-2 dark:bg-gray-600"></div>
                                         ) : (
-                                            <p className="font-bold text-sm text-gray-400">Go Home</p>
+                                            <p className="font-bold text-sm text-gray-400">{t('goHome')}</p>
                                         )}
                                     </div>
                                 </div>
@@ -247,7 +249,7 @@ const Attendance: FC = () => {
                             className="w-full bg-color-base p-4 rounded-xl text-white font-bold"
                             onClick={handleAttendance}
                         >
-                            Check In
+                            {t('attendance')}
                         </button>
                     </div>
                 </div>

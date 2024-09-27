@@ -1,6 +1,6 @@
+import { CircleX, DoorOpen } from 'lucide-react';
 import React from 'react';
 import { useModal } from '../Context/ModalContext';
-import { CircleX, DoorOpen, X } from 'lucide-react';
 
 const Modal: React.FC = () => {
   const { isOpen, message, title, onConfirm, closeModal } = useModal();

@@ -1,11 +1,11 @@
 import { ArrowLeft, Download, Eye, EyeOff, WalletMinimal } from "lucide-react";
 import moment from "moment";
 import { FC, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import Loading from "../Components/Loading";
 import { NotFound } from "../Components/NotFound";
 import YearMonthPicker from "../Components/YearMonthPicker";
-import { useAlert } from "../Context/AlertContext";
 import { useDateContext } from "../Context/DateContext";
 import { usePostSalaryMutation } from "../services/apiSalary";
 import { useAppSelector } from "../store";
@@ -14,8 +14,8 @@ const Salary: FC = () => {
     const navigate = useNavigate();
     const [salary, {data, isLoading, error}] = usePostSalaryMutation();
     const [salaryVisible, setSalaryVisible] = useState(true);
-    const { showAlert } = useAlert();
-    const {selectedDate} = useDateContext();
+    const { selectedDate } = useDateContext();
+    const { t } = useTranslation();
     const month = moment(selectedDate).format("MM");
     const year = moment(selectedDate).format("YYYY");
     const dataUser = useAppSelector(state => state.auth.userInfo);
@@ -36,7 +36,7 @@ const Salary: FC = () => {
 
     const handleSubmit = async () => {
         try {
-            const result = await salary({
+            await salary({
                 nik: dataUser?.nik,
                 month,
                 year
@@ -51,7 +51,7 @@ const Salary: FC = () => {
         isLoading ? (
             <Loading/>
         ) : (
-            <div className="min-h-screen dark:bg-dark-main">
+            <div className="min-h-screen bg-white dark:bg-dark-main">
                 <div className="sticky z-20 top-0 left-0 right-0 bg-white flex justify-between items-center p-5 md:mx-20 lg:mx-48 lg:border-b-2 lg:border-gray-200 dark:border-dark-second dark:bg-dark-main">
                     <div
                         className="bg-gray-100 p-3 rounded-xl cursor-pointer dark:text-white dark:bg-dark-second"
@@ -60,7 +60,7 @@ const Salary: FC = () => {
                         <ArrowLeft/>
                     </div>
                     <div className="hidden lg:block">
-                        <p className="text-xl font-bold dark:text-white">Salary
+                        <p className="text-xl font-bold dark:text-white">{t('salary')}
                             <span className="text-color-base pl-1 text-4xl">.</span>
                         </p>
                     </div>
@@ -81,20 +81,20 @@ const Salary: FC = () => {
                             </button>
                         </div>
                     </div>
+                    <div className="mt-10">
+                        <p className="font-bold text-xl dark:text-white">{t('mySalary')}</p>
+                    </div> 
                     {!data ? (
                         <NotFound/>
                     ) : (
                         <>
-                            <div className="mt-10">
-                                <p className="font-bold text-xl dark:text-white">My Salary</p>
-                            </div> 
                             <div className="relative mt-5">
                                 <div className="bg-color-base absolute inset-0 bg-cover bg-center w-full p-5 rounded-2xl"></div>
                                 <div className="bg-black/20 absolute inset-0 rounded-2xl"></div>
                                 <div className="relative p-5 z-10">
                                     <div className="flex items-center gap-2 text-white">
                                         <WalletMinimal />
-                                        <p className="text-sm">Your Salary</p>
+                                        <p className="text-sm">{t('yourSalary')}</p>
                                     </div>
                                     <div className="mt-3 flex items-center justify-between">
                                         <p 

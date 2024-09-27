@@ -1,4 +1,4 @@
-import React, { useState, useEffect, FC } from 'react';
+import { FC, useEffect } from 'react';
 import { useAlert } from '../Context/AlertContext';
 
 const Alert: FC = () => {

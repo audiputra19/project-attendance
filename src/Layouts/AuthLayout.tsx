@@ -10,7 +10,7 @@ export const AuthLayout: FC = () => {
     const {token} = useParams();
 
     return (
-        <div className="min-h-screen dark:bg-dark-main">
+        <div className="min-h-screen bg-white dark:bg-dark-main">
             <div className="sticky z-10 bg-white top-0 px-5 py-5 md:px-20 lg:px-48 dark:bg-dark-main">
                 <div className={location.pathname === '/auth' ? `flex justify-end items-center` : `flex justify-start items-center`}>
                     {location.pathname === '/auth' ? (

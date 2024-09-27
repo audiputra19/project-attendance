@@ -1,26 +1,29 @@
-import React, { FC } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { FC } from 'react';
 import { BrowserRouter } from 'react-router-dom';
-import { Router } from './Routers/Router';
-import { ThemeProvider } from './Context/ThemeContext';
+import './App.css';
 import { AlertProvider } from './Context/AlertContext';
-import { ModalProvider } from './Context/ModalContext';
 import { DateProvider } from './Context/DateContext';
+import './Context/i18n';
+import LanguageProvider from './Context/LanguageContext';
+import { ModalProvider } from './Context/ModalContext';
+import { ThemeProvider } from './Context/ThemeContext';
+import { Router } from './Routers/Router';
 
 const App: FC = () => {
   return (
-    <ThemeProvider>
-      <DateProvider>
-        <ModalProvider>
-          <AlertProvider>
-            <BrowserRouter>
-              <Router/>
-            </BrowserRouter>
-          </AlertProvider>
-        </ModalProvider>
-      </DateProvider>
-    </ThemeProvider>
+    <LanguageProvider>
+      <ThemeProvider>
+        <DateProvider>
+          <ModalProvider>
+            <AlertProvider>
+              <BrowserRouter>
+                <Router/>
+              </BrowserRouter>
+            </AlertProvider>
+          </ModalProvider>
+        </DateProvider>
+      </ThemeProvider>
+    </LanguageProvider>
   )
 }
 

@@ -1,11 +1,11 @@
+import { jwtDecode } from "jwt-decode";
 import { CircleAlert, Eye, EyeOff, LockKeyhole } from "lucide-react";
 import { FC, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import Alert from "../Components/Alert";
 import Loading from "../Components/Loading";
 import { useAlert } from "../Context/AlertContext";
-import { useForgotPassMutation, useResetPassMutation } from "../services/users";
-import { jwtDecode } from "jwt-decode";
+import { useResetPassMutation } from "../services/users";
 
 interface TokenPayload {
     exp: number
@@ -42,7 +42,7 @@ const ResetPassword: FC = () => {
             const message = (error as any)?.data?.message;
             showAlert(message);
         }
-    }, [data, isSuccess, error])
+    }, [data, isSuccess, error, navigate, showAlert]);
 
     const togglePasswordVisibility = () => {
         setShowPassword(!showPassword);

@@ -1,10 +1,18 @@
 import { CalendarDays } from 'lucide-react';
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 import DatePicker from "react-datepicker";
 import { useDateContext } from '../Context/DateContext';
+import { useTranslation } from 'react-i18next';
+import { useAppSelector } from '../store';
 
 const YearMonthPicker: FC = () => {
   const {selectedDate, setSelectedDate} = useDateContext();
+  const { t, i18n } = useTranslation();
+  const currentLanguage = useAppSelector(state => state.language.language);
+
+  useEffect(() => {
+    i18n.changeLanguage(currentLanguage);
+  }, [i18n, currentLanguage]);
 
   const handleChange = (date: Date | null) => {
     setSelectedDate(date)
@@ -21,7 +29,7 @@ const YearMonthPicker: FC = () => {
                 onChange={handleChange}
                 dateFormat="MM/yyyy"
                 className="w-full pl-14 pr-4 py-4 text-gray-500 rounded-xl bg-gray-100 dark:bg-dark-second dark:text-white"
-                placeholderText="Select a year and month"
+                placeholderText={t('selectYearMonth')}
                 popperPlacement="bottom-start"
                 showMonthYearPicker
             />

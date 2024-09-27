@@ -1,11 +1,10 @@
 import { AtSign, Eye, EyeOff, LockKeyhole, User } from "lucide-react";
 import { FC, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useRegisterMutation } from "../services/users";
-import { useAppDispatch } from "../store";
-import { useAlert } from "../Context/AlertContext";
-import Loading from "../Components/Loading";
 import Alert from "../Components/Alert";
+import Loading from "../Components/Loading";
+import { useAlert } from "../Context/AlertContext";
+import { useRegisterMutation } from "../services/users";
 
 const Register: FC = () => {
     const [showPassword, setShowPassword] = useState<boolean>(false);
@@ -30,7 +29,7 @@ const Register: FC = () => {
             const message = (error as any)?.data?.message;
             showAlert(message);
         }
-    }, [data, isSuccess, error])
+    }, [data, isSuccess, error, navigate, showAlert]);
 
     const togglePasswordVisibility = () => {
         setShowPassword(!showPassword);

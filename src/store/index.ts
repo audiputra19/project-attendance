@@ -1,22 +1,24 @@
-import { PersistConfig, persistReducer, persistStore } from "redux-persist"
-import storage from "redux-persist/lib/storage"
-import authSlice from "./authSlice"
 import { combineReducers, configureStore } from "@reduxjs/toolkit"
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux"
+import { persistReducer, persistStore } from "redux-persist"
+import storage from "redux-persist/lib/storage"
 import { apiAuth } from "../services/api"
 import { apiAttendance } from "../services/apiAttendance"
+import { apiProfile } from "../services/apiProfile"
 import { apiReport } from "../services/apiReport"
 import { apiSalary } from "../services/apiSalary"
-import { apiProfile } from "../services/apiProfile"
+import authSlice from "./authSlice"
+import languageSlice from "./languageSlice"
 
 const persistConfig = {
     key: 'root',
     storage,
-    whitelist: ['auth']
+    whitelist: ['auth', 'language']
 }
 
 const rootReducer = combineReducers({
     auth: authSlice,
+    language: languageSlice,
     [apiAuth.reducerPath]: apiAuth.reducer,
     [apiAttendance.reducerPath]: apiAttendance.reducer,
     [apiReport.reducerPath]: apiReport.reducer,

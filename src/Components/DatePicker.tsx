@@ -1,13 +1,22 @@
-import { CalendarDays, User } from "lucide-react";
-import { FC } from "react";
+import { CalendarDays } from "lucide-react";
+import { FC, useEffect } from "react";
 import DatePicker from "react-datepicker";
 import 'react-datepicker/dist/react-datepicker.css';
+import { useTranslation } from "react-i18next";
+import { useAppSelector } from "../store";
 
 interface DatePickerProps {
     selectedDate: Date | null;
     onDateChange: (date: Date | null) => void;
 }
 const DatePickerInput: FC<DatePickerProps> = ({ selectedDate, onDateChange }) => {
+    const { t, i18n } = useTranslation();
+    const currentLanguage = useAppSelector(state => state.language.language);
+
+    useEffect(() => {
+        i18n.changeLanguage(currentLanguage);
+    }, [i18n, currentLanguage]);
+
     return (
         <div>
             <div className="">
@@ -19,7 +28,7 @@ const DatePickerInput: FC<DatePickerProps> = ({ selectedDate, onDateChange }) =>
                     onChange={onDateChange}
                     dateFormat="dd/MM/yyyy"
                     className="w-full pl-14 pr-4 py-4 text-gray-500 rounded-xl bg-gray-100 dark:bg-dark-second dark:text-white"
-                    placeholderText="Select a date"
+                    placeholderText={t('selectDate')}
                     popperPlacement="bottom-start"
                 />
             </div>

@@ -1,24 +1,23 @@
+import { Banknote, Bus, Download, Eye, EyeOff, FileText, Info, LayoutGrid, LogOut, User, UserCheck, WalletMinimal } from "lucide-react";
+import moment from "moment";
 import { FC, useEffect, useState } from "react";
-import Attendance from "./Attendance";
+import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
+import Alert from "../Components/Alert";
+import { useModal } from "../Context/ModalContext";
+import { usePostProfileMutation } from "../services/apiProfile";
+import { usePostSalaryMutation } from "../services/apiSalary";
 import { useAppDispatch, useAppSelector } from "../store";
 import { clearToken } from "../store/authSlice";
-import Alert from "../Components/Alert";
-import { useTheme } from "../Context/ThemeContext";
-import { Banknote, Bus, Download, Eye, EyeOff, FileText, Info, LogOut, Menu, Moon, Sun, User, UserCheck, WalletMinimal } from "lucide-react";
-import { useModal } from "../Context/ModalContext";
-import moment from "moment";
-import { usePostSalaryMutation } from "../services/apiSalary";
-import { usePostProfileMutation } from "../services/apiProfile";
 
 const Home: FC = () => {
-    const { isDarkMode, toggleTheme } = useTheme();
     const [salaryVisible, setSalaryVisible] = useState(false);
     const [salary, {data: salaryData}] = usePostSalaryMutation();
     const [profile, {data: profileData, isLoading}] = usePostProfileMutation();
     const dispatch = useAppDispatch();
     const { openModal } = useModal();
     const navigate = useNavigate();
+    const { t } = useTranslation();
     const month = moment().format("MM");
     const year = moment().format("YYYY");
     const dataUser = useAppSelector(state => state.auth.userInfo);
@@ -30,16 +29,14 @@ const Home: FC = () => {
     useEffect(() => {
         profile({
             nik: dataUser?.nik,
-        })
-    }, [profile])
+        });
 
-    useEffect(() => {
         salary({
             nik: dataUser?.nik,
             month,
             year
-        })
-    }, [salary])
+        });
+    }, [profile, salary, dataUser?.nik, month, year]);
 
     // console.log(profileData)
     
@@ -68,23 +65,26 @@ const Home: FC = () => {
                             {isLoading ? (
                                 <div className="w-[200px] h-5 rounded-xl animate-pulse bg-gray-200 mb-2 dark:bg-dark-second"></div>
                             ) : (
-                                <p className="font-bold text-xl dark:text-white">{username}</p>
+                                <p className="font-bold text-xl dark:text-white">Hi, {username}</p>
                             )}
-                            <p className="font-bold text-gray-400 text-sm">Welcome Back</p>
+                            <p className="font-bold text-gray-400 text-sm">{t('welcome')}</p>
                         </div>
                     </div>
                 </div>
                 <div className="md:flex md:justify-between md:gap-3">
-                    <div 
+                    {/* <div 
                         onClick={toggleTheme}
                         className="bg-gray-100 p-3 rounded-xl cursor-pointer dark:text-white dark:bg-dark-second"
                     >
                         {isDarkMode 
                         ? ( <Sun/> ) 
                         : ( <Moon/> )}
-                    </div>
-                    <div className="hidden md:block bg-gray-100 p-3 rounded-xl cursor-pointer dark:text-white dark:bg-dark-second">
-                        <Menu/>
+                    </div> */}
+                    <div 
+                        className="hidden md:block bg-gray-100 p-3 rounded-xl cursor-pointer dark:text-white dark:bg-dark-second"
+                        onClick={() => navigate('/menu')}
+                    >
+                        <LayoutGrid/>
                     </div>
                 </div>
             </div>
@@ -95,7 +95,7 @@ const Home: FC = () => {
                     <div className="relative p-5 z-10">
                         <div className="flex items-center gap-2 text-white">
                             <WalletMinimal />
-                            <p className="text-sm">Your Salary</p>
+                            <p className="text-sm">{t('yourSalary')}</p>
                         </div>
                         <div className="mt-3 flex items-center justify-between">
                             <p 
@@ -126,7 +126,7 @@ const Home: FC = () => {
                 <div className="mt-5">
                     <div className="bg-gray-100 w-full p-5 rounded-2xl dark:bg-dark-second">
                         <div>
-                            <p className="font-bold text-lg text-gray-500 dark:text-white">Services</p>
+                            <p className="font-bold text-lg text-gray-500 dark:text-white">{t('services')}</p>
                         </div>
                         <div className="mt-3 grid place-items-center grid-cols-4 md:grid-cols-6 gap-5">
                             <div className="flex flex-col items-center gap-1 w-fit">
@@ -136,7 +136,7 @@ const Home: FC = () => {
                                 >
                                     <UserCheck/>
                                 </div>
-                                <p className="text-xs text-gray-500 dark:text-white">Absensi</p>
+                                <p className="text-xs text-gray-500 dark:text-white">{t('attendance')}</p>
                             </div>
                             <div className="flex flex-col items-center gap-1 w-fit">
                                 <div 
@@ -145,7 +145,7 @@ const Home: FC = () => {
                                 >
                                     <Banknote/>
                                 </div>
-                                <p className="text-xs text-gray-500 dark:text-white">Gaji</p>
+                                <p className="text-xs text-gray-500 dark:text-white">{t('salary')}</p>
                             </div>
                             <div className="flex flex-col items-center gap-1 w-fit">
                                 <div 
@@ -154,16 +154,16 @@ const Home: FC = () => {
                                 >
                                     <Bus/>
                                 </div>
-                                <p className="text-xs text-gray-500 dark:text-white">Cuti</p>
+                                <p className="text-xs text-gray-500 dark:text-white">{t('leave')}</p>
                             </div>
                             <div className="hidden md:block md:flex flex-col items-center gap-1 w-fit">
                                 <div 
                                     className="bg-blue-500 p-3 rounded-xl text-white cursor-pointer hover:bg-blue-600"
-                                    onClick={() => navigate('/cuti')}
+                                    onClick={() => navigate('/report')}
                                 >
                                     <FileText/>
                                 </div>
-                                <p className="text-xs text-gray-500 dark:text-white">Report</p>
+                                <p className="text-xs text-gray-500 dark:text-white">{t('report')}</p>
                             </div>
                             <div className="hidden md:block md:flex flex-col items-center gap-1 w-fit">
                                 <div 
@@ -171,7 +171,7 @@ const Home: FC = () => {
                                 >
                                     <User/>
                                 </div>
-                                <p className="text-xs text-gray-500 dark:text-white">Profile</p>
+                                <p className="text-xs text-gray-500 dark:text-white">{t('profile')}</p>
                             </div>
                             <div className="flex flex-col items-center gap-1 w-fit">
                                 <div 
@@ -179,7 +179,7 @@ const Home: FC = () => {
                                 >
                                     <Info/>
                                 </div>
-                                <p className="text-xs text-gray-500 dark:text-white">About</p>
+                                <p className="text-xs text-gray-500 dark:text-white">{t('about')}</p>
                             </div>
                             <div className="flex flex-col items-center gap-1 w-fit">
                                 <div 
@@ -188,7 +188,7 @@ const Home: FC = () => {
                                 >
                                     <LogOut/>
                                 </div>
-                                <p className="text-xs text-gray-500 dark:text-white">Logout</p>
+                                <p className="text-xs text-gray-500 dark:text-white">{t('logout')}</p>
                             </div>
                         </div>
                     </div>

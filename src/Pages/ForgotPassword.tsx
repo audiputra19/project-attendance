@@ -1,18 +1,14 @@
 import { AtSign, Mail } from "lucide-react";
 import { FC, useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Alert from "../Components/Alert";
-import { useAlert } from "../Context/AlertContext";
-import { useForgotPassMutation, useLoginMutation, userApi } from "../services/users";
-import { useAppDispatch } from "../store";
-import { setToken } from "../store/authSlice";
 import Loading from "../Components/Loading";
+import { useAlert } from "../Context/AlertContext";
+import { useForgotPassMutation } from "../services/users";
 
 const ForgotPassword: FC = () => {
     const [form, setForm] = useState({email: ''});
     const { showAlert } = useAlert();
-    const navigate = useNavigate();
-    const dispatch = useAppDispatch();
     const [forgotPass, { data, isSuccess, isLoading, error }] = useForgotPassMutation();
 
     useEffect(() => {
@@ -22,7 +18,7 @@ const ForgotPassword: FC = () => {
             const message = (error as any)?.data?.message;
             showAlert(message);
         }
-    }, [data, isSuccess, error])
+    }, [data, isSuccess, error, showAlert]);
 
     return (
         isLoading 

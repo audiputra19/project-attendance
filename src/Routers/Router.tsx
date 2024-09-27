@@ -13,6 +13,8 @@ import ReportAttendance from "../Pages/ReportAttendance";
 import PdfViewer from "../Pages/PdfViewer";
 import Salary from "../Pages/Salary";
 import Menu from "../Pages/Menu";
+import Profile from "../Pages/Profile";
+import LanguangeSelector from "../Pages/LanguangeSelector";
 
 export const Router:FC = () => {
     let element = [
@@ -31,7 +33,7 @@ export const Router:FC = () => {
                 },
                 {
                     path: '/profile',
-                    element: <h1>Profile</h1>
+                    element: <Profile/>
                 },
             ]
         },
@@ -72,6 +74,10 @@ export const Router:FC = () => {
         {
             path: '/menu',
             element: <Menu/>
+        },
+        {
+            path: '/lang',
+            element: <LanguangeSelector/>
         }
     ];
 

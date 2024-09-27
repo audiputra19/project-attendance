@@ -1,13 +1,14 @@
+import { AlarmClock, ArrowLeft, Bus, ClipboardCheck, ClipboardX, PhoneOutgoing, SquareArrowOutUpRight } from "lucide-react";
 import { FC, useEffect, useState } from "react";
-import DatePickerInput from "../Components/DatePicker";
-import { AlarmClock, ArrowLeft, Bus, ClipboardCheck, ClipboardX, Hand, MessageCircleWarning, PhoneOutgoing, SquareArrowOutUpRight, SquareArrowUpRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import { useMainReportMutation } from "../services/apiReport";
-import { useAppSelector } from "../store";
-import { useAlert } from "../Context/AlertContext";
-import { MainReportProps } from "../interfaces/report";
+import DatePickerInput from "../Components/DatePicker";
 import Loading from "../Components/Loading";
 import { NotFound } from "../Components/NotFound";
+import { useAlert } from "../Context/AlertContext";
+import { MainReportProps } from "../interfaces/report";
+import { useMainReportMutation } from "../services/apiReport";
+import { useAppSelector } from "../store";
+import { useTranslation } from "react-i18next";
 
 const ReportAttendance: FC = () => {
     const [startDate, setStartDate] = useState<Date | null>(null);
@@ -18,6 +19,7 @@ const ReportAttendance: FC = () => {
     const nik = userData?.nik;
     const [report, setReport] = useState<MainReportProps>();
     const { showAlert } = useAlert();
+    const { t } = useTranslation();
 
     const handleSubmit = () => {
         if(startDate && endDate) {
@@ -34,7 +36,7 @@ const ReportAttendance: FC = () => {
             const message = (error as any)?.data?.message;
             showAlert(message);
         }
-    }, [isSuccess, data, error])
+    }, [isSuccess, data, error, showAlert]);
 
     return (
         isLoading ? (
@@ -49,7 +51,7 @@ const ReportAttendance: FC = () => {
                         <ArrowLeft/>
                     </div>
                     <div className="hidden lg:block">
-                        <p className="text-xl font-bold dark:text-white">Report
+                        <p className="text-xl font-bold dark:text-white">{t('report')}
                             <span className="text-color-base pl-1 text-4xl">.</span>
                         </p>
                     </div>
@@ -70,7 +72,7 @@ const ReportAttendance: FC = () => {
                         </button>
                     </div>
                     <div className="mt-10">
-                        <p className="font-bold text-xl dark:text-white">My Report</p>
+                        <p className="font-bold text-xl dark:text-white">{t('myReport')}</p>
                     </div> 
 
                     {!data ? (
@@ -83,7 +85,7 @@ const ReportAttendance: FC = () => {
                                         <div className="bg-blue-100 p-3 rounded-xl dark:bg-blue-500">
                                             <ClipboardCheck className="text-blue-500 dark:text-white"/>
                                         </div>
-                                        <p className="font-bold text-sm md:text-base dark:text-white">Hadir</p>
+                                        <p className="font-bold text-sm md:text-base dark:text-white">{t('present')}</p>
                                     </div>
                                     <div className="mt-3 flex justify-between items-center bottom-0 left-0 right-0">
                                         <p className="font-bold text-2xl text-color-base">{report?.hadir}</p>
@@ -111,7 +113,7 @@ const ReportAttendance: FC = () => {
                                         <div className="bg-blue-100 p-3 rounded-xl dark:bg-blue-500">
                                             <AlarmClock className="text-blue-500 dark:text-white"/>
                                         </div>
-                                        <p className="font-bold text-sm md:text-base dark:text-white">Telat</p>
+                                        <p className="font-bold text-sm md:text-base dark:text-white">{t('late')}</p>
                                     </div>
                                     <div className="mt-3 flex justify-between items-center bottom-0 left-0 right-0">
                                         <p className="font-bold text-2xl text-color-base">{report?.telat}</p>
@@ -125,7 +127,7 @@ const ReportAttendance: FC = () => {
                                         <div className="bg-blue-100 p-3 rounded-xl dark:bg-blue-500">
                                             <PhoneOutgoing className="text-blue-500 dark:text-white"/>
                                         </div>
-                                        <p className="font-bold text-sm md:text-base dark:text-white">Izin</p>
+                                        <p className="font-bold text-sm md:text-base dark:text-white">{t('permit')}</p>
                                     </div>
                                     <div className="mt-3 flex justify-between items-center bottom-0 left-0 right-0">
                                         <p className="font-bold text-2xl text-color-base">{report?.izin}</p>
@@ -139,7 +141,7 @@ const ReportAttendance: FC = () => {
                                         <div className="bg-blue-100 p-3 rounded-xl dark:bg-blue-500">
                                             <Bus className="text-blue-500 dark:text-white"/>
                                         </div>
-                                        <p className="font-bold text-sm md:text-base dark:text-white">Cuti</p>
+                                        <p className="font-bold text-sm md:text-base dark:text-white">{t('leave')}</p>
                                     </div>
                                     <div className="mt-3 flex justify-between items-center bottom-0 left-0 right-0">
                                         <p className="font-bold text-2xl text-color-base">{report?.cuti}</p>
