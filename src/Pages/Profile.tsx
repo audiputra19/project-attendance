@@ -58,11 +58,16 @@ const Profile: FC = () => {
                     </div>
                     <div className="flex flex-col gap-1">
                         {isLoading ? (
-                            <div className="w-[180px] h-5 bg-gray-300 animate-pulse rounded-xl dark:bg-gray-600"></div>
+                            <div className="flex flex-col gap-2">
+                                <div className="w-[180px] h-5 bg-gray-300 animate-pulse rounded-xl dark:bg-gray-600"></div>
+                                <div className="w-[100px] h-5 bg-gray-300 animate-pulse rounded-xl dark:bg-gray-600"></div>
+                            </div>
                         ) : (
-                            <p className="text-lg text-gray-700 font-bold dark:text-white">{username}</p>
+                            <div>
+                                <p className="text-lg text-gray-700 font-bold dark:text-white">{username}</p>
+                                <p className="text-sm font-semibold text-gray-400">Employee</p>
+                            </div>
                         )}
-                        <p className="text-sm font-semibold text-gray-400">Employee</p>
                     </div>
                 </div>
                 <div className="flex flex-col gap-2 mt-5">
@@ -70,7 +75,11 @@ const Profile: FC = () => {
                         className="grid grid-cols-6 sm:grid-cols-10 lg:grid-cols-12 gap-4 items-center p-2" 
                     >
                         <div className="flex justify-center text-gray-600 dark:text-white">
-                            <Phone size={20}/>
+                            {isLoading ? (
+                                <div className="w-[50px] h-5 bg-gray-300 animate-pulse rounded-xl dark:bg-gray-600"></div>
+                            ) : (
+                                <Phone size={20}/>
+                            )}
                         </div>
                         <div className="col-start-2 col-span-6 sm:col-start-2 sm:col-span-10 lg:col-start-2 lg:col-span-12">
                             {isLoading ? (
@@ -84,7 +93,11 @@ const Profile: FC = () => {
                         className="grid grid-cols-6 sm:grid-cols-10 lg:grid-cols-12 gap-4 items-center p-2" 
                     >
                         <div className="flex justify-center text-gray-600 dark:text-white">
-                            <Mail size={20}/>
+                            {isLoading ? (
+                                <div className="w-[50px] h-5 bg-gray-300 animate-pulse rounded-xl dark:bg-gray-600"></div>
+                            ) : (
+                                <Mail size={20}/>
+                            )}
                         </div>
                         <div className="col-start-2 col-span-6 sm:col-start-2 sm:col-span-10 lg:col-start-2 lg:col-span-12">
                             {isLoading ? (
@@ -99,20 +112,30 @@ const Profile: FC = () => {
                     <div className="flex justify-between items-center">
                         <div className="flex flex-col items-center gap-1 w-full">
                             {isLoading ? (
-                                <div className="w-[100px] h-5 bg-gray-300 animate-pulse rounded-xl dark:bg-gray-600"></div>
+                                <div className="flex flex-col items-center gap-2">
+                                    <div className="w-[100px] h-5 bg-gray-300 animate-pulse rounded-xl dark:bg-gray-600"></div>
+                                    <div className="w-[80px] h-5 bg-gray-300 animate-pulse rounded-xl dark:bg-gray-600"></div>
+                                </div>
                             ) : (
-                                <p className="text-lg font-bold text-gray-700 dark:text-white">{profileData?.divisi}</p>
+                                <div className="flex flex-col items-center gap-1">
+                                    <p className="text-lg font-bold text-gray-700 dark:text-white">{profileData?.divisi}</p>
+                                    <p className="text-sm font-semibold text-gray-400">Division</p>
+                                </div>
                             )}
-                            <p className="text-sm font-semibold text-gray-400">Division</p>
                         </div>
                         <div className="h-16 w-0.5 bg-gray-200 mx-4 dark:bg-dark-second"></div>
                         <div className="flex flex-col items-center gap-1 w-full">
                             {isLoading ? (
-                                <div className="w-[100px] h-5 bg-gray-300 animate-pulse rounded-xl dark:bg-gray-600"></div>
+                                <div className="flex flex-col items-center gap-2 w-full">
+                                    <div className="w-[100px] h-5 bg-gray-300 animate-pulse rounded-xl dark:bg-gray-600"></div>
+                                    <div className="w-[80px] h-5 bg-gray-300 animate-pulse rounded-xl dark:bg-gray-600"></div>
+                                </div>
                             ) : (
-                                <p className="text-lg font-bold text-gray-700 dark:text-white">{joinDate}</p>
+                                <div className="flex flex-col items-center gap-1">
+                                    <p className="text-lg font-bold text-gray-700 dark:text-white">{joinDate}</p>
+                                    <p className="text-sm font-semibold text-gray-400">Join Date</p>
+                                </div>
                             )}
-                            <p className="text-sm font-semibold text-gray-400">Join Date</p>
                         </div>
                     </div>
                 </div>

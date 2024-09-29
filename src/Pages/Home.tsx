@@ -61,14 +61,17 @@ const Home: FC = () => {
             <div className="sticky top-0 left-0 right-0 bg-white p-5 md:mx-20 lg:mx-48 flex justify-between items-center lg:border-b-2 lg:border-gray-200 dark:border-dark-second dark:bg-dark-main">
                 <div className="flex gap-3">
                     <div>
-                        <div>
-                            {isLoading ? (
+                        {isLoading ? (
+                            <div className="flex flex-col">
                                 <div className="w-[200px] h-5 rounded-xl animate-pulse bg-gray-200 mb-2 dark:bg-dark-second"></div>
-                            ) : (
+                                <div className="w-[100px] h-5 rounded-xl animate-pulse bg-gray-200 mb-2 dark:bg-dark-second"></div>
+                            </div>    
+                        ) : (
+                            <div>
                                 <p className="font-bold text-xl dark:text-white">Hi, {username}</p>
-                            )}
-                            <p className="font-bold text-gray-400 text-sm">{t('welcome')}</p>
-                        </div>
+                                <p className="font-bold text-gray-400 text-sm">{t('welcome')}</p>
+                            </div>
+                        )}
                     </div>
                 </div>
                 <div className="md:flex md:justify-between md:gap-3">
@@ -89,7 +92,7 @@ const Home: FC = () => {
                 </div>
             </div>
             <div className="p-5 sm:mx-12 md:mx-32 lg:mx-80">
-                <div className="relative mt-10">
+                <div className="relative mt-5">
                     <div className="bg-[url('https://wallpapercave.com/wp/wp9587304.jpg')] absolute inset-0 bg-cover bg-center w-full p-5 rounded-2xl"></div>
                     <div className="bg-black/20 absolute inset-0 rounded-2xl"></div>
                     <div className="relative p-5 z-10">
