@@ -118,8 +118,8 @@ const Profile: FC = () => {
                                 </div>
                             ) : (
                                 <div className="flex flex-col items-center gap-1">
-                                    <p className="text-lg font-bold text-gray-700 dark:text-white">{profileData?.divisi}</p>
-                                    <p className="text-sm font-semibold text-gray-400">Division</p>
+                                    <p className="font-bold text-gray-700 dark:text-white">{profileData?.divisi}</p>
+                                    <p className="text-xs font-semibold text-gray-400">Division</p>
                                 </div>
                             )}
                         </div>
@@ -132,8 +132,8 @@ const Profile: FC = () => {
                                 </div>
                             ) : (
                                 <div className="flex flex-col items-center gap-1">
-                                    <p className="text-lg font-bold text-gray-700 dark:text-white">{joinDate}</p>
-                                    <p className="text-sm font-semibold text-gray-400">Join Date</p>
+                                    <p className="font-bold text-gray-700 dark:text-white">{joinDate}</p>
+                                    <p className="text-xs font-semibold text-gray-400">Join Date</p>
                                 </div>
                             )}
                         </div>

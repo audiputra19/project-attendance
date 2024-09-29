@@ -1,21 +1,17 @@
-import { Banknote, Bus, Download, Eye, EyeOff, FileText, Info, LayoutGrid, LogOut, User, UserCheck, WalletMinimal } from "lucide-react";
+import { Banknote, Bus, Download, Eye, EyeOff, FileText, Info, LayoutGrid, User, UserCheck, WalletMinimal } from "lucide-react";
 import moment from "moment";
 import { FC, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import Alert from "../Components/Alert";
-import { useModal } from "../Context/ModalContext";
 import { usePostProfileMutation } from "../services/apiProfile";
 import { usePostSalaryMutation } from "../services/apiSalary";
-import { useAppDispatch, useAppSelector } from "../store";
-import { clearToken } from "../store/authSlice";
+import { useAppSelector } from "../store";
 
 const Home: FC = () => {
     const [salaryVisible, setSalaryVisible] = useState(false);
     const [salary, {data: salaryData}] = usePostSalaryMutation();
     const [profile, {data: profileData, isLoading}] = usePostProfileMutation();
-    const dispatch = useAppDispatch();
-    const { openModal } = useModal();
     const navigate = useNavigate();
     const { t } = useTranslation();
     const month = moment().format("MM");
@@ -42,12 +38,6 @@ const Home: FC = () => {
     
     const tonggleSalaryVisible = () => {
         setSalaryVisible(!salaryVisible);
-    }
-
-    const handleLogout = () => {
-        openModal('Are you sure you want to logout?', 'Logout', () => {
-            dispatch(clearToken());
-        })
     }
 
     const handlePdfViewer = () => {
@@ -184,15 +174,6 @@ const Home: FC = () => {
                                     <Info/>
                                 </div>
                                 <p className="text-xs text-gray-500 dark:text-white">{t('about')}</p>
-                            </div>
-                            <div className="flex flex-col items-center gap-1 w-fit">
-                                <div 
-                                    className="bg-blue-500 p-3 rounded-xl text-white cursor-pointer hover:bg-blue-600"
-                                    onClick={handleLogout} 
-                                >
-                                    <LogOut/>
-                                </div>
-                                <p className="text-xs text-gray-500 dark:text-white">{t('logout')}</p>
                             </div>
                         </div>
                     </div>
