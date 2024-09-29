@@ -56,7 +56,7 @@ const Menu: FC = () => {
 
             <div className="p-3 bg-gray-100 rounded-2xl flex flex-col gap-3 dark:bg-dark-second dark:text-white">
                 <div className="p-2">
-                    <p className="text-gray-400 font-bold">Contents</p>
+                    <p className="text-sm text-gray-400 font-bold">Contents</p>
                 </div>
                 <div 
                     className="grid grid-cols-6 sm:grid-cols-10 lg:grid-cols-12 gap-4 items-center cursor-pointer p-2 rounded-2xl hover:bg-gray-200 dark:hover:bg-gray-600" 
@@ -134,7 +134,7 @@ const Menu: FC = () => {
 
             <div className="p-3 bg-gray-100 rounded-2xl flex flex-col gap-3 dark:bg-dark-second dark:text-white">
                 <div className="p-2">
-                    <p className="text-gray-400 font-bold">More Settings</p>
+                    <p className="text-sm text-gray-400 font-bold">More Settings</p>
                 </div>
                 <div 
                     className="grid grid-cols-6 sm:grid-cols-10 lg:grid-cols-12 gap-4 items-center cursor-pointer p-2 rounded-2xl hover:bg-gray-200 dark:hover:bg-gray-600"
@@ -168,7 +168,7 @@ const Menu: FC = () => {
 
             <div className="p-3 bg-gray-100 rounded-2xl flex flex-col gap-3 dark:bg-dark-second dark:text-white">
                 <div className="p-2">
-                    <p className="text-gray-400 font-bold">More Info</p>
+                    <p className="text-sm text-gray-400 font-bold">More Info</p>
                 </div>
                 <div 
                     className="grid grid-cols-6 sm:grid-cols-10 lg:grid-cols-12 gap-4 items-center cursor-pointer p-2 rounded-2xl hover:bg-gray-200 dark:hover:bg-gray-600"
@@ -193,7 +193,7 @@ const Menu: FC = () => {
                     className="px-4 py-3 bg-red-500 text-white rounded-2xl flex items-center gap-2 font-semibold hover:bg-red-600"
                     onClick={handleLogout}
                 >
-                    <LogOut/> Logout    
+                    <LogOut/> {t('logout')}    
                 </button>  
             </div>    
         </div>
