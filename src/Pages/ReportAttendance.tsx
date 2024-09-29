@@ -42,7 +42,7 @@ const ReportAttendance: FC = () => {
         isLoading ? (
             <Loading/>
         ) : (
-            <div>
+            <div className="min-h-screen bg-white dark:bg-dark-main">
                 <div className="sticky z-20 top-0 left-0 right-0 bg-white flex justify-between items-center p-5 md:mx-20 lg:mx-48 lg:border-b-2 lg:border-gray-200 dark:border-dark-second dark:bg-dark-main">
                     <div
                         className="bg-gray-100 p-3 rounded-xl cursor-pointer dark:text-white dark:bg-dark-second"

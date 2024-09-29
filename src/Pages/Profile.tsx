@@ -57,7 +57,11 @@ const Profile: FC = () => {
                         />
                     </div>
                     <div className="flex flex-col gap-1">
-                        <p className="text-lg text-gray-700 font-bold">{username}</p>
+                        {isLoading ? (
+                            <div className="w-[180px] h-5 bg-gray-300 animate-pulse rounded-xl dark:bg-gray-600"></div>
+                        ) : (
+                            <p className="text-lg text-gray-700 font-bold dark:text-white">{username}</p>
+                        )}
                         <p className="text-sm font-semibold text-gray-400">Employee</p>
                     </div>
                 </div>
@@ -69,7 +73,11 @@ const Profile: FC = () => {
                             <Phone size={20}/>
                         </div>
                         <div className="col-start-2 col-span-6 sm:col-start-2 sm:col-span-10 lg:col-start-2 lg:col-span-12">
-                            <p className="text-sm font-semibold text-gray-400">{phone}</p>
+                            {isLoading ? (
+                                <div className="w-[150px] h-5 bg-gray-300 animate-pulse rounded-xl dark:bg-gray-600"></div>
+                            ) : (
+                                <p className="text-sm font-semibold text-gray-400">{phone}</p>
+                            )}
                         </div>
                     </div>
                     <div 
@@ -79,18 +87,31 @@ const Profile: FC = () => {
                             <Mail size={20}/>
                         </div>
                         <div className="col-start-2 col-span-6 sm:col-start-2 sm:col-span-10 lg:col-start-2 lg:col-span-12">
-                            <p className="text-sm font-semibold text-gray-400">{profileData?.email}</p>
+                            {isLoading ? (
+                                <div className="w-[180px] h-5 bg-gray-300 animate-pulse rounded-xl dark:bg-gray-600"></div>
+                            ) : (
+                                <p className="text-sm font-semibold text-gray-400">{profileData?.email}</p>
+                            )}
                         </div>
                     </div>
                 </div>
                 <div className="py-3 border-y border-gray-200 dark:border-dark-second my-5">
                     <div className="flex justify-between items-center">
-                        <div className="flex flex-col items-center gap-1 w-full border-r">
-                            <p className="text-lg font-bold text-gray-700 dark:text-white">{profileData?.divisi}</p>
+                        <div className="flex flex-col items-center gap-1 w-full">
+                            {isLoading ? (
+                                <div className="w-[100px] h-5 bg-gray-300 animate-pulse rounded-xl dark:bg-gray-600"></div>
+                            ) : (
+                                <p className="text-lg font-bold text-gray-700 dark:text-white">{profileData?.divisi}</p>
+                            )}
                             <p className="text-sm font-semibold text-gray-400">Division</p>
                         </div>
+                        <div className="h-16 w-0.5 bg-gray-200 mx-4 dark:bg-dark-second"></div>
                         <div className="flex flex-col items-center gap-1 w-full">
-                            <p className="text-lg font-bold text-gray-700 dark:text-white">{joinDate}</p>
+                            {isLoading ? (
+                                <div className="w-[100px] h-5 bg-gray-300 animate-pulse rounded-xl dark:bg-gray-600"></div>
+                            ) : (
+                                <p className="text-lg font-bold text-gray-700 dark:text-white">{joinDate}</p>
+                            )}
                             <p className="text-sm font-semibold text-gray-400">Join Date</p>
                         </div>
                     </div>
