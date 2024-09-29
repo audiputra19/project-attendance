@@ -73,11 +73,19 @@ export const Router:FC = () => {
         },
         {
             path: '/menu',
-            element: <Menu/>
+            element: <ProtectedRoute><Menu/></ProtectedRoute>
         },
         {
             path: '/lang',
-            element: <LanguangeSelector/>
+            element: <ProtectedRoute><LanguangeSelector/></ProtectedRoute>
+        },
+        {
+            path: 'profileMenu',
+            element: <ProtectedRoute><Profile/></ProtectedRoute>
+        },
+        {
+            path: 'ReportMenu',
+            element: <ProtectedRoute><ReportAttendance/></ProtectedRoute>
         }
     ];
 

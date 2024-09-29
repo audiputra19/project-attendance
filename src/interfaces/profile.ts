@@ -10,6 +10,7 @@ export interface ProfileProps {
     jabatan: string;
     pendidikan: string;
     status: string;
+    divisi: string;
     no_rek: string;
     email: string;
 }

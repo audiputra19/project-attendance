@@ -22,7 +22,10 @@ const Menu: FC = () => {
 
     return (
         <div className="w-full min-h-screen py-5 px-5 sm:px-12 md:px-32 lg:px-80 flex flex-col gap-5 bg-white dark:bg-dark-main">
-            <div className="p-5 flex justify-between items-center gap-5 bg-gray-100 rounded-2xl cursor-pointer dark:bg-dark-second" onClick={() => navigate('/menu')}>
+            <div 
+                className="p-5 flex justify-between items-center gap-5 bg-gray-100 rounded-2xl cursor-pointer dark:bg-dark-second" 
+                onClick={() => navigate('/profileMenu')}
+            >
                 {isLoading ? (
                     <div className="flex flex-col gap-2">
                         <div className="w-[180px] h-5 bg-gray-300 animate-pulse rounded-xl dark:bg-gray-600"></div>
@@ -39,7 +42,10 @@ const Menu: FC = () => {
                 </div>
             </div>
             <div className="p-3 bg-gray-100 rounded-2xl flex flex-col gap-3 dark:bg-dark-second dark:text-white">
-                <div className="grid grid-cols-6 sm:grid-cols-10 lg:grid-cols-12 gap-4 items-center cursor-pointer p-2 rounded-2xl hover:bg-gray-200 dark:hover:bg-gray-600" onClick={() => navigate('/')}>
+                <div 
+                    className="grid grid-cols-6 sm:grid-cols-10 lg:grid-cols-12 gap-4 items-center cursor-pointer p-2 rounded-2xl hover:bg-gray-200 dark:hover:bg-gray-600" 
+                    onClick={() => navigate('/')}
+                >
                     <div className="flex justify-center text-gray-600 dark:text-white">
                         <House/>
                     </div>
@@ -50,7 +56,10 @@ const Menu: FC = () => {
                         </div>
                     </div>
                 </div>
-                <div className="grid grid-cols-6 sm:grid-cols-10 lg:grid-cols-12 gap-4 items-center cursor-pointer p-2 rounded-2xl hover:bg-gray-200 dark:hover:bg-gray-600" onClick={() => navigate('/attendance')}>
+                <div 
+                    className="grid grid-cols-6 sm:grid-cols-10 lg:grid-cols-12 gap-4 items-center cursor-pointer p-2 rounded-2xl hover:bg-gray-200 dark:hover:bg-gray-600" 
+                    onClick={() => navigate('/attendance')}
+                >
                     <div className="flex justify-center text-gray-600 dark:text-white">
                         <UserCheck/>
                     </div>
@@ -61,7 +70,10 @@ const Menu: FC = () => {
                         </div>
                     </div>
                 </div>
-                <div className="grid grid-cols-6 sm:grid-cols-10 lg:grid-cols-12 gap-4 items-center cursor-pointer p-2 rounded-2xl hover:bg-gray-200 dark:hover:bg-gray-600" onClick={() => navigate('/salary')}>
+                <div 
+                    className="grid grid-cols-6 sm:grid-cols-10 lg:grid-cols-12 gap-4 items-center cursor-pointer p-2 rounded-2xl hover:bg-gray-200 dark:hover:bg-gray-600" 
+                    onClick={() => navigate('/salary')}
+                >
                     <div className="flex justify-center text-gray-600 dark:text-white">
                         <Banknote/>
                     </div>
@@ -72,7 +84,10 @@ const Menu: FC = () => {
                         </div>
                     </div>
                 </div>
-                <div className="grid grid-cols-6 sm:grid-cols-10 lg:grid-cols-12 gap-4 items-center cursor-pointer p-2 rounded-2xl hover:bg-gray-200 dark:hover:bg-gray-600" onClick={() => navigate('/')}>
+                <div 
+                    className="grid grid-cols-6 sm:grid-cols-10 lg:grid-cols-12 gap-4 items-center cursor-pointer p-2 rounded-2xl hover:bg-gray-200 dark:hover:bg-gray-600" 
+                    onClick={() => navigate('/')}
+                >
                     <div className="flex justify-center text-gray-600 dark:text-white">
                         <Bus/>
                     </div>
@@ -83,7 +98,10 @@ const Menu: FC = () => {
                         </div>
                     </div>
                 </div>
-                <div className="grid grid-cols-6 sm:grid-cols-10 lg:grid-cols-12 gap-4 items-center cursor-pointer p-2 rounded-2xl hover:bg-gray-200 dark:hover:bg-gray-600" onClick={() => navigate('/report')}>
+                <div 
+                    className="grid grid-cols-6 sm:grid-cols-10 lg:grid-cols-12 gap-4 items-center cursor-pointer p-2 rounded-2xl hover:bg-gray-200 dark:hover:bg-gray-600" 
+                    onClick={() => navigate('/reportMenu')}
+                >
                     <div className="flex justify-center text-gray-600 dark:text-white">
                         <FileText/>
                     </div>
