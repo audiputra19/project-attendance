@@ -127,7 +127,7 @@ const Profile: FC = () => {
                             {isLoading ? (
                                 <div className="w-[150px] h-5 bg-gray-300 animate-pulse rounded-xl dark:bg-gray-600"></div>
                             ) : (
-                                <p className="text-sm font-semibold text-gray-400">{phone}</p>
+                                <p className="text-sm text-gray-400">{phone}</p>
                             )}
                         </div>
                     </div>
@@ -145,7 +145,7 @@ const Profile: FC = () => {
                             {isLoading ? (
                                 <div className="w-[180px] h-5 bg-gray-300 animate-pulse rounded-xl dark:bg-gray-600"></div>
                             ) : (
-                                <p className="text-sm font-semibold text-gray-400">{profileData?.email}</p>
+                                <p className="text-sm text-gray-400">{profileData?.email}</p>
                             )}
                         </div>
                     </div>
@@ -163,7 +163,7 @@ const Profile: FC = () => {
                             {isLoading ? (
                                 <div className="w-[150px] h-5 bg-gray-300 animate-pulse rounded-xl dark:bg-gray-600"></div>
                             ) : (
-                                <p className="text-sm font-semibold text-gray-400">{profileData?.alamat}</p>
+                                <p className="text-sm text-gray-400">{profileData?.alamat}</p>
                             )}
                         </div>
                     </div>
@@ -181,7 +181,7 @@ const Profile: FC = () => {
                             {isLoading ? (
                                 <div className="w-[180px] h-5 bg-gray-300 animate-pulse rounded-xl dark:bg-gray-600"></div>
                             ) : (
-                                <p className="text-sm font-semibold text-gray-400">{profileData?.st_kerja}</p>
+                                <p className="text-sm text-gray-400">{profileData?.st_kerja}</p>
                             )}
                         </div>
                     </div>
@@ -199,7 +199,7 @@ const Profile: FC = () => {
                             {isLoading ? (
                                 <div className="w-[180px] h-5 bg-gray-300 animate-pulse rounded-xl dark:bg-gray-600"></div>
                             ) : (
-                                <p className="text-sm font-semibold text-gray-400">{profileData?.status}</p>
+                                <p className="text-sm text-gray-400">{profileData?.status}</p>
                             )}
                         </div>
                     </div>
