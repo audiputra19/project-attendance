@@ -23,7 +23,7 @@ const About: FC = () => {
                 </div>
                 <div></div>
             </div>
-            <div className="p-5 mx-10 sm:mx-12 md:mx-32 lg:mx-80">
+            <div className="p-5 mx-5 sm:mx-12 md:mx-32 lg:mx-80">
                 <div className="flex flex-col gap-8">
                     <div>
                         <p className="text-3xl font-bold text-black dark:text-white">{t('headerAbout')}</p>

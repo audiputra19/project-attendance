@@ -31,10 +31,10 @@ const Profile: FC = () => {
         profile({ nik: userData?.nik });
     }, [profile, userData?.nik]);
 
-    let urlImage = "https://cdn3d.iconscout.com/3d/premium/thumb/office-boy-3d-icon-download-in-png-blend-fbx-gltf-file-formats--employee-male-man-businessman-avatar-pack-avatars-icons-6431786.png";
+    let urlImage = "";
     if(profileData?.gender === 'Pria'){
         urlImage = "https://cdn3d.iconscout.com/3d/premium/thumb/office-boy-3d-icon-download-in-png-blend-fbx-gltf-file-formats--employee-male-man-businessman-avatar-pack-avatars-icons-6431786.png";
-    } else {
+    } else if(profileData?.gender === 'Wanita') {
         urlImage = "https://static.vecteezy.com/system/resources/thumbnails/024/558/685/small_2x/3d-avatar-office-girl-illustration-png.png";
     }
 
@@ -57,11 +57,15 @@ const Profile: FC = () => {
             <div className="p-5 sm:mx-12 md:mx-32 lg:mx-80">
                 <div className="flex items-center gap-5">
                     <div>
-                        <img
-                            src={urlImage}
-                            alt={profileData?.nama}
-                            className="w-20 h-20 rounded-full object-cover bg-gradient-to-b from-gray-300 via-gray-200 to-gray-100"
-                        />
+                        {isLoading ? (
+                            <div className="w-20 h-20 rounded-full bg-gray-300 animate-pulse rounded-xl dark:bg-gray-600"></div>
+                        ) : (
+                            <img
+                                src={urlImage}
+                                alt={profileData?.nama}
+                                className="w-20 h-20 rounded-full object-cover bg-gradient-to-b from-gray-300 via-gray-200 to-gray-100"
+                            />
+                        )}
                     </div>
                     <div className="flex flex-col gap-1">
                         {isLoading ? (
