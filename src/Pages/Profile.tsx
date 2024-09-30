@@ -81,8 +81,39 @@ const Profile: FC = () => {
                         )}
                     </div>
                 </div>
+                <div className="py-3 border-y border-gray-200 dark:border-dark-second my-5">
+                    <div className="flex justify-between items-center">
+                        <div className="flex flex-col items-center gap-1 w-full">
+                            {isLoading ? (
+                                <div className="flex flex-col items-center gap-2">
+                                    <div className="w-[100px] h-5 bg-gray-300 animate-pulse rounded-xl dark:bg-gray-600"></div>
+                                    <div className="w-[80px] h-5 bg-gray-300 animate-pulse rounded-xl dark:bg-gray-600"></div>
+                                </div>
+                            ) : (
+                                <div className="flex flex-col items-center gap-1">
+                                    <p className="font-bold text-gray-700 dark:text-white">{profileData?.divisi}</p>
+                                    <p className="text-xs font-semibold text-gray-400">{t('division')}</p>
+                                </div>
+                            )}
+                        </div>
+                        <div className="h-16 w-0.5 bg-gray-200 mx-4 dark:bg-dark-second"></div>
+                        <div className="flex flex-col items-center gap-1 w-full">
+                            {isLoading ? (
+                                <div className="flex flex-col items-center gap-2 w-full">
+                                    <div className="w-[100px] h-5 bg-gray-300 animate-pulse rounded-xl dark:bg-gray-600"></div>
+                                    <div className="w-[80px] h-5 bg-gray-300 animate-pulse rounded-xl dark:bg-gray-600"></div>
+                                </div>
+                            ) : (
+                                <div className="flex flex-col items-center gap-1">
+                                    <p className="font-bold text-gray-700 dark:text-white">{joinDate}</p>
+                                    <p className="text-xs font-semibold text-gray-400">{t('joinDate')}</p>
+                                </div>
+                            )}
+                        </div>
+                    </div>
+                </div>
                 <div className="flex flex-col gap-2 mt-5">
-                    <div 
+                <div 
                         className="grid grid-cols-6 sm:grid-cols-10 lg:grid-cols-12 gap-4 items-center p-2" 
                     >
                         <div className="flex justify-center text-gray-600 dark:text-white">
@@ -118,39 +149,6 @@ const Profile: FC = () => {
                             )}
                         </div>
                     </div>
-                </div>
-                <div className="py-3 border-y border-gray-200 dark:border-dark-second my-5">
-                    <div className="flex justify-between items-center">
-                        <div className="flex flex-col items-center gap-1 w-full">
-                            {isLoading ? (
-                                <div className="flex flex-col items-center gap-2">
-                                    <div className="w-[100px] h-5 bg-gray-300 animate-pulse rounded-xl dark:bg-gray-600"></div>
-                                    <div className="w-[80px] h-5 bg-gray-300 animate-pulse rounded-xl dark:bg-gray-600"></div>
-                                </div>
-                            ) : (
-                                <div className="flex flex-col items-center gap-1">
-                                    <p className="font-bold text-gray-700 dark:text-white">{profileData?.divisi}</p>
-                                    <p className="text-xs font-semibold text-gray-400">{t('division')}</p>
-                                </div>
-                            )}
-                        </div>
-                        <div className="h-16 w-0.5 bg-gray-200 mx-4 dark:bg-dark-second"></div>
-                        <div className="flex flex-col items-center gap-1 w-full">
-                            {isLoading ? (
-                                <div className="flex flex-col items-center gap-2 w-full">
-                                    <div className="w-[100px] h-5 bg-gray-300 animate-pulse rounded-xl dark:bg-gray-600"></div>
-                                    <div className="w-[80px] h-5 bg-gray-300 animate-pulse rounded-xl dark:bg-gray-600"></div>
-                                </div>
-                            ) : (
-                                <div className="flex flex-col items-center gap-1">
-                                    <p className="font-bold text-gray-700 dark:text-white">{joinDate}</p>
-                                    <p className="text-xs font-semibold text-gray-400">{t('joinDate')}</p>
-                                </div>
-                            )}
-                        </div>
-                    </div>
-                </div>
-                <div className="flex flex-col gap-2 mt-5">
                     <div 
                         className="grid grid-cols-6 sm:grid-cols-10 lg:grid-cols-12 gap-4 items-center p-2" 
                     >

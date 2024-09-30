@@ -38,11 +38,6 @@ const ReportAttendance: FC = () => {
         }
     }, [isSuccess, data, error, showAlert]);
 
-    console.log(report)
-    console.log("start Date:", startDate)
-    console.log("end Date:", endDate)
-    console.log("nik:", nik)
-
     return (
         isLoading ? (
             <Loading/>

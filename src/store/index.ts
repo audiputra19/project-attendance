@@ -9,6 +9,7 @@ import { apiReport } from "../services/apiReport"
 import { apiSalary } from "../services/apiSalary"
 import authSlice from "./authSlice"
 import languageSlice from "./languageSlice"
+import { apiLeave } from "../services/apiLeave"
 
 const persistConfig = {
     key: 'root',
@@ -23,7 +24,8 @@ const rootReducer = combineReducers({
     [apiAttendance.reducerPath]: apiAttendance.reducer,
     [apiReport.reducerPath]: apiReport.reducer,
     [apiSalary.reducerPath]: apiSalary.reducer,
-    [apiProfile.reducerPath]: apiProfile.reducer
+    [apiProfile.reducerPath]: apiProfile.reducer,
+    [apiLeave.reducerPath]: apiLeave.reducer
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
@@ -38,7 +40,8 @@ export const store = configureStore({
         apiAttendance.middleware, 
         apiReport.middleware,
         apiSalary.middleware,
-        apiProfile.middleware
+        apiProfile.middleware,
+        apiLeave.middleware,
     ),
 });
 

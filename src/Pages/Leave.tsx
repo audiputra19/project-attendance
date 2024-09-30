@@ -1,11 +1,20 @@
 import { ArrowLeft, BadgeInfo } from "lucide-react";
-import { FC } from "react";
+import { FC, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
+import { usePostLeaveMutation } from "../services/apiLeave";
+import { useAppSelector } from "../store";
 
 const Leave: FC = () => {
     const navigate = useNavigate();
     const { t } = useTranslation();
+    const [leave, {data, isLoading}] = usePostLeaveMutation();
+    const userData = useAppSelector(state => state.auth.userInfo);
+    const leaveData = data?.data;
+
+    useEffect(() => {
+        leave({ nik: userData?.nik });
+    }, [leave, userData?.nik]);
     
     return (
         <div className="min-h-screen bg-white dark:bg-dark-main">
@@ -33,7 +42,7 @@ const Leave: FC = () => {
                         </div>
                         <div className="mt-6 flex flex-col gap-1">
                             <p className="font-bold dark:text-white">Mass Leave</p>
-                            <p className="text-sm text-gray-500 dark:text-gray-400">Total: 7</p>
+                            <p className="text-sm text-gray-500 dark:text-gray-400">Total: {leaveData?.massLeave}</p>
                         </div>
                     </div>
                     <div className="p-5 bg-gray-100 rounded-3xl dark:bg-dark-second">
@@ -44,7 +53,7 @@ const Leave: FC = () => {
                         </div>
                         <div className="mt-6 flex flex-col gap-1">
                             <p className="font-bold dark:text-white">Annual Leave</p>
-                            <p className="text-sm text-gray-500 dark:text-gray-400">Total: 7</p>
+                            <p className="text-sm text-gray-500 dark:text-gray-400">Total: {leaveData?.annualLeave}</p>
                         </div>
                     </div>
                     <div className="p-5 bg-gray-100 rounded-3xl dark:bg-dark-second">
@@ -55,7 +64,7 @@ const Leave: FC = () => {
                         </div>
                         <div className="mt-6 flex flex-col gap-1">
                             <p className="font-bold dark:text-white">Last Leave</p>
-                            <p className="text-sm text-gray-500 dark:text-gray-400">Total: 7</p>
+                            <p className="text-sm text-gray-500 dark:text-gray-400">Total: {leaveData?.lastLeave}</p>
                         </div>
                     </div>
                     <div className="p-5 bg-color-base rounded-3xl">
@@ -66,7 +75,7 @@ const Leave: FC = () => {
                         </div>
                         <div className="mt-6 flex flex-col gap-1">
                             <p className="font-bold text-white">My Leave</p>
-                            <p className="text-sm text-white">Total: 7</p>
+                            <p className="text-sm text-white">Total: {leaveData?.myLeave}</p>
                         </div>
                     </div>
                 </div>
