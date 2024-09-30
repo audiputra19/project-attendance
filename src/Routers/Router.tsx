@@ -1,20 +1,22 @@
-import { FC } from "react"
+import { FC } from "react";
 import { useRoutes } from "react-router-dom";
-import Home from "../Pages/Home";
-import Login from "../Pages/Login";
-import { ProtectedRoute } from "./ProtectedRoute";
-import Register from "../Pages/Regiter";
 import { AuthLayout } from "../Layouts/AuthLayout";
-import ForgotPassword from "../Pages/ForgotPassword";
-import ResetPassword from "../Pages/ResetPassword";
 import { MainLayout } from "../Layouts/MainLayout";
+import About from "../Pages/About";
 import Attendance from "../Pages/Attendance";
-import ReportAttendance from "../Pages/ReportAttendance";
-import PdfViewer from "../Pages/PdfViewer";
-import Salary from "../Pages/Salary";
-import Menu from "../Pages/Menu";
-import Profile from "../Pages/Profile";
+import ForgotPassword from "../Pages/ForgotPassword";
+import Home from "../Pages/Home";
 import LanguangeSelector from "../Pages/LanguangeSelector";
+import Login from "../Pages/Login";
+import Menu from "../Pages/Menu";
+import PdfViewer from "../Pages/PdfViewer";
+import Profile from "../Pages/Profile";
+import Register from "../Pages/Regiter";
+import ReportAttendance from "../Pages/ReportAttendance";
+import ResetPassword from "../Pages/ResetPassword";
+import Salary from "../Pages/Salary";
+import { ProtectedRoute } from "./ProtectedRoute";
+import Leave from "../Pages/Leave";
 
 export const Router:FC = () => {
     let element = [
@@ -80,12 +82,20 @@ export const Router:FC = () => {
             element: <ProtectedRoute><LanguangeSelector/></ProtectedRoute>
         },
         {
-            path: 'profileMenu',
+            path: '/profileMenu',
             element: <ProtectedRoute><Profile/></ProtectedRoute>
         },
         {
-            path: 'ReportMenu',
+            path: '/ReportMenu',
             element: <ProtectedRoute><ReportAttendance/></ProtectedRoute>
+        },
+        {
+            path: '/about',
+            element: <ProtectedRoute><About/></ProtectedRoute>
+        },
+        {
+            path: '/leave',
+            element: <ProtectedRoute><Leave/></ProtectedRoute>
         }
     ];
 

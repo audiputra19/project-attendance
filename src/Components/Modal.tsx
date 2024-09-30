@@ -4,10 +4,12 @@ import { useModal } from '../Context/ModalContext';
 
 const Modal: React.FC = () => {
   const { isOpen, message, title, onConfirm, closeModal } = useModal();
-  let icon;  
+  let icon;
+  let color;  
   switch (title) {
     case 'Logout':
         icon = <DoorOpen size={54} className='text-white'/>
+        color = 'red'
         break;
   
     default:
@@ -26,7 +28,7 @@ const Modal: React.FC = () => {
             <CircleX size={32} className='text-gray-500 dark:text-gray-400 cursor-pointer'/>
         </div>
         <div className='flex flex-col items-center'>
-            <div className='bg-blue-500 w-24 h-24 rounded-full flex items-center justify-center'>
+            <div className={`bg-${color}-500 w-24 h-24 rounded-full flex items-center justify-center`}>
                 {icon}
             </div>
             <p className='font-bold text-2xl mt-5'>{title}</p>
@@ -34,7 +36,7 @@ const Modal: React.FC = () => {
         </div>
         <div className="mt-4 flex justify-end gap-3">
           <button
-            className="px-4 py-3 bg-color-base font-bold w-full text-white rounded-2xl"
+            className={`px-4 py-3 bg-${color}-500 font-bold w-full text-white rounded-2xl hover:bg-${color}-600`}
             onClick={() => {
               onConfirm();
               closeModal();

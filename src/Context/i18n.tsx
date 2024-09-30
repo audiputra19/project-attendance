@@ -40,6 +40,13 @@ const resources = {
             notFound: 'Data Not Found',
             present: 'Present',
             permit: 'Permit',
+            employee: 'Employee',
+            division: 'Division',
+            joinDate: 'Join Date',
+            headerAbout: 'Dataku for Web',
+            version: 'Version',
+            bodyAbout: 'Dataku for web is build using React. Designed for the web to provide convenience for users. So users can access anywhere and on any platform.',
+            from: 'From',
         }
     },
     id: {
@@ -80,6 +87,13 @@ const resources = {
             notFound: 'Data Tidak Ditemukan',
             present: 'Hadir',
             permit: 'Izin',
+            employee: 'Karyawan',
+            division: 'Divisi',
+            joinDate: 'Tgl. Gabung',
+            headerAbout: 'Dataku untuk Web',
+            version: 'Version',
+            bodyAbout: 'Dataku untuk dibangun menggunakan React. Dirancang untuk web agar memberikan kenyamanan bagi pengguna. Jadi pengguna dapat mengakses dimana saja dan di platform mana saja.',
+            from: 'Dari',
         }
     }
 }

@@ -102,7 +102,7 @@ const Menu: FC = () => {
                 </div>
                 <div 
                     className="grid grid-cols-6 sm:grid-cols-10 lg:grid-cols-12 gap-4 items-center cursor-pointer p-2 rounded-2xl hover:bg-gray-200 dark:hover:bg-gray-600" 
-                    onClick={() => navigate('/')}
+                    onClick={() => navigate('/leave')}
                 >
                     <div className="flex justify-center text-gray-600 dark:text-white">
                         <Bus/>
@@ -172,7 +172,7 @@ const Menu: FC = () => {
                 </div>
                 <div 
                     className="grid grid-cols-6 sm:grid-cols-10 lg:grid-cols-12 gap-4 items-center cursor-pointer p-2 rounded-2xl hover:bg-gray-200 dark:hover:bg-gray-600"
-                    onClick={() => navigate('/lang')}
+                    onClick={() => navigate('/about')}
                 >
                     <div className="flex justify-center text-gray-600 dark:text-white">
                         <Info/>
