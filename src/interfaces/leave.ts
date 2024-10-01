@@ -12,3 +12,13 @@ export interface leaveRes {
 export interface leaveReq {
     nik: number | undefined;
 }
+
+export interface reportLeaveProps {
+    tanggal: string;
+    keterangan: string;
+    sisa: number;
+}
+
+export interface reportLeave {
+    data: reportLeaveProps;
+}

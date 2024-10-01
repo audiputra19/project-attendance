@@ -1,13 +1,20 @@
 import { BadgeInfo } from "lucide-react";
-import { FC } from "react";
+import { FC, useEffect } from "react";
 import { leaveProps, leaveRes } from "../interfaces/leave";
+import { useTranslation } from "react-i18next";
+import { usePostLeaveMutation } from "../services/apiLeave";
+import { useAppSelector } from "../store";
 
-interface LeaveGridProps {
-    leaveData: leaveProps | undefined;
-    isLoading: boolean;
-}
+export const LeaveGrid: FC = () => {
 
-export const LeaveGrid: FC<LeaveGridProps> = ({ leaveData, isLoading }) => {
+    const { t } = useTranslation();
+    const [leave, {data, isLoading}] = usePostLeaveMutation();
+    const userData = useAppSelector(state => state.auth.userInfo);
+    const leaveData = data?.data;
+
+    useEffect(() => {
+        leave({ nik: userData?.nik });
+    }, [leave, userData?.nik]);
 
     return (
         <div className="grid grid-cols-2 gap-5">
@@ -18,7 +25,7 @@ export const LeaveGrid: FC<LeaveGridProps> = ({ leaveData, isLoading }) => {
                     </div>
                 </div>
                 <div className="mt-6 flex flex-col gap-1">
-                    <p className="font-semibold dark:text-white">Mass Leave</p>
+                    <p className="font-semibold dark:text-white">{t('massLeave')}</p>
                     {isLoading ? (
                         <div className="w-[100px] h-5 rounded-xl animate-pulse bg-gray-300 mb-2 dark:bg-gray-600"></div>
                     ) : (
@@ -33,7 +40,7 @@ export const LeaveGrid: FC<LeaveGridProps> = ({ leaveData, isLoading }) => {
                     </div>
                 </div>
                 <div className="mt-6 flex flex-col gap-1">
-                    <p className="font-semibold dark:text-white">Annual Leave</p>
+                    <p className="font-semibold dark:text-white">{t('annualLeave')}</p>
                     {isLoading ? (
                         <div className="w-[100px] h-5 rounded-xl animate-pulse bg-gray-300 mb-2 dark:bg-gray-600"></div>
                     ) : (
@@ -48,7 +55,7 @@ export const LeaveGrid: FC<LeaveGridProps> = ({ leaveData, isLoading }) => {
                     </div>
                 </div>
                 <div className="mt-6 flex flex-col gap-1">
-                    <p className="font-semibold dark:text-white">Last Leave</p>
+                    <p className="font-semibold dark:text-white">{t('lastLeave')}</p>
                     {isLoading ? (
                         <div className="w-[100px] h-5 rounded-xl animate-pulse bg-gray-300 mb-2 dark:bg-gray-600"></div>
                     ) : (
@@ -63,7 +70,7 @@ export const LeaveGrid: FC<LeaveGridProps> = ({ leaveData, isLoading }) => {
                     </div>
                 </div>
                 <div className="mt-6 flex flex-col gap-1">
-                    <p className="font-semibold text-white">My Leave</p>
+                    <p className="font-semibold text-white">{t('myLeave')}</p>
                     {isLoading ? (
                         <div className="w-[100px] h-5 rounded-xl animate-pulse bg-green-300 mb-2 dark:bg-gray-600"></div>
                     ) : (

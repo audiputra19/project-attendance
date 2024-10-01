@@ -48,6 +48,9 @@ const resources = {
             version: 'Version',
             bodyAbout: 'Dataku for web is build using React. Designed for the web to provide convenience for users. So users can access anywhere and on any platform.',
             from: 'From',
+            massLeave: 'Mass Leave',
+            annualLeave: 'Annual Leave',
+            lastLeave: 'Last Leave', 
         }
     },
     id: {
@@ -69,7 +72,7 @@ const resources = {
             report: "laporan",
             profile: "Profil",
             menu: "Menu",
-            todayAttendance: "Today Attendance",
+            todayAttendance: "Kehadiran",
             hours: 'Jam',
             minutes: 'Menit',
             seconds: 'Detik',
@@ -96,6 +99,9 @@ const resources = {
             version: 'Version',
             bodyAbout: 'Dataku untuk dibangun menggunakan React. Dirancang untuk web agar memberikan kenyamanan bagi pengguna. Jadi pengguna dapat mengakses dimana saja dan di platform mana saja.',
             from: 'Dari',
+            massLeave: 'Cutber',
+            annualLeave: 'Cuti Tahun',
+            lastLeave: 'Cuti Lalu',  
         }
     }
 }

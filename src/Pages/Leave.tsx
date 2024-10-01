@@ -1,23 +1,14 @@
 import { ArrowLeft } from "lucide-react";
-import { FC, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { FC, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 import { LeaveCategory } from "../Components/LeaveCategory";
-import { LeaveTable } from "../Components/LeaveTable";
-import { useAppSelector } from "../store";
-import { usePostLeaveMutation } from "../services/apiLeave";
 import { LeaveGrid } from "../Components/LeaveGrid";
+import { LeaveTable } from "../Components/LeaveTable";
 
 const Leave: FC = () => {
     const navigate = useNavigate();
     const { t } = useTranslation();
-    const [leave, {data, isLoading}] = usePostLeaveMutation();
-    const userData = useAppSelector(state => state.auth.userInfo);
-    const leaveData = data?.data;
-
-    useEffect(() => {
-        leave({ nik: userData?.nik });
-    }, [leave, userData?.nik]);
     const [categories] = useState<string[]>(['Table']);
     const [selectedCategory, setSelectedCategory] = useState<string>('');
     
@@ -50,9 +41,9 @@ const Leave: FC = () => {
                 </div>
                 <div className="mt-5">
                     {selectedCategory === 'Table' ? (
-                        <LeaveTable leaveData={leaveData}/>
+                        <LeaveTable/>
                     ) : selectedCategory === '' ? (
-                        <LeaveGrid leaveData={leaveData} isLoading={isLoading}/>
+                        <LeaveGrid/>
                     ) : null}
                 </div>
             </div>
