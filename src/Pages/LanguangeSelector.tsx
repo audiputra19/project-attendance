@@ -42,7 +42,7 @@ const LanguangeSelector: FC = () => {
                         className={`py-2 px-3 rounded-2xl ${currentLanguage !== 'en' ? 'cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-600' : ''}`}
                         onClick={currentLanguage !== 'en' ? () => handleChangeLanguage('en') : undefined}
                     >
-                        <div className={`${currentLanguage === 'en' ? 'font-bold text-color-base' : 'text-gray-800 dark:text-white'}`}>
+                        <div className={`${currentLanguage === 'en' ? 'font-semibold text-color-base' : 'text-gray-800 dark:text-white'}`}>
                             English
                         </div>
                     </div>
@@ -50,7 +50,7 @@ const LanguangeSelector: FC = () => {
                         className={`py-2 px-3 rounded-2xl ${currentLanguage !== 'id' ? 'cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-600' : ''}`}
                         onClick={currentLanguage !== 'id' ? () => handleChangeLanguage('id') : undefined} 
                     >
-                        <div className={`${currentLanguage === 'id' ? 'font-bold text-color-base' : 'text-gray-800 dark:text-white'}`}>
+                        <div className={`${currentLanguage === 'id' ? 'font-semibold text-color-base' : 'text-gray-800 dark:text-white'}`}>
                             Bahasa Indonesia
                         </div>
                     </div>

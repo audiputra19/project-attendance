@@ -14,6 +14,7 @@ const Home: FC = () => {
     const [profile, {data: profileData, isLoading}] = usePostProfileMutation();
     const navigate = useNavigate();
     const { t } = useTranslation();
+    const date = moment().format("")
     const month = moment().format("MM");
     const year = moment().format("YYYY");
     const dataUser = useAppSelector(state => state.auth.userInfo);
