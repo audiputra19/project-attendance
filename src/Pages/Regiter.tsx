@@ -135,9 +135,9 @@ const Register: FC = () => {
                         </button>
                     </div>
                     <div className="flex justify-center items-center mt-5">
-                        <p className="font-semibold text-gray-400 text-sm">Already have an account?</p>
+                        <p className="text-gray-400 text-sm">Already have an account?</p>
                         <p 
-                            className="ml-2 font-bold text-color-base cursor-pointer"
+                            className="ml-2 font-semibold text-color-base cursor-pointer"
                             onClick={() => navigate('/auth')}
                         >
                             Login
