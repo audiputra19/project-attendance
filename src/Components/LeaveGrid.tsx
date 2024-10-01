@@ -17,7 +17,7 @@ export const LeaveGrid: FC<LeaveGridProps> = ({ leaveData }) => {
                     </div>
                 </div>
                 <div className="mt-6 flex flex-col gap-1">
-                    <p className="font-bold dark:text-white">Mass Leave</p>
+                    <p className="font-semibold dark:text-white">Mass Leave</p>
                     <p className="text-sm text-gray-500 dark:text-gray-400">Total: {leaveData?.massLeave}</p>
                 </div>
             </div>
@@ -28,7 +28,7 @@ export const LeaveGrid: FC<LeaveGridProps> = ({ leaveData }) => {
                     </div>
                 </div>
                 <div className="mt-6 flex flex-col gap-1">
-                    <p className="font-bold dark:text-white">Annual Leave</p>
+                    <p className="font-semibold dark:text-white">Annual Leave</p>
                     <p className="text-sm text-gray-500 dark:text-gray-400">Total: {leaveData?.annualLeave}</p>
                 </div>
             </div>
@@ -39,7 +39,7 @@ export const LeaveGrid: FC<LeaveGridProps> = ({ leaveData }) => {
                     </div>
                 </div>
                 <div className="mt-6 flex flex-col gap-1">
-                    <p className="font-bold dark:text-white">Last Leave</p>
+                    <p className="font-semibold dark:text-white">Last Leave</p>
                     <p className="text-sm text-gray-500 dark:text-gray-400">Total: {leaveData?.lastLeave}</p>
                 </div>
             </div>
@@ -50,7 +50,7 @@ export const LeaveGrid: FC<LeaveGridProps> = ({ leaveData }) => {
                     </div>
                 </div>
                 <div className="mt-6 flex flex-col gap-1">
-                    <p className="font-bold text-white">My Leave</p>
+                    <p className="font-semibold text-white">My Leave</p>
                     <p className="text-sm text-white">Total: {leaveData?.myLeave}</p>
                 </div>
             </div>

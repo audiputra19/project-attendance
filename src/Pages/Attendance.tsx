@@ -148,20 +148,20 @@ const Attendance: FC = () => {
                                         <div className="bg-blue-100 p-3 rounded-xl dark:bg-blue-500">
                                             <Clock7 className="text-blue-500 dark:text-white"/>
                                         </div>
-                                        <p className="font-bold text-sm md:text-base dark:text-white">{t('checkIn')}</p>
+                                        <p className="font-semibold text-sm md:text-base dark:text-white">{t('checkIn')}</p>
                                     </div>
                                     <div className="mt-3">
                                         {timeLoading ? (
                                             <div className="w-[100px] h-5 rounded-xl animate-pulse bg-gray-300 mb-2 dark:bg-gray-600"></div>
                                         ) : (
-                                            <p className="font-bold text-xl text-color-base">{time && time.masuk !== '00:00:00' ? formatTime(time.masuk) : '-'}</p>
+                                            <p className="font-semibold text-xl text-color-base">{time && time.masuk !== '00:00:00' ? formatTime(time.masuk) : '-'}</p>
                                         )}
                                     </div>
                                     <div className="mt-2">
                                         {timeLoading ? (
                                             <div className="w-[80px] h-5 rounded-xl animate-pulse bg-gray-300 mb-2 dark:bg-gray-600"></div>
                                         ) : (
-                                            <p className={`font-bold text-sm ${ time?.telat === 0 || time?.masuk === '00:00:00' ? 'text-gray-400' : 'text-red-500'}`}>
+                                            <p className={`font-semibold text-sm ${ time?.telat === 0 || time?.masuk === '00:00:00' ? 'text-gray-400' : 'text-red-500'}`}>
                                                 {time?.masuk === '00:00:00' ? 'Please Check-In' : time?.telat === 0 ? t('onTime') : t('late')}
                                                 
                                                 {time && time.alpa > 0 
@@ -177,20 +177,20 @@ const Attendance: FC = () => {
                                         <div className="bg-blue-100 p-3 rounded-xl dark:bg-blue-500">
                                             <Clock12 className="text-blue-500 dark:text-white"/>
                                         </div>
-                                        <p className="font-bold text-sm md:text-base dark:text-white">{t('break')}</p>
+                                        <p className="font-semibold text-sm md:text-base dark:text-white">{t('break')}</p>
                                     </div>
                                     <div className="mt-3">
                                         {timeLoading ? (
                                             <div className="w-[100px] h-5 rounded-xl animate-pulse bg-gray-300 mb-2 dark:bg-gray-600"></div>
                                         ) : (
-                                            <p className="font-bold text-xl text-color-base">{time && time.istKeluar !== '00:00:00' ? formatTime(time.istKeluar) : '-'}</p>
+                                            <p className="font-semibold text-xl text-color-base">{time && time.istKeluar !== '00:00:00' ? formatTime(time.istKeluar) : '-'}</p>
                                         )}
                                     </div>
                                     <div className="mt-2">
                                         {timeLoading ? (
                                             <div className="w-[80px] h-5 rounded-xl animate-pulse bg-gray-300 mb-2 dark:bg-gray-600"></div>
                                         ) : (
-                                            <p className="font-bold text-sm text-gray-400">{t('halfHours')}</p>
+                                            <p className="font-semibold text-sm text-gray-400">{t('halfHours')}</p>
                                         )}
                                     </div>
                                 </div>
@@ -199,20 +199,20 @@ const Attendance: FC = () => {
                                         <div className="bg-blue-100 p-3 rounded-xl dark:bg-blue-500">
                                             <Clock1 className="text-blue-500 dark:text-white"/>
                                         </div>
-                                        <p className="font-bold text-sm md:text-base dark:text-white">{t('breakIn')}</p>
+                                        <p className="font-semibold text-sm md:text-base dark:text-white">{t('breakIn')}</p>
                                     </div>
                                     <div className="mt-3">
                                         {timeLoading ? (
                                             <div className="w-[100px] h-5 rounded-xl animate-pulse bg-gray-300 mb-2 dark:bg-gray-600"></div>
                                         ) : (
-                                            <p className="font-bold text-xl text-color-base">{time && time.istMasuk !== '00:00:00' ? formatTime(time.istMasuk) : '-'}</p>
+                                            <p className="font-semibold text-xl text-color-base">{time && time.istMasuk !== '00:00:00' ? formatTime(time.istMasuk) : '-'}</p>
                                         )}
                                     </div>
                                     <div className="mt-2">
                                         {timeLoading ? (
                                             <div className="w-[80px] h-5 rounded-xl animate-pulse bg-gray-300 mb-2 dark:bg-gray-600"></div>
                                         ) : (
-                                            <p className={`font-bold text-sm ${ time?.telatIst === 0 || time?.istMasuk === '00:00:00' ? 'text-gray-400' : 'text-red-500'}`}>
+                                            <p className={`font-semibold text-sm ${ time?.telatIst === 0 || time?.istMasuk === '00:00:00' ? 'text-gray-400' : 'text-red-500'}`}>
                                                 {time?.telatIst === 0 || time?.istMasuk === '00:00:00' ? t('halfHours') : t('late')}
                                             </p>
                                         )}
@@ -223,20 +223,20 @@ const Attendance: FC = () => {
                                         <div className="bg-blue-100 p-3 rounded-xl dark:bg-blue-500">
                                             <Clock5 className="text-blue-500 dark:text-white"/>
                                         </div>
-                                        <p className="font-bold text-sm md:text-base dark:text-white">{t('checkOut')}</p>
+                                        <p className="font-semibold text-sm md:text-base dark:text-white">{t('checkOut')}</p>
                                     </div>
                                     <div className="mt-3">
                                         {timeLoading ? (
                                             <div className="w-[100px] h-5 rounded-xl animate-pulse bg-gray-300 mb-2 dark:bg-gray-600"></div>
                                         ) : (
-                                            <p className="font-bold text-xl text-color-base">{time && time.keluar !== '00:00:00' ? formatTime(time.keluar) : '-'}</p>
+                                            <p className="font-semibold text-xl text-color-base">{time && time.keluar !== '00:00:00' ? formatTime(time.keluar) : '-'}</p>
                                         )}
                                     </div>
                                     <div className="mt-2">
                                         {timeLoading ? (
                                             <div className="w-[80px] h-5 rounded-xl animate-pulse bg-gray-300 mb-2 dark:bg-gray-600"></div>
                                         ) : (
-                                            <p className="font-bold text-sm text-gray-400">{t('goHome')}</p>
+                                            <p className="font-semibold text-sm text-gray-400">{t('goHome')}</p>
                                         )}
                                     </div>
                                 </div>

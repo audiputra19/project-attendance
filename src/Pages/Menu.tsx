@@ -44,7 +44,7 @@ const Menu: FC = () => {
                 ) : (
                     <div>
                         <p className="text-lg text-black font-semibold dark:text-white">{username}</p>
-                        <p className="text-sm text-gray-400 font-semibold">{profileData?.data.email}</p>
+                        <p className="text-sm text-gray-500 dark:text-gray-400">{profileData?.data.email}</p>
                     </div>
                 )}
                 <div className="text-gray-400">
@@ -56,7 +56,7 @@ const Menu: FC = () => {
 
             <div className="p-3 bg-gray-100 rounded-2xl flex flex-col gap-3 dark:bg-dark-second dark:text-white">
                 <div className="p-2">
-                    <p className="text-gray-400 font-semibold">Contents</p>
+                    <p className="text-gray-500 font-semibold dark:text-gray-400">Contents</p>
                 </div>
                 <div 
                     className="grid grid-cols-6 sm:grid-cols-10 lg:grid-cols-12 gap-4 items-center cursor-pointer p-2 rounded-2xl hover:bg-gray-200 dark:hover:bg-gray-600" 
@@ -66,7 +66,7 @@ const Menu: FC = () => {
                         <House/>
                     </div>
                     <div className="col-start-2 col-span-6 sm:col-start-2 sm:col-span-10 lg:col-start-2 lg:col-span-12 flex justify-between items-center">
-                        <p className="text-gray-700">{t('homePage')}</p>
+                        <p className="text-gray-700 dark:text-white">{t('homePage')}</p>
                         <div className="text-gray-400">
                             <ChevronRight size={28}/>
                         </div>
@@ -80,7 +80,7 @@ const Menu: FC = () => {
                         <UserCheck/>
                     </div>
                     <div className="col-start-2 col-span-6 sm:col-start-2 sm:col-span-10 lg:col-start-2 lg:col-span-12 flex justify-between items-center">
-                        <p className="text-gray-700">{t('attendance')}</p>
+                        <p className="text-gray-700 dark:text-white">{t('attendance')}</p>
                         <div className="text-gray-400">
                             <ChevronRight size={28}/>
                         </div>
@@ -94,7 +94,7 @@ const Menu: FC = () => {
                         <Banknote/>
                     </div>
                     <div className="col-start-2 col-span-6 sm:col-start-2 sm:col-span-10 lg:col-start-2 lg:col-span-12 flex justify-between items-center">
-                        <p className="text-gray-700">{t('salary')}</p>
+                        <p className="text-gray-700 dark:text-white">{t('salary')}</p>
                         <div className="text-gray-400">
                             <ChevronRight size={28}/>
                         </div>
@@ -108,7 +108,7 @@ const Menu: FC = () => {
                         <Bus/>
                     </div>
                     <div className="col-start-2 col-span-6 sm:col-start-2 sm:col-span-10 lg:col-start-2 lg:col-span-12 flex justify-between items-center">
-                        <p className="text-gray-700">{t('leave')}</p>
+                        <p className="text-gray-700 dark:text-white">{t('leave')}</p>
                         <div className="text-gray-400">
                             <ChevronRight size={28}/>
                         </div>
@@ -122,7 +122,7 @@ const Menu: FC = () => {
                         <FileText/>
                     </div>
                     <div className="col-start-2 col-span-6 sm:col-start-2 sm:col-span-10 lg:col-start-2 lg:col-span-12 flex justify-between items-center">
-                        <p className="text-gray-700">{t('report')}</p>
+                        <p className="text-gray-700 dark:text-white">{t('report')}</p>
                         <div className="text-gray-400">
                             <ChevronRight size={28}/>
                         </div>
@@ -134,7 +134,7 @@ const Menu: FC = () => {
 
             <div className="p-3 bg-gray-100 rounded-2xl flex flex-col gap-3 dark:bg-dark-second dark:text-white">
                 <div className="p-2">
-                    <p className="text-gray-400 font-semibold">More Settings</p>
+                    <p className="text-gray-500 font-semibold dark:text-gray-400">More Settings</p>
                 </div>
                 <div 
                     className="grid grid-cols-6 sm:grid-cols-10 lg:grid-cols-12 gap-4 items-center cursor-pointer p-2 rounded-2xl hover:bg-gray-200 dark:hover:bg-gray-600"
@@ -144,9 +144,9 @@ const Menu: FC = () => {
                         <Globe/>
                     </div>
                     <div className="col-start-2 col-span-6 sm:col-start-2 sm:col-span-10 lg:col-start-2 lg:col-span-12 flex justify-between items-center">
-                        <p className="text-gray-700">{t('language')}</p>
+                        <p className="text-gray-700 dark:text-white">{t('language')}</p>
                         <div className="flex items-center gap-2">
-                            <p className="text-gray-500 dark:text-gray-400">{t('title')}</p>
+                            <p className="text-gray-400">{t('title')}</p>
                             <div className="text-gray-400">
                                 <ChevronRight size={28}/>
                             </div>
@@ -158,7 +158,7 @@ const Menu: FC = () => {
                         <Eclipse/>
                     </div>
                     <div className="col-start-2 col-span-6 sm:col-start-2 sm:col-span-10 lg:col-start-2 lg:col-span-12 flex justify-between items-center">
-                        <p className="text-gray-700">{t('darkMode')}</p>
+                        <p className="text-gray-700 dark:text-white">{t('darkMode')}</p>
                         <ToggleSwitch isChecked={isDarkMode} onTonggle={toggleTheme} />
                     </div>
                 </div>
@@ -168,7 +168,7 @@ const Menu: FC = () => {
 
             <div className="p-3 bg-gray-100 rounded-2xl flex flex-col gap-3 dark:bg-dark-second dark:text-white">
                 <div className="p-2">
-                    <p className="text-gray-400 font-semibold">More Info</p>
+                    <p className="text-gray-500 font-semibold dark:text-gray-400">More Info</p>
                 </div>
                 <div 
                     className="grid grid-cols-6 sm:grid-cols-10 lg:grid-cols-12 gap-4 items-center cursor-pointer p-2 rounded-2xl hover:bg-gray-200 dark:hover:bg-gray-600"
@@ -178,7 +178,7 @@ const Menu: FC = () => {
                         <Info/>
                     </div>
                     <div className="col-start-2 col-span-6 sm:col-start-2 sm:col-span-10 lg:col-start-2 lg:col-span-12 flex justify-between items-center">
-                        <p className="text-gray-700">{t('about')}</p>
+                        <p className="text-gray-700 dark:text-white">{t('about')}</p>
                         <div className="flex items-center gap-2">
                             <div className="text-gray-400">
                                 <ChevronRight size={28}/>

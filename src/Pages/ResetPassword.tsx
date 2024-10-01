@@ -67,7 +67,7 @@ const ResetPassword: FC = () => {
                 ) : null}
                 <Alert/>
                 <div>
-                    <p className="text-2xl font-bold dark:text-white">Reset Password
+                    <p className="text-2xl font-semibold dark:text-white">Reset Password
                         <span className="text-color-base pl-1 text-4xl">.</span>
                     </p>
                 </div>

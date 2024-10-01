@@ -58,8 +58,8 @@ const Home: FC = () => {
                             </div>    
                         ) : (
                             <div>
-                                <p className="font-bold text-xl dark:text-white">Hi, {username}</p>
-                                <p className="font-bold text-gray-400 text-sm">{t('welcome')}</p>
+                                <p className="font-semibold text-xl dark:text-white">Hi, {username}</p>
+                                <p className="font-semibold text-gray-400 text-sm">{t('welcome')}</p>
                             </div>
                         )}
                     </div>
@@ -119,7 +119,7 @@ const Home: FC = () => {
                 <div className="mt-5">
                     <div className="bg-gray-100 w-full p-5 rounded-2xl dark:bg-dark-second">
                         <div>
-                            <p className="font-bold text-lg text-gray-500 dark:text-white">{t('services')}</p>
+                            <p className="font-semibold text-lg text-gray-500 dark:text-white">{t('services')}</p>
                         </div>
                         <div className="mt-3 grid place-items-center grid-cols-4 md:grid-cols-6 gap-5">
                             <div className="flex flex-col items-center gap-1 w-fit">

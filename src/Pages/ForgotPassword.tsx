@@ -27,7 +27,7 @@ const ForgotPassword: FC = () => {
             <div className="px-5 pb-5 pt-10 w-full sm:mx-12 md:w-3/4 lg:w-1/2">
                 <Alert/>
                 <div>
-                    <p className="text-2xl font-bold dark:text-white">Forgot Password
+                    <p className="text-2xl font-semibold dark:text-white">Forgot Password
                         <span className="text-color-base pl-1 text-4xl">.</span>
                     </p>
                 </div>
