@@ -87,7 +87,7 @@ const ReportAttendance: FC = () => {
                                         </div>
                                     </div>
                                     <div className="mt-6 flex flex-col gap-1">
-                                        <p className="font-bold dark:text-white">{t('present')}</p>
+                                        <p className="font-semibold dark:text-white">{t('present')}</p>
                                         <p className="text-sm text-gray-500 dark:text-gray-400">Total: {report?.hadir}</p>
                                     </div>
                                 </div>
@@ -98,7 +98,7 @@ const ReportAttendance: FC = () => {
                                         </div>
                                     </div>
                                     <div className="mt-6 flex flex-col gap-1">
-                                        <p className="font-bold dark:text-white">{t('alpa')}</p>
+                                        <p className="font-semibold dark:text-white">{t('alpa')}</p>
                                         <p className="text-sm text-gray-500 dark:text-gray-400">Total: {report?.alpa}</p>
                                     </div>
                                 </div>
@@ -109,7 +109,7 @@ const ReportAttendance: FC = () => {
                                         </div>
                                     </div>
                                     <div className="mt-6 flex flex-col gap-1">
-                                        <p className="font-bold dark:text-white">{t('late')}</p>
+                                        <p className="font-semibold dark:text-white">{t('late')}</p>
                                         <p className="text-sm text-gray-500 dark:text-gray-400">Total: {report?.telat}</p>
                                     </div>
                                 </div>
@@ -120,7 +120,7 @@ const ReportAttendance: FC = () => {
                                         </div>
                                     </div>
                                     <div className="mt-6 flex flex-col gap-1">
-                                        <p className="font-bold dark:text-white">{t('permit')}</p>
+                                        <p className="font-semibold dark:text-white">{t('permit')}</p>
                                         <p className="text-sm text-gray-500 dark:text-gray-400">Total: {report?.izin}</p>
                                     </div>
                                 </div>
@@ -131,7 +131,7 @@ const ReportAttendance: FC = () => {
                                         </div>
                                     </div>
                                     <div className="mt-6 flex flex-col gap-1">
-                                        <p className="font-bold dark:text-white">{t('leave')}</p>
+                                        <p className="font-semibold dark:text-white">{t('leave')}</p>
                                         <p className="text-sm text-gray-500 dark:text-gray-400">Total: {report?.cuti}</p>
                                     </div>
                                 </div>
