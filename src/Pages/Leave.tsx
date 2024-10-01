@@ -1,9 +1,12 @@
-import { ArrowLeft, BadgeInfo } from "lucide-react";
-import { FC, useEffect } from "react";
-import { useTranslation } from "react-i18next";
+import { ArrowLeft } from "lucide-react";
+import { FC, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { usePostLeaveMutation } from "../services/apiLeave";
+import { useTranslation } from "react-i18next";
+import { LeaveCategory } from "../Components/LeaveCategory";
+import { LeaveTable } from "../Components/LeaveTable";
 import { useAppSelector } from "../store";
+import { usePostLeaveMutation } from "../services/apiLeave";
+import { LeaveGrid } from "../Components/LeaveGrid";
 
 const Leave: FC = () => {
     const navigate = useNavigate();
@@ -15,6 +18,8 @@ const Leave: FC = () => {
     useEffect(() => {
         leave({ nik: userData?.nik });
     }, [leave, userData?.nik]);
+    const [categories] = useState<string[]>(['Table']);
+    const [selectedCategory, setSelectedCategory] = useState<string>('');
     
     return (
         <div className="min-h-screen bg-white dark:bg-dark-main">
@@ -33,51 +38,22 @@ const Leave: FC = () => {
                 <div></div>
             </div>
             <div className="p-5 sm:mx-12 md:mx-32 lg:mx-80">
-                <div className="grid grid-cols-2 gap-5">
-                    <div className="p-5 bg-gray-100 rounded-3xl dark:bg-dark-second">
-                        <div>
-                            <div className="p-3 bg-white w-fit rounded-full dark:bg-dark-main dark:text-white">
-                                <BadgeInfo size={20}/>
-                            </div>
-                        </div>
-                        <div className="mt-6 flex flex-col gap-1">
-                            <p className="font-bold dark:text-white">Mass Leave</p>
-                            <p className="text-sm text-gray-500 dark:text-gray-400">Total: {leaveData?.massLeave}</p>
-                        </div>
-                    </div>
-                    <div className="p-5 bg-gray-100 rounded-3xl dark:bg-dark-second">
-                        <div>
-                            <div className="p-3 bg-white w-fit rounded-full dark:bg-dark-main dark:text-white">
-                                <BadgeInfo size={20}/>
-                            </div>
-                        </div>
-                        <div className="mt-6 flex flex-col gap-1">
-                            <p className="font-bold dark:text-white">Annual Leave</p>
-                            <p className="text-sm text-gray-500 dark:text-gray-400">Total: {leaveData?.annualLeave}</p>
-                        </div>
-                    </div>
-                    <div className="p-5 bg-gray-100 rounded-3xl dark:bg-dark-second">
-                        <div>
-                            <div className="p-3 bg-white w-fit rounded-full dark:bg-dark-main dark:text-white">
-                                <BadgeInfo size={20}/>
-                            </div>
-                        </div>
-                        <div className="mt-6 flex flex-col gap-1">
-                            <p className="font-bold dark:text-white">Last Leave</p>
-                            <p className="text-sm text-gray-500 dark:text-gray-400">Total: {leaveData?.lastLeave}</p>
-                        </div>
-                    </div>
-                    <div className="p-5 bg-color-base rounded-3xl">
-                        <div>
-                            <div className="p-3 bg-white w-fit rounded-full">
-                                <BadgeInfo size={20}/>
-                            </div>
-                        </div>
-                        <div className="mt-6 flex flex-col gap-1">
-                            <p className="font-bold text-white">My Leave</p>
-                            <p className="text-sm text-white">Total: {leaveData?.myLeave}</p>
-                        </div>
-                    </div>
+                <div className="mt-5">
+                    <p className="font-bold text-xl dark:text-white">{t('myReport')}</p>
+                </div>
+                <div className="mt-5">
+                    <LeaveCategory
+                        categories={categories}
+                        selectedCategory={selectedCategory}
+                        setSelectedCategory={setSelectedCategory}
+                    />
+                </div>
+                <div className="mt-5">
+                    {selectedCategory === 'Table' ? (
+                        <LeaveTable leaveData={leaveData}/>
+                    ) : selectedCategory === '' ? (
+                        <LeaveGrid leaveData={leaveData}/>
+                    ) : null}
                 </div>
             </div>
         </div>

@@ -83,7 +83,7 @@ const ReportAttendance: FC = () => {
                                 <div className="p-5 bg-gray-100 rounded-3xl dark:bg-dark-second">
                                     <div>
                                         <div className="p-3 bg-white w-fit rounded-full dark:bg-dark-main dark:text-white">
-                                            <ClipboardCheck size={20}/>
+                                            <ClipboardCheck size={24}/>
                                         </div>
                                     </div>
                                     <div className="mt-6 flex flex-col gap-1">
@@ -94,7 +94,7 @@ const ReportAttendance: FC = () => {
                                 <div className="p-5 bg-gray-100 rounded-3xl dark:bg-dark-second">
                                     <div>
                                         <div className="p-3 bg-white w-fit rounded-full dark:bg-dark-main dark:text-white">
-                                            <ClipboardX size={20}/>
+                                            <ClipboardX size={24}/>
                                         </div>
                                     </div>
                                     <div className="mt-6 flex flex-col gap-1">
@@ -105,7 +105,7 @@ const ReportAttendance: FC = () => {
                                 <div className="p-5 bg-gray-100 rounded-3xl dark:bg-dark-second">
                                     <div>
                                         <div className="p-3 bg-white w-fit rounded-full dark:bg-dark-main dark:text-white">
-                                            <AlarmClock size={20}/>
+                                            <AlarmClock size={24}/>
                                         </div>
                                     </div>
                                     <div className="mt-6 flex flex-col gap-1">
@@ -116,7 +116,7 @@ const ReportAttendance: FC = () => {
                                 <div className="p-5 bg-gray-100 rounded-3xl dark:bg-dark-second">
                                     <div>
                                         <div className="p-3 bg-white w-fit rounded-full dark:bg-dark-main dark:text-white">
-                                            <PhoneOutgoing size={20}/>
+                                            <PhoneOutgoing size={24}/>
                                         </div>
                                     </div>
                                     <div className="mt-6 flex flex-col gap-1">
@@ -127,7 +127,7 @@ const ReportAttendance: FC = () => {
                                 <div className="p-5 bg-gray-100 rounded-3xl dark:bg-dark-second">
                                     <div>
                                         <div className="p-3 bg-white w-fit rounded-full dark:bg-dark-main dark:text-white">
-                                            <Bus size={20}/>
+                                            <Bus size={24}/>
                                         </div>
                                     </div>
                                     <div className="mt-6 flex flex-col gap-1">
