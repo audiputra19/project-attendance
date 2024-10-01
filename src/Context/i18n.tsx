@@ -97,7 +97,7 @@ const resources = {
             joinDate: 'Tgl. Gabung',
             headerAbout: 'Dataku untuk Web',
             version: 'Version',
-            bodyAbout: 'Dataku untuk dibangun menggunakan React. Dirancang untuk web agar memberikan kenyamanan bagi pengguna. Jadi pengguna dapat mengakses dimana saja dan di platform mana saja.',
+            bodyAbout: 'Dataku untuk web dibangun menggunakan React. Dirancang untuk web agar memberikan kenyamanan bagi pengguna. Jadi pengguna dapat mengakses dimana saja dan di platform mana saja.',
             from: 'Dari',
             massLeave: 'Cutber',
             annualLeave: 'Cuti Tahun',

@@ -36,7 +36,7 @@ const Modal: React.FC = () => {
         </div>
         <div className="mt-4 flex justify-end gap-3">
           <button
-            className={`px-4 py-3 bg-${color}-500 font-bold w-full text-white rounded-2xl hover:bg-${color}-600`}
+            className={`px-4 py-3 bg-color-base font-bold w-full text-white rounded-2xl`}
             onClick={() => {
               onConfirm();
               closeModal();

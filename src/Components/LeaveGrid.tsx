@@ -1,20 +1,16 @@
 import { BadgeInfo } from "lucide-react";
-import { FC, useEffect } from "react";
+import { FC } from "react";
 import { leaveProps, leaveRes } from "../interfaces/leave";
 import { useTranslation } from "react-i18next";
-import { usePostLeaveMutation } from "../services/apiLeave";
-import { useAppSelector } from "../store";
 
-export const LeaveGrid: FC = () => {
+interface LeaveGridProps {
+    leaveData: leaveProps | undefined;
+    isLoading: boolean;
+}
+
+export const LeaveGrid: FC<LeaveGridProps> = ({ leaveData, isLoading }) => {
 
     const { t } = useTranslation();
-    const [leave, {data, isLoading}] = usePostLeaveMutation();
-    const userData = useAppSelector(state => state.auth.userInfo);
-    const leaveData = data?.data;
-
-    useEffect(() => {
-        leave({ nik: userData?.nik });
-    }, [leave, userData?.nik]);
 
     return (
         <div className="grid grid-cols-2 gap-5">
