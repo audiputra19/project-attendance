@@ -139,7 +139,7 @@ const Attendance: FC = () => {
                     <div className="p-5 sm:mx-10 md:mx-32 lg:mx-80">
                         <LiveClock/>
                         <div className="mt-10">
-                            <p className="font-bold text-xl dark:text-white">{t('todayAttendance')}</p>
+                            <p className="font-semibold text-xl dark:text-white">{t('todayAttendance')}</p>
                         </div> 
                         <div className="mt-5">
                             <div className="grid grid-cols-2 gap-5">

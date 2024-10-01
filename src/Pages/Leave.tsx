@@ -30,7 +30,7 @@ const Leave: FC = () => {
             </div>
             <div className="p-5 sm:mx-12 md:mx-32 lg:mx-80">
                 <div className="mt-5">
-                    <p className="font-bold text-xl dark:text-white">{t('myLeave')}</p>
+                    <p className="font-semibold text-xl dark:text-white">{t('myLeave')}</p>
                 </div>
                 <div className="mt-5">
                     <LeaveCategory

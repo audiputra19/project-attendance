@@ -72,7 +72,7 @@ const ReportAttendance: FC = () => {
                         </button>
                     </div>
                     <div className="mt-10">
-                        <p className="font-bold text-xl dark:text-white">{t('myReport')}</p>
+                        <p className="font-semibold text-xl dark:text-white">{t('myReport')}</p>
                     </div> 
 
                     {!data ? (

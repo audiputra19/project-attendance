@@ -82,7 +82,7 @@ const Salary: FC = () => {
                         </div>
                     </div>
                     <div className="mt-10">
-                        <p className="font-bold text-xl dark:text-white">{t('mySalary')}</p>
+                        <p className="font-semibold text-xl dark:text-white">{t('mySalary')}</p>
                     </div> 
                     {!data ? (
                         <NotFound/>
