@@ -27,7 +27,7 @@ const DatePickerInput: FC<DatePickerProps> = ({ selectedDate, onDateChange }) =>
                     selected={selectedDate}
                     onChange={onDateChange}
                     dateFormat="dd/MM/yyyy"
-                    className="w-full pl-14 pr-4 py-4 text-gray-500 rounded-xl bg-gray-100 dark:bg-dark-second dark:text-white"
+                    className="w-full pl-14 pr-4 py-4 text-gray-500 outline-none rounded-xl bg-gray-100 dark:bg-dark-second dark:text-white"
                     placeholderText={t('selectDate')}
                     popperPlacement="bottom-start"
                 />

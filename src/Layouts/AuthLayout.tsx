@@ -16,7 +16,7 @@ export const AuthLayout: FC = () => {
                     {location.pathname === '/auth' ? (
                         <div 
                             onClick={toggleTheme}
-                            className="bg-gray-100 p-3 rounded-xl cursor-pointer dark:text-white dark:bg-dark-second"
+                            className="bg-gray-100 p-3 rounded-xl cursor-pointer text-black dark:text-white dark:bg-dark-second"
                         >
                             {isDarkMode 
                             ? ( <Sun/> ) 
@@ -26,7 +26,7 @@ export const AuthLayout: FC = () => {
                         location.pathname === `/auth/reset-pass/${token}` ? null : (
                             <button 
                                 onClick={() => navigate(-1)}
-                                className="bg-gray-100 p-3 rounded-xl cursor-pointer dark:text-white dark:bg-dark-second"
+                                className="bg-gray-100 p-3 rounded-xl cursor-pointer text-black dark:text-white dark:bg-dark-second"
                             >
                                 <ArrowLeft/>
                             </button>

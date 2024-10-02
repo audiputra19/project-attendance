@@ -59,7 +59,7 @@ const Home: FC = () => {
                             </div>    
                         ) : (
                             <div>
-                                <p className="font-semibold text-xl dark:text-white">Hi, {username}</p>
+                                <p className="font-semibold text-xl text-black dark:text-white">Hi, {username}</p>
                                 <p className="font-semibold text-gray-400 text-sm">{t('welcome')}</p>
                             </div>
                         )}

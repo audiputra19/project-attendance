@@ -67,7 +67,7 @@ const ResetPassword: FC = () => {
                 ) : null}
                 <Alert/>
                 <div>
-                    <p className="text-2xl font-semibold dark:text-white">Reset Password
+                    <p className="text-2xl font-semibold text-black dark:text-white">Reset Password
                         <span className="text-color-base pl-1 text-4xl">.</span>
                     </p>
                 </div>
@@ -78,7 +78,7 @@ const ResetPassword: FC = () => {
                         </div>
                         <input
                             type={showPassword ? `text` : `password`}
-                            className="w-full pl-14 pr-14 py-4 text-gray-500 rounded-xl bg-gray-100 dark:bg-dark-second dark:text-white"
+                            className="w-full pl-14 pr-14 py-4 text-gray-500 rounded-xl outline-none bg-gray-100 dark:bg-dark-second dark:text-white"
                             placeholder="New Password"
                             value={form.newPassword}
                             onChange={(e) => 
@@ -99,7 +99,7 @@ const ResetPassword: FC = () => {
                         </div>
                         <input
                             type={showConfirmPassword ? `text` : `password`}
-                            className="w-full pl-14 pr-14 py-4 text-gray-500 rounded-xl bg-gray-100 dark:bg-dark-second dark:text-white"
+                            className="w-full pl-14 pr-14 py-4 text-gray-500 rounded-xl outline-none bg-gray-100 dark:bg-dark-second dark:text-white"
                             placeholder="Confirm Password"
                             value={form.confirmPassword}
                             onChange={e => 

@@ -27,7 +27,7 @@ const LanguangeSelector: FC = () => {
                     <ArrowLeft/>
                 </div>
                 <div className="hidden lg:block">
-                    <p className="text-xl font-bold dark:text-white">{t('languange')}
+                    <p className="text-xl font-bold text-black dark:text-white">{t('languange')}
                         <span className="text-color-base pl-1 text-4xl">.</span>
                     </p>
                 </div>
@@ -35,7 +35,7 @@ const LanguangeSelector: FC = () => {
             </div>
             <div className="p-5 sm:mx-12 md:mx-32 lg:mx-80">
                 <div className="pb-3">
-                    <p className="font-semibold text-xl dark:text-white">{t('selectLanguage')}</p>
+                    <p className="font-semibold text-xl text-black dark:text-white">{t('selectLanguage')}</p>
                 </div>
                 <div className="p-3 bg-gray-100 rounded-2xl flex flex-col gap-3 dark:bg-dark-second dark:text-white">
                     <div 

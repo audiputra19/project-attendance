@@ -117,20 +117,20 @@ const Attendance: FC = () => {
     }
 
     return (
-        <div className="min-h-screen dark:bg-dark-main">
+        <div className="min-h-screen bg-white dark:bg-dark-main">
             {isLoading || loading ? (
                 <Loading/>
             ) : (
                 <div>
                     <div className="sticky z-20 top-0 left-0 right-0 bg-white flex justify-between items-center p-5 md:mx-20 lg:mx-48 lg:border-b-2 lg:border-gray-200 dark:border-dark-second dark:bg-dark-main">
                         <div
-                            className="bg-gray-100 p-3 rounded-xl cursor-pointer dark:text-white dark:bg-dark-second"
+                            className="bg-gray-100 p-3 rounded-xl cursor-pointer text-black dark:text-white dark:bg-dark-second"
                             onClick={() => navigate(-1)}
                         >
                             <ArrowLeft/>
                         </div>
                         <div className="hidden lg:block">
-                            <p className="text-xl font-bold dark:text-white">{t('attendance')}
+                            <p className="text-xl font-bold text-black dark:text-white">{t('attendance')}
                                 <span className="text-color-base pl-1 text-4xl">.</span>
                             </p>
                         </div>
@@ -139,7 +139,7 @@ const Attendance: FC = () => {
                     <div className="p-5 sm:mx-10 md:mx-32 lg:mx-80">
                         <LiveClock/>
                         <div className="mt-10">
-                            <p className="font-semibold text-xl dark:text-white">{t('todayAttendance')}</p>
+                            <p className="font-semibold text-xl text-black dark:text-white">{t('todayAttendance')}</p>
                         </div> 
                         <div className="mt-5">
                             <div className="grid grid-cols-2 gap-5">
@@ -148,7 +148,7 @@ const Attendance: FC = () => {
                                         <div className="bg-blue-100 p-3 rounded-xl dark:bg-blue-500">
                                             <Clock7 className="text-blue-500 dark:text-white"/>
                                         </div>
-                                        <p className="font-semibold text-sm md:text-base dark:text-white">{t('checkIn')}</p>
+                                        <p className="font-semibold text-sm md:text-base text-black dark:text-white">{t('checkIn')}</p>
                                     </div>
                                     <div className="mt-3">
                                         {timeLoading ? (
@@ -177,7 +177,7 @@ const Attendance: FC = () => {
                                         <div className="bg-blue-100 p-3 rounded-xl dark:bg-blue-500">
                                             <Clock12 className="text-blue-500 dark:text-white"/>
                                         </div>
-                                        <p className="font-semibold text-sm md:text-base dark:text-white">{t('break')}</p>
+                                        <p className="font-semibold text-sm md:text-base text-black dark:text-white">{t('break')}</p>
                                     </div>
                                     <div className="mt-3">
                                         {timeLoading ? (
@@ -199,7 +199,7 @@ const Attendance: FC = () => {
                                         <div className="bg-blue-100 p-3 rounded-xl dark:bg-blue-500">
                                             <Clock1 className="text-blue-500 dark:text-white"/>
                                         </div>
-                                        <p className="font-semibold text-sm md:text-base dark:text-white">{t('breakIn')}</p>
+                                        <p className="font-semibold text-sm md:text-base text-black dark:text-white">{t('breakIn')}</p>
                                     </div>
                                     <div className="mt-3">
                                         {timeLoading ? (
@@ -223,7 +223,7 @@ const Attendance: FC = () => {
                                         <div className="bg-blue-100 p-3 rounded-xl dark:bg-blue-500">
                                             <Clock5 className="text-blue-500 dark:text-white"/>
                                         </div>
-                                        <p className="font-semibold text-sm md:text-base dark:text-white">{t('checkOut')}</p>
+                                        <p className="font-semibold text-sm md:text-base text-black dark:text-white">{t('checkOut')}</p>
                                     </div>
                                     <div className="mt-3">
                                         {timeLoading ? (

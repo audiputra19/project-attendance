@@ -27,7 +27,7 @@ const ForgotPassword: FC = () => {
             <div className="px-5 pb-5 pt-10 w-full sm:mx-12 md:w-3/4 lg:w-1/2">
                 <Alert/>
                 <div>
-                    <p className="text-2xl font-semibold dark:text-white">Forgot Password
+                    <p className="text-2xl font-semibold text-black dark:text-white">Forgot Password
                         <span className="text-color-base pl-1 text-4xl">.</span>
                     </p>
                 </div>
@@ -38,7 +38,7 @@ const ForgotPassword: FC = () => {
                         </div>
                         <input
                             type="text"
-                            className="w-full lowercase pl-14 pr-4 py-4 text-gray-500 rounded-xl bg-gray-100 dark:bg-dark-second dark:text-white"
+                            className="w-full lowercase pl-14 pr-4 py-4 text-gray-500 outline-none rounded-xl bg-gray-100 dark:bg-dark-second dark:text-white"
                             placeholder="Email"
                             onChange={(e) => 
                                 setForm(prev => ({

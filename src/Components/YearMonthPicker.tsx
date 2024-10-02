@@ -28,7 +28,7 @@ const YearMonthPicker: FC = () => {
                 selected={selectedDate}
                 onChange={handleChange}
                 dateFormat="MM/yyyy"
-                className="w-full pl-14 pr-4 py-4 text-gray-500 rounded-xl bg-gray-100 dark:bg-dark-second dark:text-white"
+                className="w-full pl-14 pr-4 py-4 text-gray-500 rounded-xl bg-gray-100 outline-none dark:bg-dark-second dark:text-white"
                 placeholderText={t('selectYearMonth')}
                 popperPlacement="bottom-start"
                 showMonthYearPicker
