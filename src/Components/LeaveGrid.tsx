@@ -61,7 +61,7 @@ export const LeaveGrid: FC<LeaveGridProps> = ({ leaveData, isLoading }) => {
             </div>
             <div className="p-5 bg-color-base rounded-3xl">
                 <div>
-                    <div className="p-3 bg-white w-fit rounded-full">
+                    <div className="p-3 bg-white text-black w-fit rounded-full">
                         <BadgeInfo size={20}/>
                     </div>
                 </div>

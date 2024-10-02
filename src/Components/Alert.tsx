@@ -18,7 +18,7 @@ const Alert: FC = () => {
   return (
     <div
       className={`fixed z-20 left-1/2 transform -translate-x-1/2 bottom-4 py-4 px-5 rounded-full 
-        text-sm bg-gray-200 transition-all duration-300 ease-in-out whitespace-nowrap 
+        text-sm bg-gray-200 transition-all duration-300 ease-in-out whitespace-nowrap text-black
         ${visible ? 'translate-y-0 opacity-100' : 'translate-y-full opacity-0'}`}
         style={{ display: 'inline-block' }}
     >
