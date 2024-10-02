@@ -5,21 +5,24 @@ import { useTranslation } from "react-i18next";
 import { LeaveCategory } from "../Components/LeaveCategory";
 import { LeaveTable } from "../Components/LeaveTable";
 import { useAppSelector } from "../store";
-import { usePostLeaveMutation } from "../services/apiLeave";
+import { usePostLeaveMutation, usePostReportLeaveMutation } from "../services/apiLeave";
 import { LeaveGrid } from "../Components/LeaveGrid";
 
 const Leave: FC = () => {
     const navigate = useNavigate();
     const { t } = useTranslation();
     const [leave, {data, isLoading}] = usePostLeaveMutation();
+    const [report, {data: dataReport, isLoading: isLoadingReport}] = usePostReportLeaveMutation();
     const userData = useAppSelector(state => state.auth.userInfo);
     const leaveData = data?.data;
+    const leaveReport = dataReport?.data;
     const [categories] = useState<string[]>(['Table']);
     const [selectedCategory, setSelectedCategory] = useState<string>('');
     
     useEffect(() => {
         leave({ nik: userData?.nik });
-    }, [leave, userData?.nik]);
+        report({ nik: userData?.nik });
+    }, [leave, report, userData?.nik]);
 
     return (
         <div className="min-h-screen bg-white dark:bg-dark-main">
@@ -50,7 +53,7 @@ const Leave: FC = () => {
                 </div>
                 <div className="mt-5">
                     {selectedCategory === 'Table' ? (
-                        <LeaveTable leaveData={leaveData}/>
+                        <LeaveTable leaveData={leaveReport} isLoading={isLoadingReport}/>
                     ) : selectedCategory === '' ? (
                         <LeaveGrid leaveData={leaveData} isLoading={isLoading}/>
                     ) : null}

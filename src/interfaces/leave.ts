@@ -16,9 +16,8 @@ export interface leaveReq {
 export interface reportLeaveProps {
     tanggal: string;
     keterangan: string;
-    sisa: number;
 }
 
-export interface reportLeave {
-    data: reportLeaveProps;
+export interface reportLeaveRes {
+    data: reportLeaveProps[];
 }

@@ -31,7 +31,7 @@ const Modal: React.FC = () => {
             <div className={`bg-${color}-500 w-24 h-24 rounded-full flex items-center justify-center`}>
                 {icon}
             </div>
-            <p className='font-bold text-2xl mt-5'>{title}</p>
+            <p className='font-semibold text-2xl mt-5'>{title}</p>
             <p className='mt-2 text-gray-500'>{message}</p>
         </div>
         <div className="mt-4 flex justify-end gap-3">

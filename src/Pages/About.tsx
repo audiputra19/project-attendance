@@ -33,7 +33,7 @@ const About: FC = () => {
                         <p className="text-lg dark:text-white">1.0.0</p>
                     </div>
                     <div>
-                        <p className="text-black dark:text-white">{t('bodyAbout')}</p>
+                        <p className="text-gray-500 dark:text-white">{t('bodyAbout')}</p>
                     </div>
                 </div>
                 <div className="fixed bottom-0 left-0 right-0 mb-5">
