@@ -26,7 +26,7 @@ export const LeaveTable: FC<LeaveTableProps> = ({ leaveData, isLoading }) => {
                             return (
                                 <tr 
                                     key={i}
-                                    className="text-xs border-gray-200 text-black hover:bg-gray-50 dark:border-dark-second dark:hover:bg-dark-second"
+                                    className="text-xs border-gray-200 text-black hover:bg-gray-50 dark:border-dark-second dark:hover:bg-dark-second dark:text-white"
                                 >
                                     <td><center>{i + 1}</center></td>
                                     <td className="w-28"><center>{date}</center></td>
