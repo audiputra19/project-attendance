@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { leaveReq, leaveRes } from "../interfaces/leave";
+import { leaveReq, leaveRes, reportLeaveRes } from "../interfaces/leave";
 
 export const apiLeave = createApi({
     reducerPath: 'apiLeave',
@@ -12,8 +12,15 @@ export const apiLeave = createApi({
                 method: 'POST',
                 body
             })
+        }),
+        postReportLeave: build.mutation<reportLeaveRes, leaveReq>({
+            query: body => ({
+                url: '/report-leave',
+                method: 'POST',
+                body
+            })
         })
     })
 })
 
-export const { usePostLeaveMutation } = apiLeave;
+export const { usePostLeaveMutation, usePostReportLeaveMutation } = apiLeave;
