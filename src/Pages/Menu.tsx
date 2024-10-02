@@ -33,7 +33,7 @@ const Menu: FC = () => {
     return (
         <div className="w-full min-h-screen py-5 px-5 sm:px-12 md:px-32 lg:px-80 flex flex-col gap-5 bg-white dark:bg-dark-main">
             <div 
-                className="p-5 flex justify-between items-center gap-5 bg-gray-50 rounded-2xl cursor-pointer dark:bg-dark-second" 
+                className="p-5 flex justify-between items-center gap-5 bg-gray-100 rounded-2xl cursor-pointer dark:bg-dark-second" 
                 onClick={() => navigate('/profileMenu')}
             >
                 {isLoading ? (
@@ -54,7 +54,7 @@ const Menu: FC = () => {
 
             {/* ----------------------------- contents -----------------------------*/}    
 
-            <div className="p-3 bg-gray-50 rounded-2xl flex flex-col gap-3 dark:bg-dark-second dark:text-white">
+            <div className="p-3 bg-gray-100 rounded-2xl flex flex-col gap-3 dark:bg-dark-second dark:text-white">
                 <div className="p-2">
                     <p className="text-gray-500 font-semibold dark:text-gray-400">Contents</p>
                 </div>
@@ -132,7 +132,7 @@ const Menu: FC = () => {
 
             {/* ----------------------------- more Settings -----------------------------*/}    
 
-            <div className="p-3 bg-gray-50 rounded-2xl flex flex-col gap-3 dark:bg-dark-second dark:text-white">
+            <div className="p-3 bg-gray-100 rounded-2xl flex flex-col gap-3 dark:bg-dark-second dark:text-white">
                 <div className="p-2">
                     <p className="text-gray-500 font-semibold dark:text-gray-400">More Settings</p>
                 </div>
@@ -166,7 +166,7 @@ const Menu: FC = () => {
 
             {/* ----------------------------- more info -----------------------------*/}
 
-            <div className="p-3 bg-gray-50 rounded-2xl flex flex-col gap-3 dark:bg-dark-second dark:text-white">
+            <div className="p-3 bg-gray-100 rounded-2xl flex flex-col gap-3 dark:bg-dark-second dark:text-white">
                 <div className="p-2">
                     <p className="text-gray-500 font-semibold dark:text-gray-400">More Info</p>
                 </div>
