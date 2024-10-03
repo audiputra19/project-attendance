@@ -1,29 +1,36 @@
-import { AlarmClock, ArrowLeft, Bus, ChevronRight, ClipboardCheck, ClipboardX, PhoneOutgoing, SquareArrowOutUpRight } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import { FC, useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import DatePickerInput from "../Components/DatePicker";
+import { LeaveCategory } from "../Components/LeaveCategory";
 import Loading from "../Components/Loading";
 import { NotFound } from "../Components/NotFound";
+import { ReportGrid } from "../Components/ReportGrid";
+import { ReportTable } from "../Components/ReportTable";
 import { useAlert } from "../Context/AlertContext";
 import { MainReportProps } from "../interfaces/report";
-import { useMainReportMutation } from "../services/apiReport";
+import { useListReportMutation, useMainReportMutation } from "../services/apiReport";
 import { useAppSelector } from "../store";
-import { useTranslation } from "react-i18next";
 
 const ReportAttendance: FC = () => {
     const [startDate, setStartDate] = useState<Date | null>(null);
     const [endDate, setEndDate] = useState<Date | null>(null);
     const navigate = useNavigate();
     const [postReport, {data, isLoading, isSuccess, error}] = useMainReportMutation();
+    const [listReport, {data: listdataReport}] = useListReportMutation();
     const userData = useAppSelector(state => state.auth.userInfo);
     const nik = userData?.nik;
     const [report, setReport] = useState<MainReportProps>();
     const { showAlert } = useAlert();
     const { t } = useTranslation();
+    const [categories] = useState<string[]>(['Table']);
+    const [selectedCategory, setSelectedCategory] = useState<string>('');
 
     const handleSubmit = () => {
         if(startDate && endDate) {
             postReport({startDate, endDate, nik});
+            listReport({startDate, endDate, nik});
         } else {
             showAlert('Periode harus diisi');
         }
@@ -78,63 +85,20 @@ const ReportAttendance: FC = () => {
                     {!data ? (
                         <NotFound/>
                     ) : ( 
-                        <div className="mt-5">
-                            <div className="grid grid-cols-2 gap-5">
-                                <div className="p-5 bg-gray-100 rounded-3xl dark:bg-dark-second">
-                                    <div>
-                                        <div className="p-3 bg-white w-fit rounded-full text-black dark:bg-dark-main dark:text-white">
-                                            <ClipboardCheck size={24}/>
-                                        </div>
-                                    </div>
-                                    <div className="mt-6 flex flex-col gap-1">
-                                        <p className="font-semibold text-black dark:text-white">{t('present')}</p>
-                                        <p className="text-sm text-gray-500 dark:text-gray-400">Total: {report?.hadir}</p>
-                                    </div>
-                                </div>
-                                <div className="p-5 bg-gray-100 rounded-3xl dark:bg-dark-second">
-                                    <div>
-                                        <div className="p-3 bg-white w-fit rounded-full text-black dark:bg-dark-main dark:text-white">
-                                            <ClipboardX size={24}/>
-                                        </div>
-                                    </div>
-                                    <div className="mt-6 flex flex-col gap-1">
-                                        <p className="font-semibold text-black dark:text-white">{t('alpa')}</p>
-                                        <p className="text-sm text-gray-500 dark:text-gray-400">Total: {report?.alpa}</p>
-                                    </div>
-                                </div>
-                                <div className="p-5 bg-gray-100 rounded-3xl dark:bg-dark-second">
-                                    <div>
-                                        <div className="p-3 bg-white w-fit rounded-full text-black dark:bg-dark-main dark:text-white">
-                                            <AlarmClock size={24}/>
-                                        </div>
-                                    </div>
-                                    <div className="mt-6 flex flex-col gap-1">
-                                        <p className="font-semibold text-black dark:text-white">{t('late')}</p>
-                                        <p className="text-sm text-gray-500 dark:text-gray-400">Total: {report?.telat}</p>
-                                    </div>
-                                </div>
-                                <div className="p-5 bg-gray-100 rounded-3xl dark:bg-dark-second">
-                                    <div>
-                                        <div className="p-3 bg-white w-fit rounded-full text-black dark:bg-dark-main dark:text-white">
-                                            <PhoneOutgoing size={24}/>
-                                        </div>
-                                    </div>
-                                    <div className="mt-6 flex flex-col gap-1">
-                                        <p className="font-semibold text-black dark:text-white">{t('permit')}</p>
-                                        <p className="text-sm text-gray-500 dark:text-gray-400">Total: {report?.izin}</p>
-                                    </div>
-                                </div>
-                                <div className="p-5 bg-gray-100 rounded-3xl dark:bg-dark-second">
-                                    <div>
-                                        <div className="p-3 bg-white w-fit rounded-full text-black dark:bg-dark-main dark:text-white">
-                                            <Bus size={24}/>
-                                        </div>
-                                    </div>
-                                    <div className="mt-6 flex flex-col gap-1">
-                                        <p className="font-semibold text-black dark:text-white">{t('leave')}</p>
-                                        <p className="text-sm text-gray-500 dark:text-gray-400">Total: {report?.cuti}</p>
-                                    </div>
-                                </div>
+                        <div>
+                            <div className="mt-5">
+                                <LeaveCategory
+                                    categories={categories}
+                                    selectedCategory={selectedCategory}
+                                    setSelectedCategory={setSelectedCategory}
+                                />
+                            </div>
+                            <div className="mt-5">
+                                {selectedCategory === 'Table' ? (
+                                    <ReportTable reportData={listdataReport}/>
+                                ) : selectedCategory === '' ? (
+                                    <ReportGrid reportData={report}/>
+                                ) : null}
                             </div>
                         </div>
                     )}

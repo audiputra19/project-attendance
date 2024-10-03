@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { MainReportReq, MainReportRes } from "../interfaces/report";
+import { ListReportReq, ListReportRes, MainReportReq, MainReportRes } from "../interfaces/report";
 
 export const apiReport = createApi({
     reducerPath: 'apiReport',
@@ -12,8 +12,15 @@ export const apiReport = createApi({
                 method: 'POST',
                 body
             })
+        }),
+        listReport: build.mutation<ListReportRes[], ListReportReq>({
+            query: body => ({
+                url: '/report/list',
+                method: 'POST',
+                body
+            })
         })
     })
 })
 
-export const { useMainReportMutation } = apiReport;
+export const { useMainReportMutation, useListReportMutation } = apiReport;
