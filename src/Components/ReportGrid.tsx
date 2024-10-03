@@ -15,7 +15,7 @@ export const ReportGrid: FC<ReportGridProps> = ({ reportData }) => {
         <div className="grid grid-cols-2 gap-5">
             <div className="p-5 bg-gray-100 rounded-3xl dark:bg-dark-second">
                 <div>
-                    <div className="p-3 bg-blue-100 text-blue-500 w-fit rounded-full dark:bg-blue-500 dark:text-white">
+                    <div className="p-3 bg-white w-fit rounded-full text-black dark:bg-dark-main dark:text-white">
                         <ClipboardCheck size={24}/>
                     </div>
                 </div>
@@ -26,7 +26,7 @@ export const ReportGrid: FC<ReportGridProps> = ({ reportData }) => {
             </div>
             <div className="p-5 bg-gray-100 rounded-3xl dark:bg-dark-second">
                 <div>
-                    <div className="p-3 bg-blue-100 text-blue-500 w-fit rounded-full dark:bg-blue-500 dark:text-white">
+                    <div className="p-3 bg-white w-fit rounded-full text-black dark:bg-dark-main dark:text-white">
                         <ClipboardX size={24}/>
                     </div>
                 </div>
@@ -37,7 +37,7 @@ export const ReportGrid: FC<ReportGridProps> = ({ reportData }) => {
             </div>
             <div className="p-5 bg-gray-100 rounded-3xl dark:bg-dark-second">
                 <div>
-                    <div className="p-3 bg-blue-100 text-blue-500 w-fit rounded-full dark:bg-blue-500 dark:text-white">
+                    <div className="p-3 bg-white w-fit rounded-full text-black dark:bg-dark-main dark:text-white">
                         <AlarmClock size={24}/>
                     </div>
                 </div>
@@ -48,7 +48,7 @@ export const ReportGrid: FC<ReportGridProps> = ({ reportData }) => {
             </div>
             <div className="p-5 bg-gray-100 rounded-3xl dark:bg-dark-second">
                 <div>
-                    <div className="p-3 bg-blue-100 text-blue-500 w-fit rounded-full dark:bg-blue-500 dark:text-white">
+                    <div className="p-3 bg-white w-fit rounded-full text-black dark:bg-dark-main dark:text-white">
                         <PhoneOutgoing size={24}/>
                     </div>
                 </div>
@@ -59,7 +59,7 @@ export const ReportGrid: FC<ReportGridProps> = ({ reportData }) => {
             </div>
             <div className="p-5 bg-gray-100 rounded-3xl dark:bg-dark-second">
                 <div>
-                    <div className="p-3 bg-blue-100 text-blue-500 w-fit rounded-full dark:bg-blue-500 dark:text-white">
+                    <div className="p-3 bg-white w-fit rounded-full text-black dark:bg-dark-main dark:text-white">
                         <Bus size={24}/>
                     </div>
                 </div>
