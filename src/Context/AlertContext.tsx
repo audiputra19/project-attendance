@@ -1,4 +1,4 @@
-import { createContext, FC, ReactNode, useContext, useState } from "react"
+import { createContext, FC, ReactNode, useCallback, useContext, useState } from "react"
 
 interface AlertContextProps {
     message: string;
@@ -15,13 +15,13 @@ export const AlertProvider: FC<{ children: ReactNode }> = ({ children }) => {
         visible: false,
     });
 
-    const showAlert = (message: string) => {
+    const showAlert = useCallback((message: string) => {
         setAlert({ message, visible: true });
-    };
+    }, []);
 
-    const hideAlert = () => {
+    const hideAlert = useCallback(() => {
         setAlert({ message: '', visible: false });
-    };
+    }, []);
 
     return (
         <AlertContext.Provider value={{ ...alert, showAlert, hideAlert }}>

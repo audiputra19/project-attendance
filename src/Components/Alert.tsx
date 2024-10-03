@@ -13,7 +13,7 @@ const Alert: FC = () => {
     }
   }, [visible, hideAlert]);
 
-  // if (!visible) return null;
+  if (!visible) return null;
 
   return (
     <div

@@ -10,9 +10,9 @@ export const ReportTable: FC<ReportTableProps> = ({ reportData }) => {
 
     return (
         <div className="w-full border border-gray-200 rounded-xl dark:bg-dark-main dark:text-white dark:border-dark-second">
-            <div className="overflow-x-auto rounded-xl">
+            <div className="overflow-x-auto rounded-xl max-h-[400px] scrollbar-hidden">
                 <table className="table">
-                    <thead className="bg-gray-50 dark:bg-dark-second">
+                    <thead className="bg-gray-50 sticky top-0 dark:bg-dark-second">
                         <tr className="text-sm text-gray-700 border-gray-200 font-semibold dark:text-white dark:border-dark-second">
                             <td><center>No</center></td>
                             <td><center>Tanggal</center></td>
