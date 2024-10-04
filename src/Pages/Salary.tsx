@@ -122,7 +122,7 @@ const Salary: FC = () => {
                                 <div className="flex gap-3">
                                     <div className="flex flex-col items-center gap-2">
                                         <div 
-                                            className="bg-gray-100 p-4 rounded-xl cursor-pointer w-fit dark:text-white dark:bg-dark-second"
+                                            className="bg-gray-100 p-4 rounded-xl cursor-pointer w-fit text-black dark:text-white dark:bg-dark-second"
                                             onClick={handlePdfViewer}
                                         >
                                             <Download/>
