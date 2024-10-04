@@ -59,7 +59,7 @@ const ForgotPassword: FC = () => {
                         </button>
                     </div>
                     <div className="flex justify-center items-center mt-5">
-                        <p className="text-gray-500 text-sm dark:text-white">Cek email kamu</p>
+                        <p className="text-gray-500 text-sm dark:text-gray-400">Cek email kamu</p>
                         <Link 
                             to="https://accounts.google.com/signin/v2/identifier?continue=https%3A%2F%2Fmail.google.com%2Fmail%2F&hl=in&osid=1&service=mail&ss=1&ltmpl=default&rm=false&flowName=GlifWebSignIn&flowEntry=ServiceLogin"
                             className="ml-2 font-bold text-color-base cursor-pointer"
