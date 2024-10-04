@@ -57,7 +57,7 @@ const Verfication: FC = () => {
                 ) : null}
                 <Alert/>
                 <div>
-                    <p className="text-2xl font-semibold text-black dark:text-white">Reset Password
+                    <p className="text-2xl font-semibold text-black dark:text-white">Verification
                         <span className="text-color-base pl-1 text-4xl">.</span>
                     </p>
                 </div>
@@ -69,7 +69,7 @@ const Verfication: FC = () => {
                             onClick={() => verify(form)}
                             disabled={expired}
                         >
-                            Save
+                            Verify Now
                         </button>
                     </div>
                 </div>
