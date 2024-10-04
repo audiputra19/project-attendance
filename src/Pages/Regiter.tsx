@@ -24,7 +24,7 @@ const Register: FC = () => {
     useEffect(() => {
         if (isSuccess && data) {
             showAlert(data.message);
-            navigate('/auth');
+            // navigate('/auth');
         } else if (error) {
             const message = (error as any)?.data?.message;
             showAlert(message);
