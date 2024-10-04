@@ -42,7 +42,7 @@ const Home: FC = () => {
             month: monthFix,
             year
         });
-    }, [profile, salary, dataUser?.nik, month, year]);
+    }, [profile, salary, dataUser?.nik, monthFix, year]);
 
     // console.log(profileData)
     
