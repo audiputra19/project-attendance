@@ -74,7 +74,7 @@ const Register: FC = () => {
                         </div>
                         <input
                             type="text"
-                            className="w-full lowercase pl-14 pr-4 py-4 text-gray-500 rounded-xl outline-none bg-gray-100 dark:bg-dark-second dark:text-white"
+                            className="w-full pl-14 pr-4 py-4 text-gray-500 rounded-xl outline-none bg-gray-100 dark:bg-dark-second dark:text-white"
                             placeholder="Email"
                             value={form.email}
                             onChange={e =>

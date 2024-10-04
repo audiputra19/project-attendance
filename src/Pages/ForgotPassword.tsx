@@ -38,7 +38,7 @@ const ForgotPassword: FC = () => {
                         </div>
                         <input
                             type="text"
-                            className="w-full lowercase pl-14 pr-4 py-4 text-gray-500 outline-none rounded-xl bg-gray-100 dark:bg-dark-second dark:text-white"
+                            className="w-full pl-14 pr-4 py-4 text-gray-500 outline-none rounded-xl bg-gray-100 dark:bg-dark-second dark:text-white"
                             placeholder="Email"
                             onChange={(e) => 
                                 setForm(prev => ({
