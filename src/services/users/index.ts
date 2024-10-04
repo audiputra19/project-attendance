@@ -1,4 +1,4 @@
-import { ApiRes, ForgotPassReq, ForgotPassRes, LoginReq, LoginRes, RegisterReq, ResetPassReq, ResetPassRes } from "../../interfaces/auth";
+import { ApiRes, ForgotPassReq, ForgotPassRes, LoginReq, LoginRes, RegisterReq, ResetPassReq, ResetPassRes, verificationReq, verificationRes } from "../../interfaces/auth";
 import { apiAuth } from "../api";
 
 export const userApi = apiAuth.injectEndpoints({
@@ -34,9 +34,16 @@ export const userApi = apiAuth.injectEndpoints({
                 method: 'POST',
                 body
             })
+        }),
+        verification: build.mutation<verificationRes, verificationReq>({
+            query: body => ({
+                url: '/auth/verification',
+                method: 'POST',
+                body
+            })
         })
     }),
     overrideExisting: false,
 });
 
-export const { useLoginMutation, useRegisterMutation, useForgotPassMutation, useResetPassMutation } = userApi;
+export const { useLoginMutation, useRegisterMutation, useForgotPassMutation, useResetPassMutation, useVerificationMutation } = userApi;

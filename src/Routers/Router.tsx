@@ -17,6 +17,7 @@ import ResetPassword from "../Pages/ResetPassword";
 import Salary from "../Pages/Salary";
 import { ProtectedRoute } from "./ProtectedRoute";
 import Leave from "../Pages/Leave";
+import Verfication from "../Pages/Verification";
 
 export const Router:FC = () => {
     let element = [
@@ -58,6 +59,10 @@ export const Router:FC = () => {
                 {
                     path: '/auth/reset-pass/:token',
                     element: <ResetPassword/>
+                },
+                {
+                    path: '/auth/verification/:token',
+                    element: <Verfication/>
                 }
             ]
         },

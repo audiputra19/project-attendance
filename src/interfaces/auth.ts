@@ -43,3 +43,11 @@ export interface ResetPassReq {
     newPassword: string;
     confirmPassword: string;
 }
+
+export interface verificationReq {
+    token: string
+}
+
+export interface verificationRes {
+    message: string
+}
