@@ -14,14 +14,23 @@ const Home: FC = () => {
     const [profile, {data: profileData, isLoading}] = usePostProfileMutation();
     const navigate = useNavigate();
     const { t } = useTranslation();
-    const date = moment().format("")
+    const date = moment().subtract(1, 'month').format("YYYY-MM-21");
+    const date2 = moment().format("YYYY-MM-22");
     const month = moment().format("MM");
     const year = moment().format("YYYY");
+    const lastMonth = moment().subtract(1, 'month').format("MM");
     const dataUser = useAppSelector(state => state.auth.userInfo);
     const pdfUrl = `https://sukabumi.karixa.co.id/skn/audi/dataku-v2/gaji_new_pdf.php?nik=${dataUser?.nik}|${dataUser?.pass}|${month}-${year}`;
 
     const nameParts = profileData?.data?.nama?.split(" ");
     const username = nameParts?.slice(0, 2).join(' ');
+
+    let monthFix = '';
+    if(date <= date2){
+        monthFix = lastMonth;
+    } else {
+        monthFix = month;
+    }
 
     useEffect(() => {
         profile({
@@ -30,7 +39,7 @@ const Home: FC = () => {
 
         salary({
             nik: dataUser?.nik,
-            month,
+            month: monthFix,
             year
         });
     }, [profile, salary, dataUser?.nik, month, year]);
