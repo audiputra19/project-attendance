@@ -20,11 +20,9 @@ const Home: FC = () => {
     const year = moment().format("YYYY");
     const lastMonth = moment().subtract(1, 'month').format("MM");
     const dataUser = useAppSelector(state => state.auth.userInfo);
-    const pdfUrl = `https://sukabumi.karixa.co.id/skn/audi/dataku-v2/gaji_new_pdf.php?nik=${dataUser?.nik}|${dataUser?.pass}|${month}-${year}`;
-
     const nameParts = profileData?.data?.nama?.split(" ");
     const username = nameParts?.slice(0, 2).join(' ');
-
+    
     let monthFix = '';
     if(date <= date2){
         monthFix = lastMonth;
@@ -32,6 +30,8 @@ const Home: FC = () => {
         monthFix = month;
     }
 
+    const pdfUrl = `https://sukabumi.karixa.co.id/skn/audi/dataku-v2/gaji_new_pdf.php?nik=${dataUser?.nik}|${dataUser?.pass}|${monthFix}-${year}`;
+    
     useEffect(() => {
         profile({
             nik: dataUser?.nik,
