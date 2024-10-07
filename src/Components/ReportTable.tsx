@@ -12,6 +12,7 @@ export const ReportTable: FC<ReportTableProps> = ({ reportData }) => {
         acc.hadir += data.hadir || 0;
         acc.alpa += data.alpa || 0;
         acc.telat += data.telat || 0;
+        acc.sakit += data.sakit || 0;
         acc.izin += data.izin || 0;
         acc.cuti += data.cuti || 0;
         return acc;
@@ -19,6 +20,7 @@ export const ReportTable: FC<ReportTableProps> = ({ reportData }) => {
         hadir: 0,
         alpa: 0,
         telat: 0,
+        sakit: 0,
         izin: 0,
         cuti: 0
     });
@@ -34,6 +36,7 @@ export const ReportTable: FC<ReportTableProps> = ({ reportData }) => {
                             <td><center>Hadir</center></td>
                             <td><center>Alpa</center></td>
                             <td><center>Telat</center></td>
+                            <td><center>Sakit</center></td>
                             <td><center>Izin</center></td>
                             <td><center>Cuti</center></td>
                             <td><center>Keterangan</center></td>
@@ -53,6 +56,7 @@ export const ReportTable: FC<ReportTableProps> = ({ reportData }) => {
                                     <td><center>{data.hadir}</center></td>
                                     <td><center>{data.alpa}</center></td>
                                     <td><center>{data.telat}</center></td>
+                                    <td><center>{data.sakit}</center></td>
                                     <td><center>{data.izin}</center></td>
                                     <td><center>{data.cuti}</center></td>
                                     <td><center>{data.keterangan}</center></td>
@@ -62,11 +66,11 @@ export const ReportTable: FC<ReportTableProps> = ({ reportData }) => {
                     </tbody>
                     <tfoot className="bg-gray-50 sticky bottom-0 dark:bg-dark-second">
                         <tr className="text-sm text-gray-700 border-gray-200 font-semibold dark:text-white dark:border-dark-second">
-                            <td><center>Total</center></td>
-                            <td></td>
+                            <td colSpan={2}><center>Total</center></td>
                             <td><center>{total?.hadir}</center></td>
                             <td><center>{total?.alpa}</center></td>
                             <td><center>{total?.telat}</center></td>
+                            <td><center>{total?.sakit}</center></td>
                             <td><center>{total?.izin}</center></td>
                             <td><center>{total?.cuti}</center></td>
                             <td></td>

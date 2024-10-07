@@ -1,4 +1,4 @@
-import { AlarmClock, Bus, ClipboardCheck, ClipboardX, PhoneOutgoing } from "lucide-react";
+import { AlarmClock, Bus, ClipboardCheck, ClipboardX, PhoneOutgoing, ThermometerSun } from "lucide-react";
 import { FC } from "react";
 import { MainReportProps } from "../interfaces/report";
 import { useTranslation } from "react-i18next";
@@ -44,6 +44,17 @@ export const ReportGrid: FC<ReportGridProps> = ({ reportData }) => {
                 <div className="mt-6 flex flex-col gap-1">
                     <p className="font-semibold text-black dark:text-white">{t('late')}</p>
                     <p className="text-sm text-gray-500 dark:text-gray-400">Total: {reportData?.telat}</p>
+                </div>
+            </div>
+            <div className="p-5 bg-gray-100 rounded-3xl dark:bg-dark-second">
+                <div>
+                    <div className="p-3 bg-white w-fit rounded-full text-black dark:bg-dark-main dark:text-white">
+                        <ThermometerSun size={24}/>
+                    </div>
+                </div>
+                <div className="mt-6 flex flex-col gap-1">
+                    <p className="font-semibold text-black dark:text-white">{t('sick')}</p>
+                    <p className="text-sm text-gray-500 dark:text-gray-400">Total: {reportData?.sakit}</p>
                 </div>
             </div>
             <div className="p-5 bg-gray-100 rounded-3xl dark:bg-dark-second">

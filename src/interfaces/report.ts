@@ -8,6 +8,7 @@ export interface MainReportProps {
     hadir: number;
     alpa: number;
     telat: number;
+    sakit: number;
     izin: number;
     cuti: number;
 }
@@ -27,6 +28,7 @@ export interface ListReportRes {
     hadir: number;
     alpa: number;
     telat: number;
+    sakit: number;
     izin: number;
     cuti: number;
     keterangan: string;
