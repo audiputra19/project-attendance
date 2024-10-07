@@ -40,7 +40,6 @@ const Attendance: FC = () => {
 
     const handleAttendance = async () => {
         setLoading(true);
-        let isMockLocation = false;
 
         if(navigator.geolocation){
             navigator.geolocation.getCurrentPosition( 
@@ -209,6 +208,7 @@ const Attendance: FC = () => {
                             type="button"
                             className="w-full bg-color-base p-4 rounded-xl text-white font-bold"
                             onClick={handleAttendance}
+                            disabled
                         >
                             {t('attendance')}
                         </button>
