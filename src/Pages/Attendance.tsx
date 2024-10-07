@@ -20,7 +20,6 @@ const Attendance: FC = () => {
     const navigate = useNavigate();
     const userData = useAppSelector(state => state.auth.userInfo);
     const nik = userData?.nik;
-    const [previousPosition, setPreviousPosition] = useState<{ latitude: number, longitude: number} | null>(null);
     const { t } = useTranslation();
 
     useEffect(() => {
@@ -39,54 +38,25 @@ const Attendance: FC = () => {
         return timeSring.split(':').join(' : ');
     }
 
-    const calculateDistance = (lat1: number, lon1: number, lat2: number, lon2: number): number => {
-        const R = 6371e3; // radius bumi dalam meter
-        const φ1 = lat1 * Math.PI / 180; // φ dalam radian
-        const φ2 = lat2 * Math.PI / 180;
-        const Δφ = (lat2 - lat1) * Math.PI / 180;
-        const Δλ = (lon2 - lon1) * Math.PI / 180;
-
-        const a = Math.sin(Δφ / 2) * Math.sin(Δφ / 2) +
-                  Math.cos(φ1) * Math.cos(φ2) *
-                  Math.sin(Δλ / 2) * Math.sin(Δλ / 2);
-        const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-
-        return R * c; // dalam meter
-    }
-
     const handleAttendance = async () => {
+        setLoading(true);
+        let isMockLocation = false;
 
         if(navigator.geolocation){
             navigator.geolocation.getCurrentPosition( 
                 async (position) => {
                     const { latitude, longitude } = position.coords;
 
-                    if (!previousPosition) {
-                        // Periksa apakah lokasi sesuai dengan timezone perangkat
-                        const deviceTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone; // Timezone perangkat
-                        //console.log("Timezone perangkat:", deviceTimezone);
-
-                        // Ambil timezone dari API server berdasarkan lokasi server
-                        const serverResponse = await axios.get('https://worldtimeapi.org/api/ip'); // API untuk timezone berdasarkan IP lokasi
-                        const serverTimezone = serverResponse.data.timezone; // Misal: 'Asia/Jakarta'
-                        //console.log("Timezone server:", serverTimezone);
-
-                        // Bandingkan timezone perangkat dan timezone dari lokasi server
-                        if (deviceTimezone !== serverTimezone) {
-                            showAlert('Timezone perangkat tidak cocok dengan lokasi yang terdeteksi.');
-                            return;
-                        }
+                    const accuracy = position.coords.accuracy;
+                    // Anda dapat menentukan ambang batas akurasi
+                    if (accuracy > 50) {
+                        isMockLocation = true; // Akurasi terlalu rendah
                     }
 
-                    if (previousPosition) {
-                        const distance = calculateDistance(previousPosition.latitude, previousPosition.longitude, latitude, longitude);
-                        if (distance > 100) { // Contoh: jarak maksimum 100 meter
-                            showAlert('Lokasi tidak valid, silakan coba lagi.');
-                            return;
-                        }
+                    if (isMockLocation) {
+                        showAlert("Fake GPS terdeteksi. Absensi dibatalkan.");
+                        return;
                     }
-
-                    setPreviousPosition({ latitude, longitude });
 
                     try {
                         const data = await postAttendance({ latitude, longitude, nik }).unwrap();
@@ -108,7 +78,9 @@ const Attendance: FC = () => {
                     showAlert('Tidak mendapatkan lokasi.');
                     setLoading(false);
                 },{
-                    enableHighAccuracy: true,
+                    enableHighAccuracy: true, // Menggunakan akurasi tinggi
+                    timeout: 5000, // Set timeout untuk mendapatkan lokasi
+                    maximumAge: 0,
                 });
         } else {
             showAlert('Geolokasi tidak didukung oleh browser ini.');
