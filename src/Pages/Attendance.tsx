@@ -100,7 +100,7 @@ const Attendance: FC = () => {
                         <LiveClock/>
                         <div className="mt-10 flex gap-3">
                             <p className="font-semibold text-xl text-black dark:text-white">{t('todayAttendance')}</p>
-                            <div className="py-2 px-4 text-xs font-semibold rounded-2xl bg-red-500 text-white">Comingsoon</div>
+                            <div className="py-2 px-4 text-xs font-semibold rounded-2xl bg-red-100 text-red-500">Comingsoon</div>
                         </div> 
                         <div className="mt-5">
                             <div className="grid grid-cols-2 gap-5">
