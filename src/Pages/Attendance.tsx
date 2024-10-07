@@ -47,17 +47,6 @@ const Attendance: FC = () => {
                 async (position) => {
                     const { latitude, longitude } = position.coords;
 
-                    const accuracy = position.coords.accuracy;
-                    // Anda dapat menentukan ambang batas akurasi
-                    if (accuracy > 50) {
-                        isMockLocation = true; // Akurasi terlalu rendah
-                    }
-
-                    if (isMockLocation) {
-                        showAlert("Fake GPS terdeteksi. Absensi dibatalkan.");
-                        return;
-                    }
-
                     try {
                         const data = await postAttendance({ latitude, longitude, nik }).unwrap();
                         showAlert(data.message);
