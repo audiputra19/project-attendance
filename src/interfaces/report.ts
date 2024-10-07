@@ -29,4 +29,5 @@ export interface ListReportRes {
     telat: number;
     izin: number;
     cuti: number;
+    keterangan: string;
 }
