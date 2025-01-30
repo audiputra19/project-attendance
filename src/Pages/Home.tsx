@@ -14,21 +14,18 @@ const Home: FC = () => {
     const [profile, {data: profileData, isLoading}] = usePostProfileMutation();
     const navigate = useNavigate();
     const { t } = useTranslation();
-    const date = moment().subtract(1, 'month').format("YYYY-MM-21");
+    const date = moment().format("YYYY-MM-DD");
     const date2 = moment().format("YYYY-MM-22");
     const month = moment().format("MM");
     const year = moment().format("YYYY");
     const lastMonth = moment().subtract(1, 'month').format("MM");
+    const lastYear = moment().subtract(1, 'year').format("YYYY");
     const dataUser = useAppSelector(state => state.auth.userInfo);
     const nameParts = profileData?.data?.nama?.split(" ");
     const username = nameParts?.slice(0, 2).join(' ');
-    
-    let monthFix = '';
-    if(date <= date2){
-        monthFix = lastMonth;
-    } else {
-        monthFix = month;
-    }
+    const monthFix = (date <= date2) ? lastMonth : month;
+    const referenceDate = moment().format("YYYY-01-22"); 
+    const yearFix = (date <= referenceDate) ? lastYear : year;
 
     const pdfUrl = `https://sukabumi.karixa.co.id/skn/audi/dataku-v2/gaji_new_pdf.php?nik=${dataUser?.nik}|${dataUser?.pass}|${monthFix}-${year}`;
     
@@ -40,11 +37,11 @@ const Home: FC = () => {
         salary({
             nik: dataUser?.nik,
             month: monthFix,
-            year
+            year: yearFix
         });
-    }, [profile, salary, dataUser?.nik, monthFix, year]);
+    }, [profile, salary, dataUser?.nik, monthFix, yearFix]);
 
-    // console.log(profileData)
+    console.log("month: ", monthFix, "year: ", yearFix);
     
     const tonggleSalaryVisible = () => {
         setSalaryVisible(!salaryVisible);
