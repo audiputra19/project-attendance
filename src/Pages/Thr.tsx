@@ -13,6 +13,10 @@ const Thr: FC = () => {
     const userData = useAppSelector(state => state.auth.userInfo);
     const navigate = useNavigate();
     const year = moment().year();
+    let total = 0;
+    if(data){
+        total = data.gaji + data.umt;
+    }
     //console.log(data);
 
     useEffect(() => {
@@ -60,7 +64,7 @@ const Thr: FC = () => {
                                     <div className="h-[2px] bg-gray-300 w-full dark:bg-white"></div>
                                 </div>
                                 <div className="font-bold">THR</div>
-                                <div className="flex justify-end col-span-2">{data.umt.toLocaleString("id-ID")}</div>
+                                <div className="flex justify-end col-span-2">{total.toLocaleString("id-ID")}</div>
                                 <div className="font-bold">Dihitung</div>
                                 <div className="flex justify-end col-span-2">1</div>
                                 <div className="font-bold"></div>
@@ -68,7 +72,7 @@ const Thr: FC = () => {
                                     <div className="h-[2px] bg-gray-300 w-full dark:bg-white"></div>
                                 </div>
                                 <div className="font-bold">Diterima</div>
-                                <div className="flex text-xl font-bold text-color-base justify-end col-span-2">Rp. {data.umt.toLocaleString("id-ID")}</div>
+                                <div className="flex text-xl font-bold text-color-base justify-end col-span-2">Rp. {data.jumlah.toLocaleString("id-ID")}</div>
                             </div>
                             <div className="mt-16">
                                 <p className="text-xs text-gray-700 dark:text-white">Dear <span className="font-bold text-gray-700">{data.nama}</span>,</p>

@@ -41,7 +41,7 @@ const Home: FC = () => {
         });
     }, [profile, salary, dataUser?.nik, monthFix, yearFix]);
 
-    console.log("month: ", monthFix, "year: ", yearFix);
+    //console.log("month: ", monthFix, "year: ", yearFix);
     
     const tonggleSalaryVisible = () => {
         setSalaryVisible(!salaryVisible);
