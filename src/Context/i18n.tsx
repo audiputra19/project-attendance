@@ -51,7 +51,8 @@ const resources = {
             from: 'From',
             massLeave: 'Mass Leave',
             annualLeave: 'Annual Leave',
-            lastLeave: 'Last Leave', 
+            lastLeave: 'Last Leave',
+            thr: 'THR', 
         }
     },
     id: {
@@ -103,7 +104,8 @@ const resources = {
             from: 'Dari',
             massLeave: 'Cutber',
             annualLeave: 'Cuti Tahun',
-            lastLeave: 'Cuti Lalu',  
+            lastLeave: 'Cuti Lalu',
+            thr: 'THR',  
         }
     }
 }

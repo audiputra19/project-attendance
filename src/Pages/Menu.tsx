@@ -1,4 +1,4 @@
-import { Banknote, Bus, ChevronRight, Eclipse, FileText, Globe, House, Info, LogOut, UserCheck } from "lucide-react";
+import { Banknote, Bus, ChevronRight, Coins, Eclipse, FileText, Globe, House, Info, LogOut, UserCheck } from "lucide-react";
 import { FC, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { usePostProfileMutation } from "../services/apiProfile";
@@ -123,6 +123,20 @@ const Menu: FC = () => {
                     </div>
                     <div className="col-start-2 col-span-6 sm:col-start-2 sm:col-span-10 lg:col-start-2 lg:col-span-12 flex justify-between items-center">
                         <p className="text-gray-700 dark:text-white">{t('report')}</p>
+                        <div className="text-gray-400">
+                            <ChevronRight size={28}/>
+                        </div>
+                    </div>
+                </div>
+                <div 
+                    className="grid grid-cols-6 sm:grid-cols-10 lg:grid-cols-12 gap-4 items-center cursor-pointer p-2 rounded-2xl hover:bg-gray-200 dark:hover:bg-gray-600" 
+                    onClick={() => navigate('/thr')}
+                >
+                    <div className="flex justify-center text-gray-700 dark:text-white">
+                        <Coins/>
+                    </div>
+                    <div className="col-start-2 col-span-6 sm:col-start-2 sm:col-span-10 lg:col-start-2 lg:col-span-12 flex justify-between items-center">
+                        <p className="text-gray-700 dark:text-white">{t('thr')}</p>
                         <div className="text-gray-400">
                             <ChevronRight size={28}/>
                         </div>

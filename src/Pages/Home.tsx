@@ -27,7 +27,7 @@ const Home: FC = () => {
     const referenceDate = moment().format("YYYY-01-22"); 
     const yearFix = (date <= referenceDate) ? lastYear : year;
 
-    const pdfUrl = `https://sukabumi.karixa.co.id/skn/audi/dataku-v2/gaji_new_pdf.php?nik=${dataUser?.nik}|${dataUser?.pass}|${monthFix}-${year}`;
+    const pdfUrl = `http://175.176.161.133/skn/audi/dataku-v2/gaji_new_pdf.php?nik=${dataUser?.nik}|${dataUser?.pass}|${monthFix}-${year}`;
     
     useEffect(() => {
         profile({

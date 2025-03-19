@@ -18,6 +18,7 @@ import Salary from "../Pages/Salary";
 import { ProtectedRoute } from "./ProtectedRoute";
 import Leave from "../Pages/Leave";
 import Verfication from "../Pages/Verification";
+import Thr from "../Pages/Thr";
 
 export const Router:FC = () => {
     let element = [
@@ -101,6 +102,10 @@ export const Router:FC = () => {
         {
             path: '/leave',
             element: <ProtectedRoute><Leave/></ProtectedRoute>
+        },
+        {
+            path: '/thr',
+            element: <ProtectedRoute><Thr/></ProtectedRoute>
         }
     ];
 
