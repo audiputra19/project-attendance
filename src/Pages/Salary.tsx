@@ -19,7 +19,7 @@ const Salary: FC = () => {
     const month = moment(selectedDate).format("MM");
     const year = moment(selectedDate).format("YYYY");
     const dataUser = useAppSelector(state => state.auth.userInfo);
-    const pdfUrl = `http://175.176.161.133/skn/audi/dataku-v2/gaji_new_pdf.php?nik=${dataUser?.nik}|${dataUser?.pass}|${month}-${year}`;
+    const pdfUrl = `https://app.sknmedical.co.id/skn/audi/dataku-v2/gaji_new_pdf.php?nik=${dataUser?.nik}|${dataUser?.pass}|${month}-${year}`;
 
     if(error){
         console.error('Error:', error);

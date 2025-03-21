@@ -4,7 +4,7 @@ import { SalaryReq, SalaryRes } from "../interfaces/salary";
 export const apiSalary = createApi({
     reducerPath: 'apiSalary',
     baseQuery: fetchBaseQuery({ 
-        baseUrl: 'http://175.176.161.133/skn/audi/dataku-react', 
+        baseUrl: 'https://app.sknmedical.co.id/skn/audi/dataku-react', 
     }),
     endpoints: build => ({
         postSalary: build.mutation<SalaryRes, SalaryReq>({

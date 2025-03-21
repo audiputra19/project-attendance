@@ -4,7 +4,7 @@ import { ThrReq, ThrRes } from "../interfaces/thr";
 export const apiThr = createApi({
     reducerPath: 'apiThr',
     baseQuery: fetchBaseQuery({ 
-        baseUrl: 'http://175.176.161.133/skn/audi/dataku-react' 
+        baseUrl: 'https://app.sknmedical.co.id/skn/audi/dataku-react' 
     }),
     endpoints: build => ({
         postThr: build.mutation<ThrRes, ThrReq>({
