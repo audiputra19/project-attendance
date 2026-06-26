@@ -1,13 +1,13 @@
 import { ArrowLeft } from "lucide-react";
-import { FC, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { useTranslation } from "react-i18next";
-import { LeaveCategory } from "../Components/LeaveCategory";
-import { LeaveTable } from "../Components/LeaveTable";
-import { useAppSelector } from "../store";
-import { usePostLeaveQuery, usePostReportLeaveQuery } from "../services/apiLeave";
-import { LeaveGrid } from "../Components/LeaveGrid";
 import moment from "moment";
+import { FC, useState } from "react";
+import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
+import { LeaveCategory } from "../Components/LeaveCategory";
+import { LeaveGrid } from "../Components/LeaveGrid";
+import { LeaveTable } from "../Components/LeaveTable";
+import { usePostLeaveQuery, usePostReportLeaveQuery } from "../services/apiLeave";
+import { useAppSelector } from "../store";
 
 const Leave: FC = () => {
     const year = moment().year();

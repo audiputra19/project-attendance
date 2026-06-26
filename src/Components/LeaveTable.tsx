@@ -1,6 +1,6 @@
-import { FC } from "react";
-import { leaveProps, reportLeaveProps } from "../interfaces/leave";
 import moment from "moment-timezone";
+import { FC } from "react";
+import { reportLeaveProps } from "../interfaces/leave";
 
 interface LeaveTableProps {
     leaveData: reportLeaveProps[] | undefined;

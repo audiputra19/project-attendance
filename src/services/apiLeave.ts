@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { leaveReq, leaveRes, reportLeaveRes } from "../interfaces/leave";
+import { leaveRes, reportLeaveRes } from "../interfaces/leave";
 
 export const apiLeave = createApi({
     reducerPath: 'apiLeave',

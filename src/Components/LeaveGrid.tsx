@@ -1,7 +1,7 @@
 import { BadgeInfo } from "lucide-react";
 import { FC } from "react";
-import { leaveProps, leaveRes } from "../interfaces/leave";
 import { useTranslation } from "react-i18next";
+import { leaveProps } from "../interfaces/leave";
 
 interface LeaveGridProps {
     leaveData: leaveProps | undefined;
