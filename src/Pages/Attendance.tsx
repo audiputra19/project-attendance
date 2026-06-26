@@ -1,4 +1,3 @@
-import axios from "axios";
 import { ArrowLeft, Clock1, Clock12, Clock5, Clock7 } from "lucide-react";
 import { FC, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
