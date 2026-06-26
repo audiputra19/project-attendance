@@ -66,6 +66,7 @@
     ]
   },
   "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@types/react-i18next": "^8.1.0",
     "@types/redux-persist": "^4.3.1",
     "daisyui": "^4.12.10",
