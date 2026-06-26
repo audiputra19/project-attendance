@@ -4,23 +4,25 @@ import { leaveReq, leaveRes, reportLeaveRes } from "../interfaces/leave";
 export const apiLeave = createApi({
     reducerPath: 'apiLeave',
     baseQuery: fetchBaseQuery({ baseUrl: 'https://api-absensi-liart.vercel.app' }),
-    // baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:3001' }),
+    // baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:5000' }),
+    // baseQuery: fetchBaseQuery({ baseUrl: 'http://103.163.161.201:5000' }),
+    // baseQuery: fetchBaseQuery({ 
+    //     baseUrl: 'https://app.sknmedical.co.id/skn/hrd/cuti/', 
+    // }),
     endpoints: build => ({
-        postLeave: build.mutation<leaveRes, leaveReq>({
-            query: body => ({
-                url: '/leave',
-                method: 'POST',
-                body
+        postLeave: build.query<leaveRes, { nik: number | undefined, tahun: number }>({
+            query: (data) => ({
+                url: `cuti_api.php?nik=${data.nik}&tahun=${data.tahun}`,
+                method: 'GET',
             })
         }),
-        postReportLeave: build.mutation<reportLeaveRes, leaveReq>({
-            query: body => ({
-                url: '/report-leave',
+        postReportLeave: build.query<reportLeaveRes, { nik: number | undefined, tahun: number }>({
+            query: (data) => ({
+                url: `cuti_history_api.php?nik=${data.nik}&tahun=${data.tahun}`,
                 method: 'POST',
-                body
             })
         })
     })
 })
 
-export const { usePostLeaveMutation, usePostReportLeaveMutation } = apiLeave;
+export const { usePostLeaveQuery, usePostReportLeaveQuery } = apiLeave;

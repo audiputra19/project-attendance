@@ -25,7 +25,7 @@ export const LeaveGrid: FC<LeaveGridProps> = ({ leaveData, isLoading }) => {
                     {isLoading ? (
                         <div className="w-[100px] h-5 rounded-xl animate-pulse bg-gray-300 mb-2 dark:bg-gray-600"></div>
                     ) : (
-                        <p className="text-sm text-gray-500 dark:text-gray-400">Total: {leaveData?.massLeave}</p>
+                        <p className="text-sm text-gray-500 dark:text-gray-400">Total: {leaveData?.cuti_bersama}</p>
                     )}
                 </div>
             </div>
@@ -40,7 +40,7 @@ export const LeaveGrid: FC<LeaveGridProps> = ({ leaveData, isLoading }) => {
                     {isLoading ? (
                         <div className="w-[100px] h-5 rounded-xl animate-pulse bg-gray-300 mb-2 dark:bg-gray-600"></div>
                     ) : (
-                        <p className="text-sm text-gray-500 dark:text-gray-400">Total: {leaveData?.annualLeave}</p>
+                        <p className="text-sm text-gray-500 dark:text-gray-400">Total: {leaveData?.jatah_reguler_tahun_ini}</p>
                     )}
                 </div>
             </div>
@@ -55,7 +55,7 @@ export const LeaveGrid: FC<LeaveGridProps> = ({ leaveData, isLoading }) => {
                     {isLoading ? (
                         <div className="w-[100px] h-5 rounded-xl animate-pulse bg-gray-300 mb-2 dark:bg-gray-600"></div>
                     ) : (
-                        <p className="text-sm text-gray-500 dark:text-gray-400">Total: {leaveData?.lastLeave}</p>
+                        <p className="text-sm text-gray-500 dark:text-gray-400">Total: {leaveData?.sisa_tahun_lalu_aktif}</p>
                     )}
                 </div>
             </div>
@@ -70,7 +70,7 @@ export const LeaveGrid: FC<LeaveGridProps> = ({ leaveData, isLoading }) => {
                     {isLoading ? (
                         <div className="w-[100px] h-5 rounded-xl animate-pulse bg-green-300 mb-2 dark:bg-gray-600"></div>
                     ) : (
-                        <p className="text-sm text-white">Total: {leaveData?.myLeave}</p>
+                        <p className="text-sm text-white">Total: {leaveData?.total_sisa_cuti}</p>
                     )}
                 </div>
             </div>

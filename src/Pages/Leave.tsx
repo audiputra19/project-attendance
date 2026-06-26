@@ -5,24 +5,37 @@ import { useTranslation } from "react-i18next";
 import { LeaveCategory } from "../Components/LeaveCategory";
 import { LeaveTable } from "../Components/LeaveTable";
 import { useAppSelector } from "../store";
-import { usePostLeaveMutation, usePostReportLeaveMutation } from "../services/apiLeave";
+import { usePostLeaveQuery, usePostReportLeaveQuery } from "../services/apiLeave";
 import { LeaveGrid } from "../Components/LeaveGrid";
+import moment from "moment";
 
 const Leave: FC = () => {
+    const year = moment().year();
     const navigate = useNavigate();
     const { t } = useTranslation();
-    const [leave, {data, isLoading}] = usePostLeaveMutation();
-    const [report, {data: dataReport, isLoading: isLoadingReport}] = usePostReportLeaveMutation();
     const userData = useAppSelector(state => state.auth.userInfo);
+    const {data: dataReport, isLoading: isLoadingReport} = usePostReportLeaveQuery({
+        nik: userData?.nik,
+        tahun: year
+    }, {
+        skip: !userData?.nik,
+        refetchOnReconnect: true,
+        refetchOnFocus: true,
+        refetchOnMountOrArgChange: true,
+    });
+    const {data, isLoading} = usePostLeaveQuery({
+        nik: userData?.nik,
+        tahun: year
+    },  {
+        skip: !userData?.nik,
+        refetchOnReconnect: true,
+        refetchOnFocus: true,
+        refetchOnMountOrArgChange: true,
+    });
     const leaveData = data?.data;
     const leaveReport = dataReport?.data;
     const [categories] = useState<string[]>(['Table']);
     const [selectedCategory, setSelectedCategory] = useState<string>('');
-    
-    useEffect(() => {
-        leave({ nik: userData?.nik });
-        report({ nik: userData?.nik });
-    }, [leave, report, userData?.nik]);
 
     return (
         <div className="min-h-screen bg-white dark:bg-dark-main">

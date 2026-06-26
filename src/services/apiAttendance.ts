@@ -4,7 +4,8 @@ import { AttendanceReq, AttendanceRes, TimeAttendanceReq, TimeAttendanceRes } fr
 export const apiAttendance = createApi({
     reducerPath: 'apiAttendance',
     baseQuery: fetchBaseQuery({ baseUrl: 'https://api-absensi-liart.vercel.app' }),
-    // baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:3001' }),
+    // baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:5000' }),
+    // baseQuery: fetchBaseQuery({ baseUrl: 'http://103.163.161.201:5000' }),
     endpoints: build => ({
         postAttendance: build.mutation<AttendanceRes, AttendanceReq>({
             query: body => ({
